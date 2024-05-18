@@ -3,6 +3,17 @@
 import React from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Button } from "./ui/button";
 
 function Appbar() {
   const { status, data: session } = useSession();
@@ -18,13 +29,39 @@ function Appbar() {
 
           {status === "authenticated" ? (
             <div>
-              <Image
-                alt={session?.user?.name as string}
-                src={session?.user?.image as string}
-                width={45}
-                height={45}
-                className="rounded-full"
-              ></Image>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Avatar className="cursor-pointer">
+                    <AvatarImage
+                      src={session?.user?.image as string}
+                      alt={session?.user?.name as string}
+                    />
+                    <AvatarFallback>{session.user?.name}</AvatarFallback>
+                  </Avatar>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[425px]">
+                  <DialogHeader>
+                    <DialogTitle>User Details</DialogTitle>
+                  </DialogHeader>
+                  <div className="grid gap-4 py-4">
+                    <div className="grid grid-cols-4 items-center gap-4">
+                      <label htmlFor="name" className="text-right">
+                        Name :
+                      </label>
+                      <label>{session?.user?.name?.split(' ')[0]}</label>
+                    </div>
+                    <div className="grid grid-cols-4 items-center gap-4">
+                      <label htmlFor="username" className="text-right">
+                        Email :
+                      </label>
+                      <label>{session?.user?.email}</label>
+                    </div>
+                    <DialogFooter>
+                      <Button onClick={()=>{signOut()}}>LogOut</Button>
+                    </DialogFooter>
+                  </div>
+                </DialogContent>
+              </Dialog>
             </div>
           ) : (
             <div
