@@ -6,6 +6,7 @@ export default function Page() {
     <div>
 
       <Home/>
+      
     </div>
   );
 }
