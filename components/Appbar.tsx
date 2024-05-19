@@ -26,7 +26,6 @@ function Appbar() {
           <div>Explore</div>
           <div>About</div>
           <div>Contact</div>
-
           {status === "authenticated" ? (
             <div>
               <Dialog>

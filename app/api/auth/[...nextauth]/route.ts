@@ -11,19 +11,17 @@ const authOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET || ""
     })
   ],
+  secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
-    async signIn({ user, account }:any) {
-      console.log(user);
-      console.log(account);
-
+    async signIn({ user, account }: any) {
       if (account.provider === "google") {
         const { name, email } = user;
 
         try {
-          await db();  
-          
+          await db();
+
           const userExists = await User.findOne({ email });  // Await the database query
-          
+
           if (!userExists) {
             const res = await axios.post(`${process.env.NEXTAUTH_URL}/api/user`, {
               name,
@@ -31,21 +29,39 @@ const authOptions = {
             });
 
             if (res.status === 200 || res.status === 201) {
-              return true;  
+              return true;
             } else {
               console.log('Sign-in failed with status: ', res.status);
-              return false; 
+              return false;
             }
           } else {
             console.log('User already exists');
-            return true;  
+            return true;
           }
         } catch (e) {
           console.log('Sign-in error: ', e);
-          return false; 
+          return false;
         }
       }
-      return true;  
+      return true;
+    },
+    async jwt({ token, user, account }: any) {
+      if (user) {
+
+        await db();
+        const dbUser = await User.findOne({ email: user.email });
+        if (dbUser) {
+          token.id = dbUser._id;
+        }
+      }
+      // console.log(token.id)
+      return token;
+    },
+    async session({ session, token, user }: any) {
+      if (token) {
+        session.user.id = token.id;
+      }
+      return session
     }
   }
 };
