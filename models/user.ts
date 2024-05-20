@@ -1,6 +1,7 @@
-import mongoose, { models } from "mongoose";
+import mongoose, { models, Schema } from "mongoose";
+import { boolean } from "zod";
 
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema({
     email:{
         type: String,
         require: true
@@ -9,6 +10,15 @@ const userSchema = new mongoose.Schema({
         type: String,
         require: true
     },
+    username:{
+        type: String,
+        require: true
+    },
+    validated:{
+        type: Boolean,
+        require:true,
+        default:false
+    }
     
 },{timestamps:true})
 

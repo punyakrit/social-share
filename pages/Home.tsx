@@ -2,9 +2,38 @@
 
 import { BackgroundBeams } from "@/components/ui/background-beams";
 import { useSession ,signIn } from "next-auth/react";
+import { useEffect } from "react";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 function Home() {
+
   const { status, data: session } = useSession();
+  const email = session?.user?.email
+  const router = useRouter();
+
+  useEffect(() => {
+    if (status === "authenticated") {
+      // Check if the user is validated
+      const checkValidation = async () => {
+        try {
+          const res = await axios.get(`/api/user`,{
+            params: {email}
+          });
+          if (res.data.validated) {
+            return;
+          } else {
+            router.push("/onboarding");
+          }
+        } catch (error) {
+          console.error("Error checking user validation:", error);
+        }
+      };
+
+      checkValidation();
+    }
+  }, [status, session, router]);
+
 
   return (
     <div className=" h-screen w-full bg-gray-900 relative flex flex-col items-center justify-center antialiased">

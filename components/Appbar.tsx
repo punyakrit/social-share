@@ -35,7 +35,7 @@ function Appbar() {
                       src={session?.user?.image as string}
                       alt={session?.user?.name as string}
                     />
-                    <AvatarFallback>{session.user?.name}</AvatarFallback>
+                    <AvatarFallback>{session.user?.name?.split(' ')[0].charAt(0)}</AvatarFallback>
                   </Avatar>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[425px]">
