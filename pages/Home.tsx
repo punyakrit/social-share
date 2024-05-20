@@ -1,15 +1,15 @@
 "use client";
 
 import { BackgroundBeams } from "@/components/ui/background-beams";
-import { useSession ,signIn } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react";
 import { useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
 function Home() {
-
+  const route = useRouter();
   const { status, data: session } = useSession();
-  const email = session?.user?.email
+  const email = session?.user?.email;
   const router = useRouter();
 
   useEffect(() => {
@@ -17,8 +17,8 @@ function Home() {
       // Check if the user is validated
       const checkValidation = async () => {
         try {
-          const res = await axios.get(`/api/user`,{
-            params: {email}
+          const res = await axios.get(`/api/user`, {
+            params: { email },
           });
           if (res.data.validated) {
             return;
@@ -34,7 +34,6 @@ function Home() {
     }
   }, [status, session, router]);
 
-
   return (
     <div className=" h-screen w-full bg-gray-900 relative flex flex-col items-center justify-center antialiased">
       <div className="max-w-7xl mx-auto p-4">
@@ -47,17 +46,21 @@ function Home() {
           content with the world.
         </div>
         <div className="flex justify-center">
-          {status === "authenticated"?(<div
-            className="relative z-10 bg-white px-5 py-3 cursor-pointer rounded-xl font-bold hover:bg-black hover:text-white transition duration-700"
-          >
-            Go to Dashboard
-          </div>):(<div
-            onClick={() => signIn("google")}
-            className="relative z-10 bg-white px-5 py-3 cursor-pointer rounded-xl font-bold hover:bg-black hover:text-white transition duration-700"
-          >
-            Get Started
-          </div>)}
-          
+          {status === "authenticated" ? (
+            <div
+              onClick={() => route.push("/dashboard")}
+              className="relative z-10 bg-white px-5 py-3 cursor-pointer rounded-xl font-bold hover:bg-black hover:text-white transition duration-700"
+            >
+              Go to Dashboard
+            </div>
+          ) : (
+            <div
+              onClick={() => signIn("google")}
+              className="relative z-10 bg-white px-5 py-3 cursor-pointer rounded-xl font-bold hover:bg-black hover:text-white transition duration-700"
+            >
+              Get Started
+            </div>
+          )}
         </div>
       </div>
       <BackgroundBeams />
