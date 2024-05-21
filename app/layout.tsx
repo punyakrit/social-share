@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Appbar from "@/components/Appbar";
 import { Providers } from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -21,7 +20,6 @@ export default function RootLayout({
       <body className={`inter.className bg-gray-900`}>
         <div>
           <Providers>
-            <Appbar />
             {children}
           </Providers>
         </div>
