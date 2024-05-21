@@ -32,7 +32,7 @@ function Home() {
 
       checkValidation();
     }
-  }, [status, session, router]);
+  }, [route, status, email]);
 
   return (
     <div className=" h-screen w-full bg-gray-900 relative flex flex-col items-center justify-center antialiased">

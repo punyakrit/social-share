@@ -13,7 +13,7 @@ function Onboarding() {
 
 useEffect(()=>{
   status !== "authenticated" ? route.push('/') : null
-},[])
+},[route, status])
   return (
     <div className='flex px-20  h-screen items-center text-white'>
         <div className='w-1/2'>
