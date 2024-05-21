@@ -5,9 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
 function UserForm() {
-    const [data,setData] = useState({
-        name
-    })
+    
   return (
     <div className="px-6 py-2 h-screen overflow-y-scroll">
       <div className="tetx-2xl font-bold mt-8">User Details</div>
