@@ -2,7 +2,7 @@
 import React, { useState, useTransition } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { updateUsername } from "@/actions/validateUser"; // You may need to adjust this path
+// import { updateUsername } from "@/actions/validateUser"; // You may need to adjust this path
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
@@ -19,17 +19,17 @@ function Username() {
 
     const handleUsernameSubmit = async () => {
         startTransition(async () => {
-            try {
-                const res = await updateUsername(username, email);
-                setMessage(res.message);
-                setError("");
-                if (res.message === 'Username updated') {
-                    route.push('/dashboard'); // Redirect to dashboard if username updated successfully
-                }
-            } catch (err:any) {
-                setError(err.message);
-                setMessage("");
-            }
+            // try {
+            //     const res = await updateUsername(username, email);
+            //     setMessage(res.message);
+            //     setError("");
+            //     if (res.message === 'Username updated') {
+            //         route.push('/dashboard'); // Redirect to dashboard if username updated successfully
+            //     }
+            // } catch (err:any) {
+            //     setError(err.message);
+            //     setMessage("");
+            // }
         });
     };
 
