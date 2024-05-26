@@ -2,16 +2,24 @@
 import React, { useState } from "react";
 import { Button } from "./ui/button";
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
-function UserNameForm() {
+function UserNameForm({user}:any) {
+  const route = useRouter()
   const [username, setUsername] = useState("");
   async function handleSubmit(e: any) {
     e.preventDefault();
 
     if (username.length > 0) {
-      await signIn("google", {
-        callbackUrl: "/onboarding?username=" + username,
-      });
+
+      if(user){
+        route.push('/onboarding?username=' + username)
+      }else{
+
+        await signIn("google", {
+          callbackUrl: "/onboarding?username=" + username,
+        });
+      }
     }
   }
   return (

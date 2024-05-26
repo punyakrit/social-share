@@ -9,8 +9,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import UserLogoutButton from "./UserLogoutButton";
+import { authOptions } from "@/lib/authOptions";
 
 async function UserProfile() {
   const server = await getServerSession(authOptions);

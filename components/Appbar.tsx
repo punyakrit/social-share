@@ -2,8 +2,8 @@ import React from "react";
 import GoogleLoginButton from "./GoogleLoginButton";
 import UserProfile from "./UserProfile";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { User } from "lucide-react";
+import { authOptions } from "@/lib/authOptions";
 
 async function Appbar() {
   const session = await getServerSession(authOptions)

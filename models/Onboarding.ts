@@ -6,6 +6,10 @@ const usernameSchema  = new Schema({
         required: true,
         min:1,
         unique: true
+    },
+    owner:{
+        type: String,
+        required : true
     }
 },{timestamps: true})
 

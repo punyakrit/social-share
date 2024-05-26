@@ -1,11 +1,12 @@
 import { getServerSession } from "next-auth";
 import React from "react";
-import { authOptions } from "../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import onb from "@/public/on.webp";
 import Image from "next/image";
 import Appbar from "@/components/Appbar";
-import UserForm from "@/components/UserForm";
+import UserForm from "@/components/pages/UserForm";
+import { UserPage } from "@/models/Onboarding";
+import { authOptions } from "@/lib/authOptions";
 
 export default async function page({ searchParams }: any) {
   const username = searchParams.username;
@@ -13,6 +14,14 @@ export default async function page({ searchParams }: any) {
 
   if (!session) {
     redirect("/");
+  }
+
+  const exists = await UserPage.findOne({
+    owner: session.user?.email
+  })
+
+  if(exists){
+    redirect("/dashboard");
   }
 
   return (
@@ -26,10 +35,10 @@ export default async function page({ searchParams }: any) {
               Choose a unique username to personalize your ShareHub page.
             </div>
             <div className="grid w-full max-w-sm items-center py-3 gap-1.5">
-              <UserForm username={username}/>
+              <UserForm username={username} />
             </div>
             {/* {message && <div className="text-red-500 mt-4">{message}</div>} */}
-           </div>
+          </div>
         </div>
         <div className="w-1/2">
           <Image src={onb} className="rounded-3xl" alt="image" />

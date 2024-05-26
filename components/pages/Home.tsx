@@ -1,7 +1,10 @@
 import { BackgroundBeams } from "@/components/ui/background-beams";
 import UserNameForm from "../UserNameForm";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/authOptions";
 
-function Home() {
+async function Home() {
+  const sesssion = await getServerSession(authOptions)
   return (
     <div className=" h-screen w-full bg-gray-900 relative flex flex-col items-center justify-center antialiased">
       <div className="max-w-7xl mx-auto p-4 ">
@@ -17,7 +20,7 @@ function Home() {
         </div>
         </div>
         <div className="relative z-10">
-          <UserNameForm/>
+          <UserNameForm user={sesssion?.user}/>
         </div>
         
       </div>

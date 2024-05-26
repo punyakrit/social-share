@@ -1,7 +1,9 @@
 "use server"
 
+import { authOptions } from "@/lib/authOptions"
 import { UserPage } from "@/models/Onboarding"
 import mongoose from "mongoose"
+import { getServerSession } from "next-auth"
 export async function getUsername(data: any) {
     const username = data.get('username')
 
@@ -14,7 +16,9 @@ export async function getUsername(data: any) {
     if (existingUsername) {
         return false;
     } else {
-        await UserPage.create({ uri: username });
+        const session = await getServerSession(authOptions)
+        await UserPage.create({ uri: username,
+             owner: session?.user?.email });
         return true;
     }
 
