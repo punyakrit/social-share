@@ -10,7 +10,8 @@
 
  ```bash
  cp .env.example .env
-
+```
+```bash
 Update all these variables
 GOOGLE_CLIENT_ID
 GOOGLE_CLIENT_SECRET
@@ -21,13 +22,23 @@ MONGODB_URI
 
  ## Commands to run the development server:
 
-```bash
+```markdown
+# Using npm
 npm run dev
-# or
+```
+
+```markdown
+# Using yarn
 yarn dev
-# or
+```
+
+```markdown
+# Using pnpm
 pnpm dev
-# or
+```
+
+```markdown
+# Using bun
 bun dev
 ```
 
