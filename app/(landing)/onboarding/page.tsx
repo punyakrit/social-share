@@ -28,7 +28,6 @@ export default async function page({ searchParams }: any) {
 
   return (
     <div>
-      <Appbar />
       <div className="flex px-20  h-screen items-center text-white">
         <div className="w-1/2">
           <div>
