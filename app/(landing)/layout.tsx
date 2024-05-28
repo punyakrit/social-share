@@ -18,11 +18,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-4LFH8B1P2D"
+        ></script>
+        <script>
+          {`window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4LFH8B1P2D');`}
+        </script>
+      </head>
       <body className={`inter.className bg-gray-900`}>
-        <Appbar/>
-        <div>
-            {children}
-        </div>
+        <Appbar />
+        <div>{children}</div>
       </body>
     </html>
   );
