@@ -9,8 +9,8 @@ async function page() {
   const session = await getServerSession(authOptions)
   
   return (
-    <div className=''>
-      
+    <div className='text-white'>
+        dashboard
       
     </div>
   )

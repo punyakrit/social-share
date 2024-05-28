@@ -31,11 +31,11 @@ export default async function RootLayout({
   console.log(session);
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-gray-900`}>
-        <div className="lg:w-1/5 md:w-1/3 sm:w-1/2">
+      <body className={`${inter.className} bg-gray-900 flex`}>
+        <div>
           <SideBar session={session} />
         </div>
-        <div>{children}</div>
+        <div  className="p-4 m-8 shadow-md shadow-white/10 bg-gray-950/70 h-min w-full">{children}</div>
       </body>
     </html>
   );
