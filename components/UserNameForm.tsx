@@ -52,7 +52,7 @@ function UserNameForm({ user }: any) {
         </div>
         <Button
           type="submit"
-          className=" text-white border-white border ml-6 py-4"
+          className="text-white font-bold border border-white border-[2px] ml-6 py-4 hover:cursor-pointer transition-all duration-300 ease-in-out hover:bg-gradient-to-br from-white via-gray-300 to-gray-400 hover:text-gray-900"
         >
           Join for Free
         </Button>
