@@ -1,14 +1,13 @@
 "use server"
 
 import { authOptions } from "@/lib/authOptions"
+import { connectMongoDb } from "@/lib/dbConnect"
 import { UserPage } from "@/models/Onboarding"
-import mongoose from "mongoose"
 import { getServerSession } from "next-auth"
 export async function getUsername(data: any) {
     const username = data.get('username')
 
-    mongoose.connect(process.env.MONGODB_URI || "")
-
+    await connectMongoDb()
 
     const existingUsername = await UserPage.findOne({
         uri: username

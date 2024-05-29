@@ -2,8 +2,8 @@ import React from 'react'
 
 function page() {
   return (
-    <div>
-      
+    <div className='text-white text-2xl'>
+      Analytics
     </div>
   )
 }

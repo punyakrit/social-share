@@ -8,7 +8,7 @@
 2. Clone the forked repository to your local machine.
 
 ```markdown
-git clone https://github.com/yourusername/social-share.git
+git clone https://github.com/punyakrit/social-share.git
 ```
 *Run the command to install npm package*
 ```markdown
@@ -21,7 +21,7 @@ npm install
  cp .env.example .env
 ```
 ```bash
-Update all these variables
+Update all these env variables
 GOOGLE_CLIENT_ID
 GOOGLE_CLIENT_SECRET
 NEXTAUTH_URL 
@@ -36,25 +36,27 @@ MONGODB_URI
 npm run dev
 ```
 
-```markdown
-# Using yarn
-yarn dev
-```
-
-```markdown
-# Using pnpm
-pnpm dev
-```
-
-```markdown
-# Using bun
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```
+## Acknowledgments 🙏
+
+We would like to express our gratitude to the following contributors for their valuable contributions to Social Share
+
+## Contributors
+
+<a href="https://github.com/punyakrit/social-share/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=punyakrit/social-share" />
+</a>
+
+<br/>
+<p align="center">
+	Developed with ❤️ by The <a href="https://github.com/punyakrit/social-share"><strong>Social Share Team</strong></a>
+</p>
+
 
 <p align="right">(<a href="#top">Back to top</a>)</p>
