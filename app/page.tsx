@@ -9,7 +9,6 @@ export default function Page() {
     <div>
       <Appbar/>
       <Home/>
-      <FooterApp/>
     </div>
   );
 }
