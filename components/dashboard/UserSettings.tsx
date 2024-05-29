@@ -19,7 +19,7 @@ function handleSubmit(form:any) {
  
 
   return (
-    <div className="h-full overflow-y-scroll">
+    <div className=" h-full overflow-y-scroll  shadow-md rounded-3xl mx-3 shadow-white/10 bg-gray-950/70">
       <form action={handleSubmit}>
         <ImageForm
           options={[

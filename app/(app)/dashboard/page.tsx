@@ -21,7 +21,7 @@ async function page() {
 
   return (
     <div className="text-white flex">
-      <div className="w-1/2 shadow-md rounded-3xl mx-3 shadow-white/10 bg-gray-950/70">
+      <div className="w-1/2 h-screen p-4">
         <UserSettings user={exists} session={session} />
       </div>
       <div className="w-1/2 shadow-md rounded-3xl p-8 mx-3 shadow-white/10 bg-gray-950/70">

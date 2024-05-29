@@ -35,7 +35,7 @@ export default async function RootLayout({
         <div>
           <SideBar session={session} />
         </div>
-        <div  className=" m-8 w-full">{children}</div>
+        <div  className=" w-full">{children}</div>
       </body>
     </html>
   );
