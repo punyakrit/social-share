@@ -1,4 +1,5 @@
 import UserSettings from "@/components/dashboard/UserSettings";
+import ProfilePreview from "@/components/pages/ProfilePreview";
 import { authOptions } from "@/lib/authOptions";
 import { connectMongoDb } from "@/lib/dbConnect";
 import { UserPage } from "@/models/Onboarding";
@@ -19,8 +20,13 @@ async function page() {
   });
 
   return (
-    <div className="text-white">
-      <UserSettings user={exists} session={session} />
+    <div className="text-white flex">
+      <div className="w-1/2 shadow-md rounded-3xl mx-3 shadow-white/10 bg-gray-950/70">
+        <UserSettings user={exists} session={session} />
+      </div>
+      <div className="w-1/2 shadow-md rounded-3xl p-8 mx-3 shadow-white/10 bg-gray-950/70">
+        <ProfilePreview/>
+      </div>
     </div>
   );
 }

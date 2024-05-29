@@ -19,7 +19,7 @@ function handleSubmit(form:any) {
  
 
   return (
-    <div>
+    <div className="h-full overflow-y-scroll">
       <form action={handleSubmit}>
         <ImageForm
           options={[
@@ -29,7 +29,7 @@ function handleSubmit(form:any) {
         />
         <div className="flex justify-center">
           <Image
-            className="rounded-full relative -top-7 border-gray-900 border-4 shadow-white/50 shadow"
+            className="rounded-full relative -top-10 border-gray-900 border-4 shadow-white/50 shadow"
             src={session?.user?.image as string}
             width={130}
             height={130}
@@ -76,6 +76,7 @@ function handleSubmit(form:any) {
 
           <div>Dashboard building is still under process</div>
         </div>
+        
       </form>
     </div>
   );
