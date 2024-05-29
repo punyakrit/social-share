@@ -74,3 +74,20 @@
       @apply bg-background text-foreground;
     }
   }
+
+
+  .radio-toggler {
+    @apply  p-1  bg-gray-200 inline-flex;
+  }
+
+  .radio-toggler div{
+    @apply  p-2 px-4 shadow text-gray-500  flex items-center gap-2;
+  }
+
+  .radio-toggler input {
+    @apply  hidden;
+  }
+
+  .radio-toggler input:checked + div {
+    @apply  bg-white text-blue-600 ;
+  }

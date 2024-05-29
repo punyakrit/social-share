@@ -35,7 +35,7 @@ export default async function RootLayout({
         <div>
           <SideBar session={session} />
         </div>
-        <div  className="p-4 m-8 shadow-md shadow-white/10 bg-gray-950/70 h-min w-full">{children}</div>
+        <div  className=" m-8 shadow-md shadow-white/10 bg-gray-950/70 h-min w-full">{children}</div>
       </body>
     </html>
   );

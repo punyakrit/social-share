@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <script
+        {/* <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-4LFH8B1P2D"
         ></script>
@@ -29,7 +29,7 @@ export default function RootLayout({
   gtag('js', new Date());
 
   gtag('config', 'G-4LFH8B1P2D');`}
-        </script>
+        </script> */}
       </head>
       <body className={`inter.className bg-gray-900`}>
         <Appbar />
