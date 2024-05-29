@@ -1,6 +1,6 @@
 "use client";
 
-import { getUsername } from "@/action/setUsername";
+import { getUsername } from "@/actions/setUsername";
 import { Label } from "@radix-ui/react-label";
 import React, { useState } from "react";
 import { Input } from "../ui/input";
