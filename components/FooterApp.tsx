@@ -63,23 +63,23 @@ function FooterApp() {
             
             <Link
               href="#"
-              className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
+              className="text-gray-500 hover:text-white dark:hover:text-white ms-5"
             >
-              <Linkedin className="w-5 h-5" />
+              <Linkedin className="w-6 h-6" />
               <span className="sr-only">Discord community</span>
             </Link>
             <Link
               href="#"
-              className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
+              className="text-gray-500 hover:text-white dark:hover:text-white ms-5"
             >
-              <X className="w-5 h-5" />
+              <X className="w-6 h-6" />
               <span className="sr-only">Twitter page</span>
             </Link>
             <Link
               href="#"
-              className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
+              className="text-gray-500 hover:text-white dark:hover:text-white ms-5"
             >
-              <Github className="w-5 h-5" />
+              <Github className="w-6 h-6" />
               <span className="sr-only">GitHub account</span>
             </Link>
           </div>
