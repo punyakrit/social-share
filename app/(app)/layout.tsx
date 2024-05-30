@@ -6,6 +6,7 @@ import { authOptions } from "@/lib/authOptions";
 import { redirect } from "next/navigation";
 import { connectMongoDb } from "@/lib/dbConnect";
 import { UserPage } from "@/models/Onboarding";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,6 +33,8 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-gray-900 flex`}>
+      <Toaster />
+
         <div>
           <SideBar session={session} />
         </div>
