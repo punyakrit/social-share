@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import ImageForm from "./ImageForm";
 import { ImageIcon, Palette } from "lucide-react";
@@ -8,19 +8,21 @@ import { Input } from "@/components/ui/input";
 import { Label } from "../ui/label";
 import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
+import { UserProfile } from "@/actions/UserProfile";
 
-function handleSubmit(form:any) {
-  console.log(form.get('displayName'))
-}
-
-
-
- function UserSettings({ user, session }: any) {
- 
+function UserSettings({ user, session }:any) {
+  async function handleSubmit(event:any) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const result = await UserProfile(formData);
+    console.log(result);
+    
+    
+  }
 
   return (
-    <div className=" h-full overflow-y-scroll  shadow-md rounded-3xl mx-3 shadow-white/10 bg-gray-950/70">
-      <form action={handleSubmit}>
+    <div className="h-full overflow-y-scroll shadow-md rounded-3xl mx-3 shadow-white/10 bg-gray-950/70">
+      <form onSubmit={handleSubmit}>
         <ImageForm
           options={[
             { name: "color", icon: <Palette />, label: "Color" },
@@ -37,46 +39,46 @@ function handleSubmit(form:any) {
           />
         </div>
         <div className="m-10 -mt-1 space-y-6">
-          <div className="grid w-full  items-center gap-1.5">
-            <Label htmlFor="email">Display Name</Label>
+          <div className="grid w-full items-center gap-1.5">
+            <Label htmlFor="displayName">Display Name</Label>
             <Input
               type="text"
-              className="bg-transparent "
-              id="text"
+              className="bg-transparent"
+              id="displayName"
               name="displayName"
               placeholder="John Doe"
               defaultValue={user.displayName}
             />
           </div>
-          <div className="grid w-full  items-center gap-1.5">
-            <Label htmlFor="email">Location</Label>
+          <div className="grid w-full items-center gap-1.5">
+            <Label htmlFor="location">Location</Label>
             <Input
               type="text"
-              className="bg-transparent "
-              id="text"
+              className="bg-transparent"
+              id="location"
               name="location"
-              placeholder="Location that you want to display to world"
+              placeholder="Location that you want to display to the world"
               defaultValue={user.location}
             />
           </div>
-          <div className="grid w-full  items-center gap-1.5">
-            <Label>Bio</Label>
+          <div className="grid w-full items-center gap-1.5">
+            <Label htmlFor="bio">Bio</Label>
             <Textarea
               className="bg-transparent"
               placeholder="Type your bio / message here."
               defaultValue={user.bio}
               name="bio"
+              id="bio"
             />
           </div>
           <div className="flex justify-center">
-            <Button type="submit" className="border">
+            <Button type="submit"className="border">
               Save Details
             </Button>
           </div>
 
           <div>Dashboard building is still under process</div>
         </div>
-        
       </form>
     </div>
   );
