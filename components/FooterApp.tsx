@@ -62,21 +62,21 @@ function FooterApp() {
           <div className="flex mt-4 sm:justify-center sm:mt-0">
             
             <Link
-              href="#"
+              href="https://www.linkedin.com/in/https://www.linkedin.com/in/punyakrit-singh-makhni/"
               className="text-gray-500 hover:text-white dark:hover:text-white ms-5"
             >
               <Linkedin className="w-6 h-6" />
-              <span className="sr-only">Discord community</span>
+              <span className="sr-only">LinkedIn community</span>
             </Link>
             <Link
-              href="#"
+              href="/"
               className="text-gray-500 hover:text-white dark:hover:text-white ms-5"
             >
               <X className="w-6 h-6" />
               <span className="sr-only">Twitter page</span>
             </Link>
             <Link
-              href="#"
+              href="https://github.com/punyakrit/social-share"
               className="text-gray-500 hover:text-white dark:hover:text-white ms-5"
             >
               <Github className="w-6 h-6" />
