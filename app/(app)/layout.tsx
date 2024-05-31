@@ -4,7 +4,7 @@ import SideBar from "@/components/dashboard/SideBar";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/authOptions";
 import { redirect } from "next/navigation";
-import { connectMongoDb } from "@/lib/dbConnect";
+import  connectMongoDb  from "@/lib/dbConnect";
 import { UserPage } from "@/models/Onboarding";
 import { Toaster } from "@/components/ui/toaster";
 

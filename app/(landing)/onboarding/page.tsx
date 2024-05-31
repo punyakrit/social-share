@@ -7,7 +7,7 @@ import Appbar from "@/components/Appbar";
 import UserForm from "@/components/pages/UserForm";
 import { UserPage } from "@/models/Onboarding";
 import { authOptions } from "@/lib/authOptions";
-import { connectMongoDb } from "@/lib/dbConnect";
+import  connectMongoDb  from "@/lib/dbConnect";
 
 export default async function page({ searchParams }: any) {
   const username = searchParams.username;

@@ -1,7 +1,7 @@
 import UserSettings from "@/components/dashboard/UserSettings";
 import ProfilePreview from "@/components/pages/ProfilePreview";
 import { authOptions } from "@/lib/authOptions";
-import { connectMongoDb } from "@/lib/dbConnect";
+import connectMongoDb  from "@/lib/dbConnect";
 import { UserPage } from "@/models/Onboarding";
 import { getServerSession } from "next-auth";
 
