@@ -1,4 +1,4 @@
-import { MongoClient } from 'mongodb';
+import { MongoClient, ServerApiVersion } from "mongodb";
 
 if (!process.env.MONGODB_URI) {
   throw new Error('Invalid/Missing environment variable: "MONGODB_URI"');
@@ -6,54 +6,51 @@ if (!process.env.MONGODB_URI) {
 
 const uri = process.env.MONGODB_URI;
 const options = {
-  family: 4,
-  connectTimeoutMS: 60000,
-  serverSelectionTimeoutMS: 60000,
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  },
 };
 
-let client;
-let clientPromise;
+let client: MongoClient;
+let clientPromise: Promise<MongoClient>;
 
-let attempt = 1;
 const retries = 2;
+let attempt = 1;
 
-const connectWithRetry = async () => {
+const connectWithRetry = async (): Promise<MongoClient> => {
   try {
-    if (process.env.NODE_ENV === "development") {
-      // In development mode, use a global variable so that the value
-      // is preserved across module reloads caused by HMR (Hot Module Replacement).
-      let globalWithMongo = global as typeof globalThis & {
-        _mongoClientPromise?: Promise<MongoClient>
-      };
-
-      if (!globalWithMongo._mongoClientPromise) {
-        client = new MongoClient(uri, options);
-        globalWithMongo._mongoClientPromise = client.connect();
-      }
-      clientPromise = globalWithMongo._mongoClientPromise;
-    } else {
-      // In production mode, it's best to not use a global variable.
-      client = new MongoClient(uri, options);
-      clientPromise = client.connect();
-      console.log(`Successfully connected after ${attempt} ${attempt > 1 ? 'attempts' : 'attempt'}`);
-    }
+    client = new MongoClient(uri, options);
+    await client.connect();
+    console.log(`Successfully connected to MongoDB on attempt ${attempt}`);
+    return client;
   } catch (error) {
-    console.log(`Connection attempt ${attempt} failed.\n`, error);
+    console.error(`Connection attempt ${attempt} failed.\n`, error);
     if (attempt < retries) {
       attempt += 1;
-      console.log(`Trying again...`);
-      client = new MongoClient(uri, options);
-      clientPromise = client.connect();
-      await clientPromise;
-      console.log(`Successfully connected after ${attempt} ${attempt > 1 ? 'attempts' : 'attempt'}`);
+      console.log(`Retrying connection (attempt ${attempt})...`);
+      return connectWithRetry();
     } else {
       throw new Error(`Failed to connect to MongoDB after ${attempt} attempts.`);
     }
   }
 };
 
-connectWithRetry();
+if (process.env.NODE_ENV === "development") {
+  // In development mode, use a global variable so that the value
+  // is preserved across module reloads caused by HMR (Hot Module Replacement).
+  const globalWithMongo = global as typeof globalThis & {
+    _mongoClientPromise?: Promise<MongoClient>
+  };
 
-// Export a module-scoped MongoClient promise. By doing this in a
-// separate module, the client can be shared across functions.
+  if (!globalWithMongo._mongoClientPromise) {
+    globalWithMongo._mongoClientPromise = connectWithRetry();
+  }
+  clientPromise = globalWithMongo._mongoClientPromise;
+} else {
+  // In production mode, it's best to not use a global variable.
+  clientPromise = connectWithRetry();
+}
+
 export default clientPromise;

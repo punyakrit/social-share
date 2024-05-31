@@ -4,6 +4,7 @@ import { authOptions } from "@/lib/authOptions";
 import connectMongoDb  from "@/lib/dbConnect";
 import { UserPage } from "@/models/Onboarding";
 import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 
 import React from "react";
 
@@ -11,7 +12,7 @@ async function page() {
   const session = await getServerSession(authOptions);
 
   if (!session || !session.user) {
-    throw new Error("User session not found. Please log in.");
+    redirect('/')
   }
 
   await connectMongoDb();
