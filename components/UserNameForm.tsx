@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { Button } from "./ui/button";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import MagicButton from "./ui/MagicButton";
 
 function UserNameForm({ user }: any) {
   const route = useRouter();
@@ -50,12 +52,21 @@ function UserNameForm({ user }: any) {
             placeholder="username"
           />
         </div>
-        <Button
+        {/* <Button
           type="submit"
           className="text-white font-bold border border-white border-[2px] ml-6 py-4 hover:cursor-pointer transition-all duration-300 ease-in-out hover:bg-gradient-to-br from-white via-gray-300 to-gray-400 hover:text-gray-900"
         >
           Join for Free
-        </Button>
+        </Button> */}
+        
+          
+            <div className="ml-6">
+            <MagicButton
+            title='Join For Free'
+            />
+            </div>
+               
+        
       </form>
     </div>
   );
