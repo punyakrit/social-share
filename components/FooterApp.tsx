@@ -15,34 +15,34 @@ function FooterApp() {
           </div>
           <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
             <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h2 className="mb-6 text-sm font-semibold text-gray-300 uppercase dark:text-white">
                 Follow us
               </h2>
               <ul className="text-gray-500 dark:text-gray-400 font-medium">
                 <li className="mb-4">
-                  <Link href="https://github.com/punyakrit/social-share" target="_blank" className="hover:underline ">
+                  <Link href="https://github.com/punyakrit/social-share" target="_blank" className="transition ease duration-150 hover:text-white/65 hover:cursor-pointer">
                     Github
                   </Link>
                 </li>
                 <li>
-                  <Link href="/" className="hover:underline">
+                  <Link href="/" target="_blank" className="transition ease duration-150 hover:text-white/65 hover:cursor-pointer">
                     Discord
                   </Link>
                 </li>
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h2 className="mb-6 text-sm font-semibold text-gray-300 uppercase dark:text-white">
                 Legal
               </h2>
               <ul className="text-gray-500 dark:text-gray-400 font-medium">
                 <li className="mb-4">
-                  <Link href="/policy" className="hover:underline">
+                  <Link href="/policy" target="_blank" className="transition ease duration-150 hover:text-white/65 hover:cursor-pointer">
                     Privacy Policy
                   </Link>
                 </li>
                 <li>
-                  <Link href="/terms_conditions" className="hover:underline">
+                  <Link href="/terms_conditions" target="_blank" className="transition ease duration-150 hover:text-white/65 hover:cursor-pointer">
                     Terms &amp; Conditions
                   </Link>
                 </li>
