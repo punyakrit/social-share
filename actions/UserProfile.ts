@@ -1,10 +1,10 @@
 "use server";
 import { authOptions } from "@/lib/authOptions";
-import  connectMongoDb  from "@/lib/dbConnect";
+import connectMongoDb from "@/lib/dbConnect";
 import { UserPage } from "@/models/Onboarding";
 import { getServerSession } from "next-auth";
 
-export async function UserProfile(formData: any) {
+export async function UserProfile(formData: FormData) {
   await connectMongoDb();
   const session = await getServerSession(authOptions);
 
@@ -12,13 +12,13 @@ export async function UserProfile(formData: any) {
     const name = formData.get("displayName");
     const location = formData.get("location");
     const bio = formData.get("bio");
-    const bgType = formData.get("bgType")
-    const bgColor = formData.get("bgColor")
-
+    const bgType = formData.get("bgType");
+    const bgColor = formData.get("bgColor");
+    const bgImage = formData.get("bgImage"); // Get the bgImage from formData
 
     await UserPage.updateOne(
       { owner: session?.user?.email },
-      { displayName: name, location: location, bio: bio, bgType: bgType, bgColor: bgColor }
+      { displayName: name, location: location, bio: bio, bgType: bgType, bgColor: bgColor, bgImage: bgImage } // Update the bgImage field
     );
     return true;
   }

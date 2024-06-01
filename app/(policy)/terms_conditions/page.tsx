@@ -95,14 +95,14 @@ function terms_condition() {
               <ul className='list-disc flex flex-col gap-2'>
                 <li>
                   <span className='text-blue-500'>
-                    <a href="https://www.linkedin.com/in/https://www.linkedin.com/in/punyakrit-singh-makhni/" target='_blank'>
+                    <a href="https://www.linkedin.com/in/punyakrit-singh-makhni/" target='_blank'>
                       LinkedIn
                     </a>
                   </span>
                 </li>
                 <li>
                   <span className='text-blue-500'>
-                    <a href="https://github.com/punyakrit/social-share" target='_blank'>
+                    <a href="https://github.com/punyakrit/" target='_blank'>
                       GitHub
                     </a>
                   </span>

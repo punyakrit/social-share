@@ -29,6 +29,10 @@ const usernameSchema  = new Schema({
     },bgColor:{
         type: String,
         default:"#000000"
+    },
+    bgImage:{
+        type: String,
+        default:""
     }
 
 },{timestamps: true})
