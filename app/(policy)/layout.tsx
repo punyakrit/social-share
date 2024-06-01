@@ -12,9 +12,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-    <body className={`inter.className bg-gray-900`}>
-        <div>{children}</div>
-    </body>
+      <body className={`inter.className bg-gray-900`}>
+          <div>{children}</div>
+      </body>
     </html>
   )
 }
