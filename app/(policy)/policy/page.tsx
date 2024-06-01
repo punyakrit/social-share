@@ -168,7 +168,7 @@ function Policy() {
                   </span>
                 </li>
                 <li>
-                <span className='text-blue-500'>
+                  <span className='text-blue-500'>
                     <a href="https://github.com/punyakrit/social-share" target='_blank'>
                       GitHub
                     </a>
