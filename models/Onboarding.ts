@@ -33,7 +33,12 @@ const usernameSchema  = new Schema({
     bgImage:{
         type: String,
         default:""
+    },
+    avatarImage: {
+        type: String, 
+        default: ""
     }
+
 
 },{timestamps: true})
 

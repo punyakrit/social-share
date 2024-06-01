@@ -15,10 +15,11 @@ export async function UserProfile(formData: FormData) {
     const bgType = formData.get("bgType");
     const bgColor = formData.get("bgColor");
     const bgImage = formData.get("bgImage"); // Get the bgImage from formData
+    const avatarImage = formData.get("avatarImage");
 
     await UserPage.updateOne(
       { owner: session?.user?.email },
-      { displayName: name, location: location, bio: bio, bgType: bgType, bgColor: bgColor, bgImage: bgImage } // Update the bgImage field
+      { displayName: name, location: location, bio: bio, bgType: bgType, bgColor: bgColor, bgImage: bgImage, avatarImage: avatarImage } // Update the bgImage field
     );
     return true;
   }
