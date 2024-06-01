@@ -11,14 +11,16 @@ import { Button } from "../ui/button";
 import { UserProfile } from "@/actions/UserProfile";
 import { useToast } from "../ui/use-toast";
 import DashboardSectionComponent from "./DashboardSectionComponent";
+import UserSocialForm from "./UserSocialForm";
 
 function UserSettings({ user, session }: any) {
   const { toast } = useToast();
   const [bgType, setBgType] = useState(user.bgType);
   const [bgColor, setBgColor] = useState(user.bgColor);
   const [bgImage, setBgImage] = useState(user.bgImage);
-  const [avatarImage, setAvatarImage] = useState(user.avatarImage ||session?.user?.image);
-
+  const [avatarImage, setAvatarImage] = useState(
+    user.avatarImage || session?.user?.image
+  );
 
   useEffect(() => {
     setBgType(user.bgType);
@@ -33,7 +35,6 @@ function UserSettings({ user, session }: any) {
     formData.set("bgColor", bgColor);
     formData.set("bgImage", bgImage); // Set the bgImage in formData
     formData.set("avatarImage", avatarImage);
-
 
     try {
       const result = await UserProfile(formData);
@@ -93,10 +94,10 @@ function UserSettings({ user, session }: any) {
       : { backgroundImage: `url(${bgImage})` };
 
   return (
-<DashboardSectionComponent>
-<form onSubmit={handleSubmit}>
+    <DashboardSectionComponent>
+      <form onSubmit={handleSubmit}>
         <div
-          className="rounded-t-3xl min-h-[250px] py-10 flex justify-center items-center bg-cover bg-center"
+          className="rounded-t-3xl -mt-1 min-h-[250px] py-10 flex justify-center items-center bg-cover bg-center"
           style={style}
         >
           <div>
@@ -146,7 +147,11 @@ function UserSettings({ user, session }: any) {
             />
             <label className="absolute bottom-0 right-0 bg-black border  p-2 rounded-full">
               <CloudUpload />
-              <input type="file" className="hidden"  onChange={handleAvatarChange}></input>
+              <input
+                type="file"
+                className="hidden"
+                onChange={handleAvatarChange}
+              ></input>
             </label>
           </div>
         </div>
@@ -183,14 +188,14 @@ function UserSettings({ user, session }: any) {
               id="bio"
             />
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center mb-5">
             <Button type="submit" className="border">
               Save Details
             </Button>
           </div>
         </div>
       </form>
-      </DashboardSectionComponent>
+    </DashboardSectionComponent>
   );
 }
 

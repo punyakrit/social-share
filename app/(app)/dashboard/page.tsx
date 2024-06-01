@@ -1,4 +1,5 @@
 import UserSettings from "@/components/dashboard/UserSettings";
+import UserSocialForm from "@/components/dashboard/UserSocialForm";
 import ProfilePreview from "@/components/pages/ProfilePreview";
 import { authOptions } from "@/lib/authOptions";
 import connectMongoDb from "@/lib/dbConnect";
@@ -21,12 +22,14 @@ async function Page() { // Fixed function name
   });
 
   return (
-    <div className="text-white flex">
-      <div className="w-1/2 h-screen py-4">
+    <div className="text-white flex h-screen">
+      <div className="md:w-1/2 w-screen overflow-y-scroll py-4">
         <UserSettings user={exists} session={session} />
+        <UserSocialForm/>
       </div>
-      <div className="w-1/2 h-screen py-4">
+      <div className="md:w-1/2 hidden md:block h-screen py-4">
         <ProfilePreview/>
+        
       </div>
     </div>
   );
