@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import ImageForm from "./ImageForm";
-import { ImageIcon, Palette } from "lucide-react";
+import { CloudUpload, ImageIcon, Palette } from "lucide-react";
 import Image from "next/image";
 
 import { Input } from "@/components/ui/input";
@@ -101,8 +101,8 @@ function UserSettings ({ user, session }:any) {
             )}
             {bgType === "image" && (
               <div className="flex justify-center mt-1">
-                <label className="bg-white text-black py-3 px-3 rounded-full">
-                  Change Image
+                <label className="bg-white text-black py-3 px-3 rounded-full flex items-center">
+                  <CloudUpload className="mr-2"/> Change Image
                   <input
                     type="file"
                     className="hidden"
@@ -160,7 +160,6 @@ function UserSettings ({ user, session }:any) {
               Save Details
             </Button>
           </div>
-          <div>Dashboard building is still under process</div>
         </div>
       </form>
     </div>

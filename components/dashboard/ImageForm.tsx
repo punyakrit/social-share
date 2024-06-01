@@ -2,7 +2,7 @@ import React from "react";
 
 function ImageForm({ options, defaultValue, onChange }: any) {
   return (
-    <div className="radio-toggler shadow">
+    <div className="radio-toggler shadow ">
       {options.map(
         (
           option: {
@@ -14,7 +14,7 @@ function ImageForm({ options, defaultValue, onChange }: any) {
         ) => (
           <label
             key={index}
-            className="flex items-center gap-2 border p-2 px-4 shadow"
+            className="flex items-center gap-2  p-2 px-4 shadow"
           >
             <input
               type="radio"
