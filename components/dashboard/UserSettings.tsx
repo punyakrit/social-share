@@ -10,6 +10,7 @@ import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
 import { UserProfile } from "@/actions/UserProfile";
 import { useToast } from "../ui/use-toast";
+import DashboardSectionComponent from "./DashboardSectionComponent";
 
 function UserSettings({ user, session }: any) {
   const { toast } = useToast();
@@ -92,8 +93,8 @@ function UserSettings({ user, session }: any) {
       : { backgroundImage: `url(${bgImage})` };
 
   return (
-    <div className="h-full overflow-y-scroll shadow-md rounded-3xl mx-3 shadow-white/10 bg-gray-950/70">
-      <form onSubmit={handleSubmit}>
+<DashboardSectionComponent>
+<form onSubmit={handleSubmit}>
         <div
           className="rounded-t-3xl min-h-[250px] py-10 flex justify-center items-center bg-cover bg-center"
           style={style}
@@ -189,7 +190,7 @@ function UserSettings({ user, session }: any) {
           </div>
         </div>
       </form>
-    </div>
+      </DashboardSectionComponent>
   );
 }
 
