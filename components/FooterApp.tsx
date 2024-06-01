@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Github,  Linkedin, X } from "lucide-react";
-
+import { Github,  Linkedin } from "lucide-react";
+import XIcon from "./ui/XIcon"
 function FooterApp() {
   return (
     <footer className="bg-gray-900 border-t backdrop-blur-sm text-white">
@@ -72,7 +72,7 @@ function FooterApp() {
               href="/"
               className="text-gray-500 hover:text-white dark:hover:text-white ms-5"
             >
-              <X className="w-6 h-6" />
+             <XIcon className={"fill-gray-500 hover:fill-white w-6"}/> 
               <span className="sr-only">Twitter page</span>
             </Link>
             <Link
