@@ -6,7 +6,7 @@ function SideBar({ session }: any) {
   
 
   return (
-    <div className="bg-gray-950/70 w-72 shadow-md shadow-white/30 py-10 text-white h-screen">
+    <div className="bg-gray-950/70 hidden lg:block w-72 shadow-md shadow-white/30 py-10 text-white h-screen">
       <div className="flex justify-center">
         <Image
           src={session?.user?.image || ""}
