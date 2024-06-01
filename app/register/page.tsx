@@ -10,7 +10,7 @@ export default function RegisterPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleRegister = (e) => {
+  const handleRegister = (e:any) => {
     e.preventDefault();
     // Handle registration logic here
     console.log("Registering...");
