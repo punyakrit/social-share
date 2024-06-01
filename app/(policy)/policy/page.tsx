@@ -23,33 +23,22 @@ function Policy() {
               <div className='flex flex-col gap-4'>
                 <h3 className='text-2xl text-white/85'>Personal Data</h3>
                 <p>
-                  Personally identifiable information, such as your name, shipping address, email address, and telephone number, and demographic information, such as your age, gender, hometown, and interests, that you voluntarily give to us when you register with the site or when you choose to participate in various activities related to the site, such as online chat and message boards.
+                  Personally identifiable information, such as your name, email address, and telephone number, and demographic information, such as your age, gender, hometown, and interests, that you voluntarily give to us when you register with the site or when you choose to participate in various activities related to the site.
                 </p>
               </div>
               <div className='flex flex-col gap-4'>
                 <h3 className='text-2xl text-white/85'>Derivative Data</h3>
                 <p>
-                  Information our servers automatically collect when you access the site, such as your IP address, your browser type, your operating system, your access times, and the pages you have viewed directly before and after accessing the site.
-                </p>
-              </div>
-              <div className='flex flex-col gap-4'>
-                <h3 className='text-2xl text-white/85'>Financial Data</h3>
-                <p>
-                  Financial information, such as data related to your payment method (e.g., valid credit card number, card brand, expiration date) that we may collect when you purchase, order, return, exchange, or request information about our services from the site. We store only very limited, if any, financial information that we collect. Otherwise, all financial information is stored by our payment processor, and you are encouraged to review their privacy policy and contact them directly for responses to your questions.
+                  Information our servers automatically collect when you access the site, such as your access times, and the pages you have viewed directly before and after accessing the site.
                 </p>
               </div>
               <div className='flex flex-col gap-4'>
                 <h3 className='text-2xl text-white/85'>Data From Social Networks</h3>
                 <p>
-                  User information from social networking sites, such as <span className='text-blue-500'><a href="https://www.github.com" target='_blank'>GitHub</a></span>, including your name, your social network username, location, gender, birth date, email address, profile picture, and public data for contacts, if you connect your account to such social networks.
+                  User information from social networking sites, such as <span className='text-blue-500'><a href="https://mail.google.com/" target='_blank'>Gmail</a></span>, including your name, your social network username, email address, profile picture, and public data for contacts, if you connect your account to such social networks.
                 </p>
               </div>
-              <div className='flex flex-col gap-4'>
-                <h3 className='text-2xl text-white/85'>Mobile Device Data</h3>
-                <p>
-                  Device information, such as your mobile device ID, model, and manufacturer, and information about the location of your device, if you access the site from a mobile device.
-                </p>
-              </div>
+              
             </div>
           </div>
 
@@ -62,12 +51,8 @@ function Policy() {
                 <li>
                   Create and manage your account.
                 </li>
-                <li>
-                  Process your transactions and send you related information, including purchase confirmations and invoices.
-                </li>
-                <li>
-                  Send you technical notices, updates, security alerts, and support and administrative messages.
-                </li>
+                
+               
                 <li>
                   Understand and analyze how you use our site and services.
                 </li>
@@ -162,14 +147,14 @@ function Policy() {
               <ul className='list-disc flex flex-col gap-2'>
                 <li>
                   <span className='text-blue-500'>
-                    <a href="https://www.linkedin.com/in/https://www.linkedin.com/in/punyakrit-singh-makhni/" target='_blank'>
+                    <a href="https://www.linkedin.com/in/punyakrit-singh-makhni/" target='_blank'>
                       LinkedIn
                     </a>
                   </span>
                 </li>
                 <li>
                 <span className='text-blue-500'>
-                    <a href="https://github.com/punyakrit/social-share" target='_blank'>
+                    <a href="https://github.com/punyakrit/" target='_blank'>
                       GitHub
                     </a>
                   </span>
