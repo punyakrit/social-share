@@ -33,7 +33,7 @@ async function page({ params }: any) {
     home: Icons.Home,
     settings: Icons.Settings,
     email: Icons.Mail,
-    phone: Icons.Phone,
+    mobile: Icons.Phone,
     instagram: Icons.Instagram,
     facebook: Icons.Facebook,
     whatsapp: Icons.MessageCircle,
@@ -71,7 +71,7 @@ async function page({ params }: any) {
               {page.bio}
             </div>
           </div>
-          <div className="flex justify-center space-x-4">
+          <div className="flex justify-center space-y-2 flex-col px-5">
             {page.button &&
               Object.keys(page.button).map((buttonKey) => {
                 const key = buttonKey as ButtonKey;
@@ -81,13 +81,15 @@ async function page({ params }: any) {
                     key={buttonKey}
                     target="_blank"
                     href={buttonLink(buttonKey, page.button[buttonKey])}
-                    className="rounded-full bg-gray-950 text-white p-3 flex-wrap flex items-center justify-center"
+                    className="rounded-2xl w-full bg-gray-950/90 flex items-center justify-between text-white p-3"
                   >
-                    {IconComponent ? (
-                      <IconComponent className="w-8 h-8 " />
-                    ) : (
-                      <span className="w-8 h-8">null</span>
-                    )}
+                    <div className="flex items-center">
+                      <IconComponent className="ml-4" />
+                      <span className="ml-4">{page.button[buttonKey]}</span>
+                    </div>
+                    <div className="flex justify-end mr-4">
+                      <Icons.Send />
+                    </div>
                   </Link>
                 );
               })}
