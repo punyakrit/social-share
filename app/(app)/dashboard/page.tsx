@@ -23,9 +23,9 @@ async function Page() { // Fixed function name
 
   return (
     <div className="text-white flex h-screen">
-      <div className="md:w-1/2 w-screen overflow-y-scroll py-4">
+      <div className="md:w-1/2 space-y-4 w-screen overflow-y-scroll py-4">
         <UserSettings user={exists} session={session} />
-        <UserSocialForm/>
+        <UserSocialForm user={exists} session={session}/>
       </div>
       <div className="md:w-1/2 hidden md:block h-screen py-4">
         <ProfilePreview/>

@@ -26,3 +26,21 @@ export async function UserProfile(formData: FormData) {
 
   return false;
 }
+
+export async function saveSocials(formData: FormData){
+  await connectMongoDb();
+  const session = await getServerSession(authOptions);
+  if(session){
+    const buttonValues: Record<string, string> = {};
+    formData.forEach((value, key) => {
+      buttonValues[key] = value.toString();
+    });
+
+    await UserPage.updateOne(
+      { owner: session?.user?.email },
+      { button:  buttonValues  }
+    );
+    return true;
+  }
+  return false;
+} 
