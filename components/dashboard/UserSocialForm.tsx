@@ -71,9 +71,10 @@ const allButtons = [
 
 function UserSocialForm({ user, session }: any) {
   const pageSavedButton = user.button ? Object.keys(user.button) : [];
-  const buttonInfo = pageSavedButton.map((k) =>
-    allButtons.find((b) => b.key === k)
-  );
+  const buttonInfo = pageSavedButton
+    .map((k) => allButtons.find((b) => b.key === k))
+    .filter(Boolean); // Ensure no undefined values are included
+
   const [activeButtons, setActiveButtons] = useState<any[]>(buttonInfo);
   const { toast } = useToast();
 
@@ -118,8 +119,9 @@ function UserSocialForm({ user, session }: any) {
                 key={item.key}
                 className="flex items-center space-y-3 h-full"
               >
-                <div className=" w-80 space-x-2 flex mt-3">
-                  <GripVertical className="cursor-grabbing"/> {item.icon} <span>{item.label}</span>
+                <div className="w-80 space-x-2 flex mt-3">
+                  <GripVertical className="cursor-grabbing" /> {item.icon}{" "}
+                  <span>{item.label}</span>
                 </div>
                 <Input
                   id={item.key}
@@ -128,9 +130,13 @@ function UserSocialForm({ user, session }: any) {
                   className="bg-transparent text-sm"
                   placeholder={item.placeholder}
                   required
-                  defaultValue={user.button[item.key]}
+                  defaultValue={
+                    user && user.button && user.button[item.key]
+                      ? user.button[item.key]
+                      : ""
+                  }
                 />
-                <button onClick={() => removeButton(item)}>
+                <button type="button" onClick={() => removeButton(item)}>
                   <FaTrash className="bg-red-500 text-3xl ml-5 mr-2 p-1 rounded-md" />
                 </button>
               </div>
