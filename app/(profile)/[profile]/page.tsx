@@ -8,7 +8,7 @@ import * as Icons from "lucide-react";
 
 type ButtonKey = "home" | "settings";
 
-async function page({ params }: any) {
+async function UserProfileView({ params }: any) {
   const uri = params.profile;
   await connectMongoDb();
   const page = await UserPage.findOne({
@@ -139,4 +139,4 @@ async function page({ params }: any) {
   );
 }
 
-export default page;
+export default UserProfileView;
