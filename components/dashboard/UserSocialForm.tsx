@@ -1,9 +1,11 @@
 "use client";
 import React, { useState } from "react";
+import { ReactSortable } from "react-sortablejs";
 import DashboardSectionComponent from "./DashboardSectionComponent";
 import {
   Facebook,
   Github,
+  GripVertical,
   Instagram,
   Link,
   Mail,
@@ -104,36 +106,36 @@ function UserSocialForm({ user, session }: any) {
       return prev.filter((button) => button.key !== item.key);
     });
   }
-  
 
   return (
     <DashboardSectionComponent>
       <form onSubmit={saveDetails}>
         <div className="text-2xl font-bold py-4 pl-3">Social Buttons</div>
         <div className="px-6 py-6">
-          {activeButtons.map((item) => (
-            <div
-              key={item.key}
-              className="flex items-center space-y-3 justify-center"
-            >
-              <div className="flex w-48 space-x-3 items-center">
-                {item.icon} <span>{item.label}</span>
+          <ReactSortable list={activeButtons} setList={setActiveButtons}>
+            {activeButtons.map((item) => (
+              <div
+                key={item.key}
+                className="flex items-center space-y-3 h-full"
+              >
+                <div className=" w-80 space-x-2 flex mt-3">
+                  <GripVertical className="cursor-grabbing"/> {item.icon} <span>{item.label}</span>
+                </div>
+                <Input
+                  id={item.key}
+                  name={item.key}
+                  type="text"
+                  className="bg-transparent text-sm"
+                  placeholder={item.placeholder}
+                  required
+                  defaultValue={user.button[item.key]}
+                />
+                <button onClick={() => removeButton(item)}>
+                  <FaTrash className="bg-red-500 text-3xl ml-5 mr-2 p-1 rounded-md" />
+                </button>
               </div>
-              <Input
-                id={item.key}
-                name={item.key}
-                type="text"
-                className="bg-transparent text-sm"
-                placeholder={item.placeholder}
-                required
-                defaultValue={user.button[item.key]}
-              />
-              <button onClick={()=>removeButton(item)}>
-
-              <FaTrash className="bg-red-500 text-3xl ml-5 mr-2 p-1 rounded-md" />
-              </button>
-            </div>
-          ))}
+            ))}
+          </ReactSortable>
         </div>
         <div className="flex flex-wrap py-6 border-t border-white/30 mx-4">
           {availableButtons.map((item) => (
