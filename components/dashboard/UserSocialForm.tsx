@@ -70,7 +70,7 @@ const allButtons = [
 ];
 
 function UserSocialForm({ user, session }: any) {
-  const pageSavedButton = Object.keys(user.button);
+  const pageSavedButton = user.button ? Object.keys(user.button) : [];
   const buttonInfo = pageSavedButton.map((k) =>
     allButtons.find((b) => b.key === k)
   );
