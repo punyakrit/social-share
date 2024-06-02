@@ -1,3 +1,4 @@
+import UserLinks from "@/components/dashboard/UserLinks";
 import UserSettings from "@/components/dashboard/UserSettings";
 import UserSocialForm from "@/components/dashboard/UserSocialForm";
 import ProfilePreview from "@/components/pages/ProfilePreview";
@@ -26,6 +27,7 @@ async function Page() { // Fixed function name
       <div className="md:w-1/2 space-y-4 w-screen overflow-y-scroll py-4">
         <UserSettings user={exists} session={session} />
         <UserSocialForm user={exists} session={session}/>
+        <UserLinks user={exists} session={session}/>
       </div>
       <div className="md:w-1/2 hidden md:block h-screen py-4">
         <ProfilePreview/>

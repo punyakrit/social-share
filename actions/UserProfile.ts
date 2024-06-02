@@ -44,3 +44,18 @@ export async function saveSocials(formData: FormData){
   }
   return false;
 } 
+
+export async function savePageLinks(links: any) {
+  await connectMongoDb();
+  const session = await getServerSession(authOptions);
+
+  if (session) {
+    await UserPage.updateOne(
+      { owner: session?.user?.email },
+      { links }
+    );
+    return true;
+  } else {
+    return false;
+  }
+}

@@ -41,6 +41,10 @@ const usernameSchema  = new Schema({
     button:{
         type: Object,
         default: {}
+    },
+    links: { 
+        type: Array,
+        default: []
     }
 
 
