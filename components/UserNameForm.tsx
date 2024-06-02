@@ -58,15 +58,10 @@ function UserNameForm({ user }: any) {
         >
           Join for Free
         </Button> */}
-        
-          
-            <div className="m-4 sm:ml-6">
-            <MagicButton
-            title='Join For Free'
-            />
-            </div>
-               
-        
+
+        <div className="ml-6">
+          <MagicButton title="Join For Free" />
+        </div>
       </form>
     </div>
   );

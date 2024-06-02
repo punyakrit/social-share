@@ -35,19 +35,21 @@ import UserProfile from "./UserProfile";
 import { getServerSession } from "next-auth";
 import { User } from "lucide-react";
 import { authOptions } from "@/lib/authOptions";
+import Link from "next/link";
 
 async function Appbar() {
   const session = await getServerSession(authOptions)
   return (
     <div className="z-20 mr-20 h-20 w-full rounded-b-xl bg-black/10 backdrop-blur-sm fixed">
-      <div className="text-white flex h-full px-4 md:px-8 lg:px-20 justify-between items-center ">
+      <div className=" text-white flex h-full px-6 md:px-20 justify-between items-center ">
+       <Link href={'/'}>
         <div
-          // onClick={() => route.replace("/")}
-          className="cursor-pointer font-bold text-2xl md:text-3xl"
-        >
+          className=" cursor-pointer font-bold  text-3xl"
+          >
           ShareHub
         </div>
-        <div className="flex items-center space-x-4 md:space-x-10">
+          </Link>
+        <div className="flex items-center space-x-10">
           <div className="transition-ease-in duration-500 hover:text-white/65 hover:cursor-pointer hover:text-[17px]">Explore</div>
           <div className="transition-ease-in duration-500 hover:text-white/65 hover:cursor-pointer hover:text-[17px]">About</div>
           <div className="transition-ease-in duration-500 hover:text-white/65 hover:cursor-pointer hover:text-[17px]">Contact</div>
