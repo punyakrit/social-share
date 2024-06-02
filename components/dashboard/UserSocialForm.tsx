@@ -44,12 +44,6 @@ const allButtons = [
     placeholder: "https://www.facebook.com/sharehub",
   },
   {
-    key: "discord",
-    label: "Discord",
-    icon: <FaDiscord className="text-2xl" />,
-    placeholder: "https://discord.gg/sharehub",
-  },
-  {
     key: "whatsapp",
     label: "Whatsapp",
     icon: <FaWhatsapp className="text-2xl" />,
