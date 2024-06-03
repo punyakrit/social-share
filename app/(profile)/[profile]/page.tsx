@@ -6,6 +6,8 @@ import Link from "next/link";
 import React from "react";
 import * as Icons from "lucide-react";
 
+import { Custom404 } from "../../../components/pages/404";
+
 type ButtonKey = "home" | "settings";
 
 async function UserProfileView({ params }: any) {
@@ -16,7 +18,7 @@ async function UserProfileView({ params }: any) {
   });
 
   if (!page) {
-    return <div>Page not found</div>;
+    return <Custom404/>;
   }
 
   function buttonLink(key: string, value: string) {
