@@ -26,7 +26,7 @@ function FooterApp() {
                 </li>
                 <li>
                   <Link href="https://www.linkedin.com/in/punyakrit-singh-makhni/" target="_blank" className="transition ease duration-150 hover:text-white/65 hover:cursor-pointer">
-                    Linkein
+                    Linkedin
                   </Link>
                 </li>
               </ul>
