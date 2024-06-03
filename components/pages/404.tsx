@@ -2,8 +2,7 @@
 import React from "react";
 import Link from "next/link";
 // import RootLayout from "../lay";
-import { BackgroundBeams } from "@/components/ui/background-beams";
-import MagicButton from "../ui/MagicButton"; 
+import { Button } from "../ui/button";
 
 export const Custom404: React.FC = () => {
   return (
@@ -21,12 +20,11 @@ export const Custom404: React.FC = () => {
             home page.
           </p>
 
-          <Link href={'/'}>
-            <MagicButton title="Back to Homepage" />
+          <Link href={'/'} >
+            <Button className="border">Back To Home Page</Button>
           </Link>
         </div>
       </div>
-      <BackgroundBeams />
     </div>
   );
 };
