@@ -1,0 +1,14 @@
+
+name: Greetings
+
+on: [pull_request_target, issues]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/first-interaction@v1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        issue-message: "Hey! Welcome to our repository. We appreciate your time to point this issue in this open-source project. We aim to respond or assign your issue as soon as possible."
+        pr-message: "Welcome to our repository. We appreciate you contribution towards the open source project. We aim to review this as soon as possible."
