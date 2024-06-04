@@ -27,7 +27,7 @@ function UserNameForm({ user }: any) {
     <div className="">
       <form
         onSubmit={handleSubmit}
-        className={`inline-flex items-center shadow-lg  `}
+        className={` inline m-4 sm:inline-flex items-center shadow-lg  `}
       >
         <div
           onFocus={() => setInputActive(true)}
@@ -38,7 +38,7 @@ function UserNameForm({ user }: any) {
               : ""
           } flex  `}
         >
-          <span className="bg-white rounded-l-2xl py-4 pl-4">
+          <span className="bg-white rounded-l-2xl py-4 pl-4 sm:pl-4">
             sharehub.xyz/
           </span>
 
@@ -48,7 +48,7 @@ function UserNameForm({ user }: any) {
               setUsername(e.target.value);
             }}
             type="text"
-            className="py-4 pl-1 outline-none rounded-r-2xl"
+            className="w-screen outline-none rounded-r-2xl sm:py-4 sm:pl-1 sm:text-base text-sm sm:w-60"
             placeholder="username"
           />
         </div>
