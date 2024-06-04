@@ -1,0 +1,73 @@
+body{
+    overflow-x:hidden ;
+}
+
+.neon-hover {
+    position: relative;
+    z-index: 1000;
+    cursor: pointer;
+  }
+  .neon-hover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  .neon-hover:hover::before {
+    border-color: rgb(255, 255, 255);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.909), 0 0 20px rgba(246, 2, 246, 0.7);
+  }
+  .neon-hover:hover{
+    font-size:1.3rem;
+    color:white;
+
+  }
+.neon-hover{
+    transition: font-size  0.2s linear;
+    
+}
+.neon-hover-2 {
+    position: relative;
+    z-index: 1000;
+    cursor: pointer;
+  }
+  .neon-hover-2::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  .neon-hover-2:hover::before {
+    border-color: rgb(255, 255, 255);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.909), 0 0 20px rgba(246, 2, 246, 0.7);
+  }
+  .neon-hover-2:hover{
+    font-size:1.6rem;
+    color:white;
+
+  }
+.neon-hover-2{
+    transition: font-size  0.2s linear;
+    padding:0px 5px 0px 5px;
+}
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: linear-gradient(to bottom, #000000, #000000);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #5912ff, #b99bff);
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #6600ff, #fff);
+  }

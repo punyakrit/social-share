@@ -6,19 +6,19 @@ export default function TypewriterEffectSmoothDemo() {
   const words = [
     {
       text: "Create",
-      className: "text-white text-3xl md:text-6xl    font-sans font-extrabold",
+      className: "text-white text-3xl md:text-4xl  lg:text-7xl  font-sans font-extrabold",
     },
     {
       text: "Your",
-      className: "text-white text-3xl md:text-6xl    font-sans font-extrabold",
+      className: "text-white text-3xl md:text-4xl lg:text-7xl   font-sans font-extrabold",
     },
     {
       text: "Personalized ",
-      className: "text-purple-500  text-3xl md:text-6xl    font-sans font-extrabold",
+      className: "text-purple-500  text-3xl md:text-4xl   lg:text-7xl font-sans font-extrabold",
     },
     {
       text: "Page",
-      className: "text-white text-3xl md:text-6xl    font-sans font-extrabold",
+      className: "text-white text-3xl md:text-4xl  lg:text-7xl  font-sans font-extrabold",
     },
    
   ];
