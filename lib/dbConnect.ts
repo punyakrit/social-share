@@ -4,8 +4,6 @@ const connectMongoDb = async () => {
   try {
     // Set Mongoose options
     const options = {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
       serverSelectionTimeoutMS: 30000, // Increase the timeout to 30 seconds
       socketTimeoutMS: 45000, // Increase the socket timeout to 45 seconds
       // bufferCommands: false, // Disable mongoose buffering

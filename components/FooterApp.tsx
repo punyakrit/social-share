@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Github,  Linkedin, X } from "lucide-react";
-
+import { Github,  Linkedin } from "lucide-react";
+import XIcon from "./ui/XIcon"
 function FooterApp() {
   return (
     <footer className="bg-gray-900 border-t backdrop-blur-sm text-white">
@@ -25,8 +25,8 @@ function FooterApp() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/" target="_blank" className="transition ease duration-150 hover:text-white/65 hover:cursor-pointer">
-                    Discord
+                  <Link href="https://www.linkedin.com/in/punyakrit-singh-makhni/" target="_blank" className="transition ease duration-150 hover:text-white/65 hover:cursor-pointer">
+                    Linkedin
                   </Link>
                 </li>
               </ul>
@@ -62,17 +62,17 @@ function FooterApp() {
           <div className="flex mt-4 sm:justify-center sm:mt-0">
             
             <Link
-              href="https://www.linkedin.com/in/https://www.linkedin.com/in/punyakrit-singh-makhni/"
+              href="https://www.linkedin.com/in/punyakrit-singh-makhni/"
               className="text-gray-500 hover:text-white dark:hover:text-white ms-5"
             >
               <Linkedin className="w-6 h-6" />
               <span className="sr-only">LinkedIn community</span>
             </Link>
             <Link
-              href="/"
+              href="https://x.com/Punyakrit22"
               className="text-gray-500 hover:text-white dark:hover:text-white ms-5"
             >
-              <X className="w-6 h-6" />
+             <XIcon className={"fill-gray-500 hover:fill-white w-6"}/> 
               <span className="sr-only">Twitter page</span>
             </Link>
             <Link

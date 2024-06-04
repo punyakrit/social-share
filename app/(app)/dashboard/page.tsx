@@ -1,18 +1,20 @@
+import UserLinks from "@/components/dashboard/UserLinks";
 import UserSettings from "@/components/dashboard/UserSettings";
+import UserSocialForm from "@/components/dashboard/UserSocialForm";
 import ProfilePreview from "@/components/pages/ProfilePreview";
 import { authOptions } from "@/lib/authOptions";
-import connectMongoDb  from "@/lib/dbConnect";
+import connectMongoDb from "@/lib/dbConnect";
 import { UserPage } from "@/models/Onboarding";
 import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
+import { redirect } from "next/navigation"; // Fixed import
 
 import React from "react";
 
-async function page() {
+async function Page() { // Fixed function name
   const session = await getServerSession(authOptions);
 
   if (!session || !session.user) {
-    redirect('/')
+    redirect('/');
   }
 
   await connectMongoDb();
@@ -21,15 +23,18 @@ async function page() {
   });
 
   return (
-    <div className="text-white flex">
-      <div className="w-1/2 h-screen p-4">
+    <div className="text-white flex h-screen">
+      <div className="md:w-1/2 space-y-4 w-screen no-scrollbar overflow-y-scroll py-4">
         <UserSettings user={exists} session={session} />
+        <UserSocialForm user={exists} session={session}/>
+        <UserLinks user={exists} session={session}/>
       </div>
-      <div className="w-1/2 shadow-md rounded-3xl p-8 mx-3 shadow-white/10 bg-gray-950/70">
-        <ProfilePreview/>
+      <div className="md:w-1/2 hidden md:block h-screen py-4">
+        <ProfilePreview user={exists}/>
+        
       </div>
     </div>
   );
 }
 
-export default page;
+export default Page;

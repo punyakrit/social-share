@@ -29,7 +29,24 @@ const usernameSchema  = new Schema({
     },bgColor:{
         type: String,
         default:"#000000"
+    },
+    bgImage:{
+        type: String,
+        default:""
+    },
+    avatarImage: {
+        type: String, 
+        default: ""
+    },
+    button:{
+        type: Object,
+        default: {}
+    },
+    links: { 
+        type: Array,
+        default: []
     }
+
 
 },{timestamps: true})
 

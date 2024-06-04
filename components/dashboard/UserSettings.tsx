@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import ImageForm from "./ImageForm";
-import { ImageIcon, Palette } from "lucide-react";
+import { CloudUpload, ImageIcon, Palette } from "lucide-react";
 import Image from "next/image";
 
 import { Input } from "@/components/ui/input";
@@ -10,34 +10,95 @@ import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
 import { UserProfile } from "@/actions/UserProfile";
 import { useToast } from "../ui/use-toast";
+import DashboardSectionComponent from "./DashboardSectionComponent";
+import UserSocialForm from "./UserSocialForm";
 
 function UserSettings({ user, session }: any) {
   const { toast } = useToast();
   const [bgType, setBgType] = useState(user.bgType);
   const [bgColor, setBgColor] = useState(user.bgColor);
+  const [bgImage, setBgImage] = useState(user.bgImage);
+  const [avatarImage, setAvatarImage] = useState(
+    user.avatarImage || session?.user?.image
+  );
 
   useEffect(() => {
     setBgType(user.bgType);
     setBgColor(user.bgColor);
-  }, [user.bgType, user.bgColor]);
+    setBgImage(user.bgImage);
+  }, [user]);
 
-  async function handleSubmit(event: any) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const formData = new FormData(event.target);
-    const result = await UserProfile(formData);
-    console.log(result);
-    toast({
-      variant: "default",
-      description: "Details saved",
-    });
+    const formData = new FormData(event.currentTarget);
+    formData.set("bgType", bgType);
+    formData.set("bgColor", bgColor);
+    formData.set("bgImage", bgImage); // Set the bgImage in formData
+    formData.set("avatarImage", avatarImage);
+
+    try {
+      const result = await UserProfile(formData);
+      console.log(result);
+      toast({
+        variant: "default",
+        description: "Details saved",
+      });
+    } catch (error) {
+      console.error("Error saving user profile:", error);
+      toast({
+        variant: "destructive",
+        description: "Failed to save details",
+      });
+    }
   }
 
+  async function handleAvatarChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (file) {
+      const data = new FormData();
+      data.set("file", file);
+      try {
+        const res = await fetch("/api/upload", {
+          method: "POST",
+          body: data,
+        });
+        const result = await res.json();
+        setAvatarImage(result.link);
+      } catch (error) {
+        console.error("Error uploading avatar:", error);
+      }
+    }
+  }
+
+  async function handleImageChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (file) {
+      const data = new FormData();
+      data.set("file", file);
+      try {
+        const res = await fetch("/api/upload", {
+          method: "POST",
+          body: data,
+        });
+        const result = await res.json();
+        setBgImage(result.link);
+      } catch (error) {
+        console.error("Error uploading file:", error);
+      }
+    }
+  }
+
+  const style =
+    bgType === "color"
+      ? { backgroundColor: bgColor }
+      : { backgroundImage: `url(${bgImage})` };
+
   return (
-    <div className="h-full overflow-y-scroll shadow-md rounded-3xl mx-3 shadow-white/10 bg-gray-950/70">
+    <DashboardSectionComponent>
       <form onSubmit={handleSubmit}>
         <div
-          className="rounded-t-3xl h-48 py-10 flex justify-center items-center"
-          style={{ backgroundColor: bgType === "color" ? bgColor : "initial" }}
+          className="rounded-t-3xl -mt-1 min-h-[250px] py-10 flex justify-center items-center bg-cover bg-center"
+          style={style}
         >
           <div>
             <ImageForm
@@ -46,7 +107,9 @@ function UserSettings({ user, session }: any) {
                 { name: "color", icon: <Palette />, label: "Color" },
                 { name: "image", icon: <ImageIcon />, label: "Image" },
               ]}
-              onChange={(newBgType:any) => setBgType(newBgType)}
+              onChange={(newBgType: React.SetStateAction<string>) =>
+                setBgType(newBgType)
+              }
             />
             {bgType === "color" && (
               <div className="flex justify-center mt-2 bg-gray-900 shadow shadow-white px-4 py-2 rounded-full">
@@ -59,16 +122,38 @@ function UserSettings({ user, session }: any) {
                 />
               </div>
             )}
+            {bgType === "image" && (
+              <div className="flex justify-center mt-1">
+                <label className="bg-white text-black py-3 px-3 rounded-full flex items-center">
+                  <CloudUpload className="mr-2" /> Change Image
+                  <input
+                    type="file"
+                    className="hidden"
+                    onChange={handleImageChange}
+                  />
+                </label>
+              </div>
+            )}
           </div>
         </div>
         <div className="flex justify-center">
-          <Image
-            className="rounded-full relative -top-10 border-gray-900 border-4 shadow-white/50 shadow"
-            src={session?.user?.image as string}
-            width={130}
-            height={130}
-            alt="avatar"
-          />
+          <div className="relative  -top-10">
+            <Image
+              className="rounded-full h-32 w-32 items-center bg-cover bg-center  border-gray-900 border-4 shadow-white/50 shadow"
+              src={avatarImage}
+              width={130}
+              height={130}
+              alt="avatar"
+            />
+            <label className="absolute bottom-0 right-0 bg-black border  p-2 rounded-full">
+              <CloudUpload />
+              <input
+                type="file"
+                className="hidden"
+                onChange={handleAvatarChange}
+              ></input>
+            </label>
+          </div>
         </div>
         <div className="m-10 -mt-1 space-y-6">
           <div className="grid w-full items-center gap-1.5">
@@ -103,16 +188,14 @@ function UserSettings({ user, session }: any) {
               id="bio"
             />
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center mb-5">
             <Button type="submit" className="border">
               Save Details
             </Button>
           </div>
-
-          <div>Dashboard building is still under process</div>
         </div>
       </form>
-    </div>
+    </DashboardSectionComponent>
   );
 }
 

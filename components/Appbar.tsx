@@ -1,7 +1,7 @@
 // "use client"  // required for responsive navbar client conversion
 import Image from 'next/image';
 import React from 'react';
-import Link from 'next/link';
+
 // import { useState } from 'react';
 import './Appbarstyle.css';
 import { Menu,  X, User } from 'lucide-react'; 
@@ -10,6 +10,7 @@ import UserProfile from "./UserProfile";
 import { getServerSession } from "next-auth";
 
 import { authOptions } from "@/lib/authOptions";
+import Link from "next/link";
 async function Appbar() {
 
   const session = await getServerSession(authOptions)
