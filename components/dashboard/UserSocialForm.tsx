@@ -4,7 +4,7 @@ import DashboardSectionComponent from './DashboardSectionComponent'
 function UserSocialForm() {
   return (
     <DashboardSectionComponent>
-        jdenl
+        
     </DashboardSectionComponent>
   )
 }

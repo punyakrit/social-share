@@ -35,6 +35,7 @@ import UserProfile from "./UserProfile";
 import { getServerSession } from "next-auth";
 import { User } from "lucide-react";
 import { authOptions } from "@/lib/authOptions";
+// import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import Link from "next/link";
 
 async function Appbar() {
@@ -53,7 +54,7 @@ async function Appbar() {
           <div className="transition-ease-in duration-500 hover:text-white/65 hover:cursor-pointer hover:text-[17px]">Explore</div>
           <div className="transition-ease-in duration-500 hover:text-white/65 hover:cursor-pointer hover:text-[17px]">About</div>
           <div className="transition-ease-in duration-500 hover:text-white/65 hover:cursor-pointer hover:text-[17px]">Contact</div>
-          {!session &&  <GoogleLoginButton />}
+          {!session &&  ( <Link href={'/register'}><div className="transition-ease-in duration-500 hover:text-white/65 hover:cursor-pointer hover:text-[17px]"> Register</div></Link>)}
           {session &&  <UserProfile/>}
         </div>
       </div>

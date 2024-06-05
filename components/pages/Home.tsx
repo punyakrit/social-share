@@ -2,6 +2,7 @@ import { BackgroundBeams } from "@/components/ui/background-beams";
 import UserNameForm from "../UserNameForm";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/authOptions";
+// import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import TypewriterEffectSmoothDemo from "../HeroText";
 import GoToDashboardButton from "../ui/GoToDashboardButton";
 

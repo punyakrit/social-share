@@ -1,6 +1,7 @@
 "use server"
 
 import { authOptions } from "@/lib/authOptions"
+// import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 import  connectMongoDb  from "@/lib/dbConnect"
 import { UserPage } from "@/models/Onboarding"
 import { getServerSession } from "next-auth"
