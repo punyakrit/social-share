@@ -1,35 +1,48 @@
 "use client";
 
-import { TypewriterEffectSmooth } from "./ui/TypeWriter";
+import { useState, useEffect } from 'react';
+import { TypeWriter } from "./ui/TypeWriter";
 
 export default function TypewriterEffectSmoothDemo() {
-  const words = [
-    {
-      text: "Create",
-      className: "text-white text-3xl md:text-6xl    font-sans font-extrabold",
-    },
-    {
-      text: "Your",
-      className: "text-white text-3xl md:text-6xl    font-sans font-extrabold",
-    },
-    {
-      text: "Personalized ",
-      className: "text-purple-500  text-3xl md:text-6xl    font-sans font-extrabold",
-    },
-    {
-      text: "Page",
-      className: "text-white text-3xl md:text-6xl    font-sans font-extrabold",
-    },
-   
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const lines = [
+    [
+      { text: "Create", className: "text-white text-3xl md:text-6xl font-sans font-extrabold" },
+      { text: " Your", className: "text-white text-3xl md:text-6xl font-sans font-extrabold" },
+      { text: " Personalized", className: "text-purple-500 text-3xl md:text-6xl font-sans font-extrabold" },
+      { text: " Page", className: "text-white text-3xl md:text-6xl font-sans font-extrabold" },
+    ],
+    [
+      { text: "Discover", className: "text-white text-3xl md:text-6xl font-sans font-extrabold" },
+      { text: " An", className: "text-white text-3xl md:text-6xl font-sans font-extrabold" },
+      { text: " Amazing", className: "text-white text-3xl md:text-6xl font-sans font-extrabold" },
+      { text: " Community", className: "text-purple-500 text-3xl md:text-6xl font-sans font-extrabold" },
+    ],
+    [
+      { text: "Explore", className: "text-white text-3xl md:text-6xl font-sans font-extrabold" },
+      { text: " New", className: "text-white text-3xl md:text-6xl font-sans font-extrabold" },
+      { text: " Horizons", className: "text-purple-500 text-3xl md:text-6xl font-sans font-extrabold" },
+      { text: " With", className: "text-white text-3xl md:text-6xl font-sans font-extrabold" },
+      { text: " Us", className: "text-white text-3xl md:text-6xl font-sans font-extrabold" },
+    ],
+    [
+      { text: "Build", className: "text-white text-3xl md:text-6xl font-sans font-extrabold" },
+      { text: " Your", className: "text-white text-3xl md:text-6xl font-sans font-extrabold" },
+      { text: " Dream", className: "text-purple-500 text-3xl md:text-6xl font-sans font-extrabold" },
+      { text: " Profile", className: "text-white text-3xl md:text-6xl font-sans font-extrabold" },
+    ],
   ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % lines.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [lines.length]);
+
   return (
     <>
-    {/* <div className="max-w-7xl mx-auto p-4 ">
-        <div className="w-4/5"> */}
-      <TypewriterEffectSmooth words={words} />
-      {/* </div>
-    </div> */}
-      
+      <TypeWriter lines={lines} />
     </>
   );
 }

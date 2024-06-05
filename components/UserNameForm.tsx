@@ -27,20 +27,20 @@ function UserNameForm({ user }: any) {
     <div className="">
       <form
         onSubmit={handleSubmit}
-        className={` inline m-4 sm:inline-flex items-center shadow-lg  `}
-      >
-        <div
-          onFocus={() => setInputActive(true)}
-          onBlur={() => setInputActive(false)}
-          className={`${
-            inputActive
-              ? " ring-[3px] ring-[#638fff] duration-300 rounded-2xl "
-              : ""
-          } flex  `}
+        className={`inline-flex items-center shadow-lg  `}
         >
-          <span className="bg-white rounded-l-2xl py-4 pl-4 sm:pl-4">
-            sharehub.xyz/
-          </span>
+          <div
+            onFocus={() => setInputActive(true)}
+            onBlur={() => setInputActive(false)}
+            className={`${
+              inputActive
+                ? " ring-[3px] ring-[#638fff] duration-300 rounded-2xl "
+                : ""
+            } flex  `}
+          >
+            <span className="bg-white rounded-l-2xl py-4 pl-4">
+              sharehub.xyz/
+            </span>
 
           <input
             value={username}
@@ -58,10 +58,15 @@ function UserNameForm({ user }: any) {
         >
           Join for Free
         </Button> */}
-
-        <div className="ml-6">
-          <MagicButton title="Join For Free" />
-        </div>
+        
+          
+            <div className="">
+            <MagicButton
+            title='Join For Free'
+            />
+            </div>
+               
+        
       </form>
     </div>
   );

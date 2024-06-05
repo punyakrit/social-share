@@ -31,7 +31,6 @@ async function Home() {
           {!sesssion && <UserNameForm user={sesssion?.user}/>}
           {sesssion && (<GoToDashboardButton/>)}
         </div>
-        
       </div>
       <BackgroundBeams />
     </div>

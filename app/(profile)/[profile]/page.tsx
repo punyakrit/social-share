@@ -1,24 +1,24 @@
-import React from 'react'
-import DashboardSectionComponent from '../dashboard/DashboardSectionComponent'
-import UserProfileView from '@/app/(profile)/[profile]/page'
+import connectMongoDb from "@/lib/dbConnect";
+import { UserPage } from "@/models/Onboarding";
+import { MapPin } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 import * as Icons from "lucide-react";
-import connectMongoDb from '@/lib/dbConnect';
-import { UserPage } from '@/models/Onboarding';
-import Image from 'next/image';
-import Link from 'next/link';
 
-async function ProfilePreview({user}:any) {
+import { Custom404 } from "../../../components/pages/404";
 
-  type ButtonKey = "home" | "settings";
+type ButtonKey = "home" | "settings";
 
-  const uri = user.uri
+async function UserProfileView({ params }: any) {
+  const uri = params.profile;
   await connectMongoDb();
   const page = await UserPage.findOne({
     uri: uri,
   });
 
   if (!page) {
-    return <div>Page not found</div>;
+    return <Custom404/>;
   }
 
   function buttonLink(key: string, value: string) {
@@ -42,10 +42,12 @@ async function ProfilePreview({user}:any) {
     github: Icons.Github,
     website: Icons.Link,
   };
+
   return (
-      <DashboardSectionComponent>
+    <div className="bg-gray-900">
+      <div className="flex justify-center h-screen sm:py-3">
         <div
-          className="h-full rounded-t-3xl overflow-y-scroll no-scrollbar rounded-3xl"
+          className="sm:w-[43%] md:w-1/2 lg:w-1/3 rounded-t-3xl overflow-y-scroll no-scrollbar rounded-3xl"
           style={{ backgroundColor: page.bgColor }}
         >
           <div
@@ -64,7 +66,7 @@ async function ProfilePreview({user}:any) {
             </div>
             <div className="text-2xl text-center px-4">{page.displayName}</div>
             <div className="text-md font-light justify-center flex items-center px-4">
-              <Icons.MapPin className="mr-2" />
+              <MapPin className="mr-2" />
               {page.location}
             </div>
             <div className="text-md font-light text-center px-4">
@@ -134,8 +136,9 @@ async function ProfilePreview({user}:any) {
             ))}
           </div>
         </div>
-      </DashboardSectionComponent>
-  )
+      </div>
+    </div>
+  );
 }
 
-export default ProfilePreview
+export default UserProfileView;

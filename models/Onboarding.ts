@@ -37,6 +37,14 @@ const usernameSchema  = new Schema({
     avatarImage: {
         type: String, 
         default: ""
+    },
+    button:{
+        type: Object,
+        default: {}
+    },
+    links: { 
+        type: Array,
+        default: []
     }
 
 
