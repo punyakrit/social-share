@@ -48,7 +48,7 @@ function UserNameForm({ user }: any) {
               setUsername(e.target.value);
             }}
             type="text"
-            className="w-screen outline-none rounded-r-2xl sm:py-4 sm:pl-1 sm:text-base text-sm sm:w-60"
+            className="py-4 pl-1 outline-none rounded-r-2xl"
             placeholder="username"
           />
         </div>
