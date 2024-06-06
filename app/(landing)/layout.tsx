@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Head from "next/head";
 import { Inter } from "next/font/google";
-import classNames from "classnames";
+// import classNames from "classNames";
 import "../globals.css";
 import Appbar from "@/components/Appbar";
 import FooterApp from "@/components/FooterApp";
@@ -34,7 +34,7 @@ export default function RootLayout({
           gtag('config', 'G-4LFH8B1P2D');`}
         </script>
       </Head>
-      <body className={classNames(inter.className, 'bg-gray-900')}>
+      <body className="inter.className, bg-gray-900">
         <Appbar />
         <div>{children}</div>
         <FooterApp />
