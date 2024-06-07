@@ -7,6 +7,7 @@ import { redirect } from "next/navigation";
 import connectMongoDb from "@/lib/dbConnect";
 import { UserPage } from "@/models/Onboarding";
 import { Toaster } from "@/components/ui/toaster";
+import AppBar from "@/components/dashboard/AppBar";
 
 const inter = Inter({ subsets: ["latin"] });
 

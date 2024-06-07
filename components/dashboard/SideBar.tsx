@@ -12,7 +12,7 @@ async function SideBar({ session }: any) {
   
 
   return (
-    <div className="sidebar z-50  bg-gray-950/70 hidden lg:block w-72 shadow-md shadow-white/30 py-10 text-white h-screen">
+    <div className="sidebar z-10 w-screen sm:w-72 bg-gray-950/70 hidden lg:block  lg:w-72 shadow-md shadow-white/30  text-white h-screen">
       <SideBarHeader session={session} />
     </div>
   );

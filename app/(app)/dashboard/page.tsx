@@ -1,3 +1,4 @@
+import AppBar from "@/components/dashboard/AppBar";
 import UserLinks from "@/components/dashboard/UserLinks";
 import UserSettings from "@/components/dashboard/UserSettings";
 import UserSocialForm from "@/components/dashboard/UserSocialForm";
@@ -24,6 +25,7 @@ async function Page() { // Fixed function name
 
   return (
     <div className="text-white flex h-screen">
+      <AppBar/>
       <div className="md:w-1/2 space-y-4 w-screen no-scrollbar overflow-y-scroll py-4">
         <UserSettings user={exists} session={session} />
         <UserSocialForm user={exists} session={session}/>
