@@ -2,7 +2,7 @@
 import { AlignJustify, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
-function Navbar() {
+function AppBar() {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleBar = () => {
@@ -41,11 +41,11 @@ function Navbar() {
         <div>
             <button
                 onClick={toggleBar}
-                className='absolute left-0 top-0 p-4 lg:hidden text-white z-50'>
+                className='fixed left-0 top-1 p-5 lg:hidden text-white z-50'>
                 {!isOpen ? <AlignJustify /> : <X />}
             </button>
         </div>
     );
 }
 
-export default Navbar;
+export default AppBar;

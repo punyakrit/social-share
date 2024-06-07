@@ -96,9 +96,9 @@ function UserSettings({ user, session }: any) {
   return (
     <DashboardSectionComponent>
       <AppBar/>
-      <form onSubmit={handleSubmit} className="p-5">
+      <form onSubmit={handleSubmit} >
         <div
-          className="rounded-t-3xl -mt-1 min-h-[250px] py-10 flex justify-center items-center bg-cover bg-center"
+          className="rounded-t-3xl -mt-1 min-h-[250px] py-5 flex justify-center items-center bg-cover bg-center"
           style={style}
         >
           <div>
