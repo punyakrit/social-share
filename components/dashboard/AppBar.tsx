@@ -3,7 +3,7 @@ import { AlignJustify, X } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
-function AppBar() {
+function AppBar({user}:any) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleBar = () => {
@@ -15,6 +15,7 @@ function AppBar() {
         window.innerWidth <= 1024 ? "fixed" : "relative";
     }
   };
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -49,9 +50,9 @@ function AppBar() {
       >
         {!isOpen ? <AlignJustify /> : <X />}
       </button>
-      <Link href={'/'} className="flex justify-center w-full">
+      <Link href={`/${user.uri}`} className="flex justify-center w-full">
       <div className={` ${!isOpen ? `block` : `hidden`} font-semibold`}>
-        ShareHub.xyz
+        ShareHub.xyz/{user.uri}
       </div>
       </Link>
       
