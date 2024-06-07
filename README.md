@@ -44,24 +44,24 @@ S3_SECRET_ACCESS_KEY
 https://console.cloud.google.com/
 ```
 
-Create a new project and name it
+### Create a new project and name it
 
 ![Dashboard](<Screenshot 2024-06-07 at 11.14.04 AM.png>)
 
 ![Alt text](image.png)
 
-Select the project
+### Select the project
 ![Alt text](image-4.png)
 
-By click external, Add email and project name click on next
+### By click external, Add email and project name click on next
 ![Alt text](image-5.png)
 
-Add as same as in the given image
+### Add data as same as in the given image
 ![Alt text](image-3.png)
 
 Save and Copy the GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET
 
-Add these as same as it is given inside .env file
+## Add these data as same as it is given inside .env file
 
 ### NEXTAUTH_URL
 
