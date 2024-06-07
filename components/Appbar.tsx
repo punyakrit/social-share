@@ -10,7 +10,7 @@ async function Appbar() {
   const session = await getServerSession(authOptions)
   return (
     <div className="z-20 mr-20 h-20 w-full mt-0 rounded-b-xl bg-black/10 backdrop-blur-sm fixed">
-      <div className=" text-white flex h-full px-6 md:px-20 justify-between items-center ">
+      <div className=" text-white flex h-full md:px-6  p-1 gap-10 justify-between items-center ">
        <Link href={'/'}>
         <div
           className=" cursor-pointer font-bold  text-3xl"
