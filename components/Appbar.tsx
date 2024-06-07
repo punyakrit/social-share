@@ -22,7 +22,7 @@ async function Appbar() {
           <div className="transition-ease-in duration-500 hover:text-white/65 hover:cursor-pointer hover:text-[17px]"><Link href="/explore">Explore</Link></div>
           <div className="transition-ease-in duration-500 hover:text-white/65 hover:cursor-pointer hover:text-[17px]"><Link href="/about">About</Link></div>
           <div className="transition-ease-in duration-500 hover:text-white/65 hover:cursor-pointer hover:text-[17px]"><Link href="/contact">Contact</Link></div>
-          {!session &&  <GoogleLoginButton />}
+          {!session &&  ( <Link href={'/register'}><div className="transition-ease-in duration-500 hover:text-white/65 hover:cursor-pointer hover:text-[17px]"> Register</div></Link>)}
           {session &&  <UserProfile/>}
         </div>
       </div>
