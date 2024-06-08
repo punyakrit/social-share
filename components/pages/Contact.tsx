@@ -1,7 +1,8 @@
 "use client";
 
-import Lottie from "lottie-react";
-import animationData from "../assets/contactlottie.json";
+
+
+
 
 const Contact = () => {
   return (
@@ -123,14 +124,7 @@ const Contact = () => {
             </li>
           </ul>
         </div>
-        <div className="z-10 relative h-full bg-gray-800 max-md:min-h-[350px]">
-          <Lottie
-            animationData={animationData}
-            loop
-            autoplay
-            className="absolute inset-0 w-full h-fullk"
-          />
-        </div>
+       
       </div>
     </div>
   );
