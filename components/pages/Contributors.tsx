@@ -1,31 +1,23 @@
-"use client";
 
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { CardBody, CardContainer, CardItem } from "../ui/3d-card";
 import Link from "next/link";
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
+import { Key, ReactElement, JSXElementConstructor, ReactNode, ReactPortal, AwaitedReactNode } from "react";
 
-function Contributors() {
-  const [contributors, setContributors] = useState<any[]>([]);
+async function Contributors() {
 
-  useEffect(() => {
-    axios
-      .get("https://api.github.com/repos/punyakrit/social-share/contributors")
-      .then((response) => {
-        setContributors(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching contributors:", error);
-      });
-  }, []);
+  const res = await axios.get('https://api.github.com/repos/punyakrit/social-share/contributors')
+  const contributors = res.data
+  
 
   return (
     <div className="h-full ">
       <div className="py-20">
         <h2 className="text-2xl font-bold pt-10 text-white text-center">Contributors</h2>
         <div className="flex flex-wrap   sm:px-20 mt-20 justify-center  ">
-          {contributors.map((contributor) => {
+          {contributors.map((contributor: { url: string; id: Key | null | undefined; login: string | number | bigint | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined; avatar_url: string | StaticImport; contributions: string | number | bigint | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined; }) => {
             const username = contributor.url.split("/").pop();
             const profileUrl = `https://github.com/${username}`;
             return (
