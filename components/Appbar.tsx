@@ -20,9 +20,9 @@ async function Appbar() {
         </div>
           </Link>
         <div className="items-center space-x-10 md:flex md:flex-row hidden">
-          <div className="transition-ease-in duration-500 hover:text-white/65 hover:cursor-pointer hover:text-[17px]"><Link href="/explore">Explore</Link></div>
-          <div className="transition-ease-in duration-500 hover:text-white/65 hover:cursor-pointer hover:text-[17px]"><Link href="/about">About</Link></div>
-          <div className="transition-ease-in duration-500 hover:text-white/65 hover:cursor-pointer hover:text-[17px]"><Link href="/contact">Contact</Link></div>
+          <div className="transition duration-500 text-white/50 hover:cursor-pointer hover:text-white "><Link href="/about">About</Link></div>
+          <div className="transition duration-500 text-white/50 hover:cursor-pointer hover:text-white "><Link href="/contact">Contact</Link></div>
+          <div className="transition duration-500 text-white/50 hover:cursor-pointer hover:text-white "><Link href="/contributors">Contributors</Link></div>
           {!session &&  <GoogleLoginButton />}
           {session &&  <UserProfile/>}
         </div>

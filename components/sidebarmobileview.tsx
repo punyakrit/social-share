@@ -15,14 +15,6 @@ export const SidebarMobileView = () => {
         {isOpen && (
           <div className="fixed w-screen mt-4 space-y-5 left-0 bg-gray-800   text-white rounded-md shadow-lg">
             <div
-              className="p-2 hover:text-gray-400 border cursor-pointer transition-colors duration-300 text-center "
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              <Link href="/explore" className="">
-                Explore
-              </Link>
-            </div>
-            <div
               className="p-2 hover:text-gray-400 border cursor-pointer transition-colors duration-300 text-center"
               onClick={() => setIsOpen(!isOpen)}
             >
@@ -33,6 +25,14 @@ export const SidebarMobileView = () => {
               onClick={() => setIsOpen(!isOpen)}
             >
               <Link href="/contact">Contact</Link>
+            </div>
+            <div
+              className="p-2 hover:text-gray-400 border cursor-pointer transition-colors duration-300 text-center "
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              <Link href="/contributors" className="">
+              Contributors
+              </Link>
             </div>
           </div>
         )}
