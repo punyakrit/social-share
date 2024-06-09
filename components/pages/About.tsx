@@ -7,7 +7,7 @@ import Image from "next/image";
 const AboutPage = () => {
   return (
     <div className="main">
-      <div className="h-screen flex flex-col md:flex-row">
+      <div className="h-screen flex flex-col md:flex-row pt-24">
         {/* Animation Section */}
         <div className="md:w-1/2 h-1/2 md:h-screen bg-gray-900 relative">
           <Lottie
@@ -45,7 +45,7 @@ const AboutPage = () => {
                 world
               </p>
             </div>
-            <div className="mt-40">
+            <div className="mt-32">
               <dl className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
                 <div className="relative">
                   <dt>

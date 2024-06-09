@@ -1,27 +1,42 @@
-import React from "react";
-import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@nextui-org/react";
+"use client";
+import React, { useState } from "react";
 import { HiMenuAlt1 } from "react-icons/hi";
-import "./sidebarmobileview.css"
 import Link from "next/link";
 
-
 export const SidebarMobileView = () => {
-return (
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
     <div className="text-white">
-        <div className="text-white">
-            <Link href={"/"}>
-                
-            </Link>
-            <div className="dropdown"><div className="dropbtn"><HiMenuAlt1 className="text-[24px] cursor-pointer hover:block transition-colors duration-300" /></div>
-            <div className="dropdown-content">
-            <div className="transition-ease-in duration-500 hover:text-white/65 hover:cursor-pointer hover:text-[17px]"><Link href="/explore">Explore</Link></div>
-          <div className="transition-ease-in duration-500 hover:text-white/65 hover:cursor-pointer hover:text-[17px]"><Link href="/about">About</Link></div>
-          <div className="transition-ease-in duration-500 hover:text-white/65 hover:cursor-pointer hover:text-[17px]"><Link href="/contact">Contact</Link></div>
-            </div></div>
+      <div className="relative">
+        <div onClick={() => setIsOpen(!isOpen)} className="cursor-pointer">
+          <HiMenuAlt1 className="text-3xl transition-colors duration-300" />
         </div>
+        {isOpen && (
+          <div className="fixed w-screen mt-4 space-y-5 left-0 bg-gray-800   text-white rounded-md shadow-lg">
+            <div
+              className="p-2 hover:text-gray-400 border cursor-pointer transition-colors duration-300 text-center "
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              <Link href="/explore" className="">
+                Explore
+              </Link>
+            </div>
+            <div
+              className="p-2 hover:text-gray-400 border cursor-pointer transition-colors duration-300 text-center"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              <Link href="/about">About</Link>
+            </div>
+            <div
+              className="p-2 hover:text-gray-400 border cursor-pointer transition-colors duration-300 text-center"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              <Link href="/contact">Contact</Link>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
-);
+  );
 };
-
-
-
