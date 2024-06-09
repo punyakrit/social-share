@@ -5,8 +5,7 @@ import { getServerSession } from "next-auth";
 import { User } from "lucide-react";
 import { authOptions } from "@/lib/authOptions";
 import Link from "next/link";
-import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@nextui-org/react";
-import { HiMenuAlt1 } from "react-icons/hi";
+import { SidebarMobileView } from "./sidebarmobileview";
 
 async function Appbar() {
   const session = await getServerSession(authOptions)
@@ -27,24 +26,11 @@ async function Appbar() {
           {!session &&  <GoogleLoginButton />}
           {session &&  <UserProfile/>}
         </div>
-        <Dropdown>
-      <DropdownTrigger className="md:hidden">
-        <Button 
-          variant="bordered" 
-        >
-<HiMenuAlt1 className="h-[32px] w-[auto] text-white"></HiMenuAlt1>
-        </Button>
-      </DropdownTrigger>
-      <DropdownMenu aria-label="Static Actions">
-        <DropdownItem key="new"><Link href="/explore">Explore</Link></DropdownItem>
-        <DropdownItem key="copy"><Link href="/about">About</Link></DropdownItem>
-        <DropdownItem key="edit"><Link href="/contact">Contact</Link></DropdownItem>
-        <DropdownItem key="edit">{!session &&  <GoogleLoginButton />}
-        {session &&  <UserProfile/>}</DropdownItem>
-       
-      </DropdownMenu>
-    </Dropdown>
-      </div>
+        <div className="md:hidden">
+          <SidebarMobileView/> 
+
+        </div>
+        </div>
     </div>
   );
 }
