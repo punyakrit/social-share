@@ -11,7 +11,7 @@ const connectMongoDb = async () => {
     };
 
     // Connect to MongoDB
-    await mongoose.connect("mongodb://localhost:27017/ss" || '', options);
+    await mongoose.connect(process.env.MONGODB_URI || '', options);
 
     // Connection successful
     console.log('Connected to MongoDB');
