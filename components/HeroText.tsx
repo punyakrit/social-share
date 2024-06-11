@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { TypeWriter } from "./ui/TypeWriter";
-
+import { Highlight } from './ui/background-beams';
 export default function TypewriterEffectSmoothDemo() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const lines = [
