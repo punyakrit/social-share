@@ -5,57 +5,74 @@ import { UserPage } from "@/models/Onboarding";
 import { getServerSession } from "next-auth";
 
 export async function UserProfile(formData: FormData) {
-  await connectMongoDb();
-  const session = await getServerSession(authOptions);
+  try {
+    await connectMongoDb();
+    const session = await getServerSession(authOptions);
 
-  if (session) {
-    const name = formData.get("displayName");
-    const location = formData.get("location");
-    const bio = formData.get("bio");
-    const bgType = formData.get("bgType");
-    const bgColor = formData.get("bgColor");
-    const bgImage = formData.get("bgImage"); // Get the bgImage from formData
-    const avatarImage = formData.get("avatarImage");
+    if (!session) {
+      throw new Error("User is not authenticated");
+    }
+
+    const name = formData.get("displayName")?.toString() || "";
+    const location = formData.get("location")?.toString() || "";
+    const bio = formData.get("bio")?.toString() || "";
+    const bgType = formData.get("bgType")?.toString() || "";
+    const bgColor = formData.get("bgColor")?.toString() || "";
+    const bgImage = formData.get("bgImage")?.toString() || "";
+    const avatarImage = formData.get("avatarImage")?.toString() || "";
 
     await UserPage.updateOne(
-      { owner: session?.user?.email },
-      { displayName: name, location: location, bio: bio, bgType: bgType, bgColor: bgColor, bgImage: bgImage, avatarImage: avatarImage } // Update the bgImage field
+      { owner: session.user.email },
+      { displayName: name, location: location, bio: bio, bgType: bgType, bgColor: bgColor, bgImage: bgImage, avatarImage: avatarImage }
     );
-    return true;
+    return { success: true, message: "User profile updated successfully" };
+  } catch (error) {
+    console.error("Error updating user profile:", error);
+    return { success: false, message: error.message };
   }
-
-  return false;
 }
 
 export async function saveSocials(formData: FormData){
-  await connectMongoDb();
-  const session = await getServerSession(authOptions);
-  if(session){
+  try {
+    await connectMongoDb();
+    const session = await getServerSession(authOptions);
+    
+    if (!session) {
+      throw new Error("User is not authenticated");
+    }
+
     const buttonValues: Record<string, string> = {};
     formData.forEach((value, key) => {
       buttonValues[key] = value.toString();
     });
 
     await UserPage.updateOne(
-      { owner: session?.user?.email },
-      { button:  buttonValues  }
+      { owner: session.user.email },
+      { button:  buttonValues }
     );
-    return true;
+    return { success: true, message: "Social links updated successfully" };
+  } catch (error) {
+    console.error("Error updating social links:", error);
+    return { success: false, message: error.message };
   }
-  return false;
 } 
 
 export async function savePageLinks(links: any) {
-  await connectMongoDb();
-  const session = await getServerSession(authOptions);
+  try {
+    await connectMongoDb();
+    const session = await getServerSession(authOptions);
 
-  if (session) {
+    if (!session) {
+      throw new Error("User is not authenticated");
+    }
+
     await UserPage.updateOne(
-      { owner: session?.user?.email },
+      { owner: session.user.email },
       { links }
     );
-    return true;
-  } else {
-    return false;
+    return { success: true, message: "Page links updated successfully" };
+  } catch (error) {
+    console.error("Error updating page links:", error);
+    return { success: false, message: error.message };
   }
 }
