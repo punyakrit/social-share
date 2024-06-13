@@ -10,8 +10,8 @@ import {
 } from "@/components/ui/dialog";
 import { getServerSession } from "next-auth";
 import UserLogoutButton from "./UserLogoutButton";
-// import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { authOptions } from "@/lib/authOptions";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+// import { authOptions } from "@/lib/authOptions";
 
 async function UserProfile() {
   const server = await getServerSession(authOptions);
