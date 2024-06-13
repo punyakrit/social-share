@@ -5,9 +5,10 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 // import { authOptions } from "@/lib/authOptions";
 import { redirect } from "next/navigation";
-import  connectMongoDb  from "@/lib/dbConnect";
+import connectMongoDb from "@/lib/dbConnect";
 import { UserPage } from "@/models/Onboarding";
 import { Toaster } from "@/components/ui/toaster";
+import AppBar from "@/components/dashboard/AppBar";
 import { AuthProvider } from "../providers";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -35,12 +36,9 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-gray-900 flex`}>
-      <Toaster />
-
-        <div>
-          <SideBar session={session} />
-        </div>
-        <div  className=" w-full">{children}</div>
+        <Toaster />
+        <div><SideBar session={session} /></div>
+        <div className=" w-full">{children}</div>
         <AuthProvider>{children}</AuthProvider>
       </body>
     </html>

@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import ImageForm from "./ImageForm";
 import { CloudUpload, ImageIcon, Palette } from "lucide-react";
 import Image from "next/image";
-
 import { Input } from "@/components/ui/input";
 import { Label } from "../ui/label";
 import { Textarea } from "../ui/textarea";
@@ -95,9 +94,9 @@ function UserSettings({ user, session }: any) {
 
   return (
     <DashboardSectionComponent>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} >
         <div
-          className="rounded-t-3xl -mt-1 min-h-[250px] py-10 flex justify-center items-center bg-cover bg-center"
+          className="rounded-t-3xl -mt-1 min-h-[250px] py-5 flex justify-center items-center bg-cover bg-center"
           style={style}
         >
           <div>

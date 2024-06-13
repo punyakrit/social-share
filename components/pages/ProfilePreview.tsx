@@ -45,7 +45,7 @@ async function ProfilePreview({user}:any) {
   return (
       <DashboardSectionComponent>
         <div
-          className="h-full rounded-t-3xl overflow-y-scroll no-scrollbar rounded-3xl"
+          className="h-full rounded-t-3xl  rounded-3xl"
           style={{ backgroundColor: page.bgColor }}
         >
           <div

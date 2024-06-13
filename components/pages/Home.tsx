@@ -1,4 +1,4 @@
-import { BackgroundBeams } from "@/components/ui/background-beams";
+import { HeroHighlight} from "@/components/ui/background-beams";
 import UserNameForm from "../UserNameForm";
 import { getServerSession } from "next-auth";
 // import { authOptions } from "@/lib/authOptions";
@@ -13,8 +13,9 @@ async function Home() {
     // redirect('/')
   }
   return (
-    <div className=" h-screen w-full mx-0 px-1 bg-gray-900 relative flex flex-col items-center justify-center antialiased">
-      <div className="w-full sm:max-w-7xl mx-auto p-4 ">
+    <div className=" h-screen w-full bg-gray-900 relative flex flex-col items-center justify-center antialiased">
+      <HeroHighlight>
+      <div className="max-w-7xl mx-auto p-4 ">
         <div className="w-4/5">
         <div className="relative z-10 text-3xl md:text-7xl font-sans font-extrabold">
           {/* Create Your Personalized Page */}
@@ -32,7 +33,7 @@ async function Home() {
           {sesssion && (<GoToDashboardButton/>)}
         </div>
       </div>
-      <BackgroundBeams />
+      </HeroHighlight>
     </div>
   );
 }

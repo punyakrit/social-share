@@ -12,7 +12,7 @@ function Navigator() {
   const currentPath = router;
 
   return (
-    <div className="flex-col flex mx-10 text-center mt-14 space-y-3">
+    <div className="flex-col flex mx-10 text-center mt-10 space-y-3">
         <Link href="/dashboard">
           <div className={`text-xl flex items-center cursor-pointer ${currentPath === '/dashboard' ? 'text-white' : 'text-white/50 hover:text-white active:text-white'}`}>
             <UserCog className="h-5 mr-3" />
