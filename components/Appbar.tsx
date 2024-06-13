@@ -34,8 +34,8 @@ import GoogleLoginButton from "./GoogleLoginButton";
 import UserProfile from "./UserProfile";
 import { getServerSession } from "next-auth";
 import { User } from "lucide-react";
-// import { authOptions } from "@/lib/authOptions";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/authOptions";
+
 import Link from "next/link";
 import { SidebarMobileView } from "./sidebarmobileview";
 import GitHubAppbar from "./GitHubAppbar";
