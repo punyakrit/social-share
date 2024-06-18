@@ -18,6 +18,9 @@ async function Appbar() {
         </Link>
         <div className="items-center space-x-10 md:flex md:flex-row hidden">
           <div className="transition duration-500 text-white/50 hover:cursor-pointer hover:text-white ">
+            <Link href="/">Home</Link>
+          </div>
+          <div className="transition duration-500 text-white/50 hover:cursor-pointer hover:text-white ">
             <Link href="/about">About</Link>
           </div>
           <div className="transition duration-500 text-white/50 hover:cursor-pointer hover:text-white ">
