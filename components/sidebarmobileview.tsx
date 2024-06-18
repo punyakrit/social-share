@@ -18,6 +18,12 @@ export const SidebarMobileView = () => {
               className="p-2 hover:text-gray-400 border cursor-pointer transition-colors duration-300 text-center"
               onClick={() => setIsOpen(!isOpen)}
             >
+              <Link href="/">Home</Link>
+            </div>
+            <div
+              className="p-2 hover:text-gray-400 border cursor-pointer transition-colors duration-300 text-center"
+              onClick={() => setIsOpen(!isOpen)}
+            >
               <Link href="/about">About</Link>
             </div>
             <div
