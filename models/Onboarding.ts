@@ -50,5 +50,5 @@ const usernameSchema  = new Schema({
 
 },{timestamps: true})
 
-export const UserPage = models.UserPage || model('UserPage' , usernameSchema)
+export const UserPage = models?.UserPage || model('UserPage' , usernameSchema)
 

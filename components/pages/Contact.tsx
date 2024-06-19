@@ -1,9 +1,5 @@
 "use client";
 
-
-
-
-
 const Contact = () => {
   return (
     <div className="main">
@@ -124,7 +120,6 @@ const Contact = () => {
             </li>
           </ul>
         </div>
-       
       </div>
     </div>
   );

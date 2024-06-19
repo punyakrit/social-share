@@ -7,10 +7,15 @@ import React from "react";
 import * as Icons from "lucide-react";
 
 import { Custom404 } from "../../../components/pages/404";
+import authOptions from "@/lib/authOptions";
+import { getServerSession } from "next-auth";
 
 type ButtonKey = "home" | "settings";
 
 async function UserProfileView({ params }: any) {
+  // Fixed function name
+  const session: any = await getServerSession(authOptions);
+
   const uri = params.profile;
   await connectMongoDb();
   const page = await UserPage.findOne({
@@ -18,7 +23,7 @@ async function UserProfileView({ params }: any) {
   });
 
   if (!page) {
-    return <Custom404/>;
+    return <Custom404 />;
   }
 
   function buttonLink(key: string, value: string) {
@@ -42,7 +47,7 @@ async function UserProfileView({ params }: any) {
     github: Icons.Github,
     website: Icons.Link,
   };
-
+  console.log("user: ", session);
   return (
     <div className="bg-gray-900">
       <div className="flex justify-center h-screen sm:py-3">
@@ -51,23 +56,29 @@ async function UserProfileView({ params }: any) {
           style={{ backgroundColor: page.bgColor }}
         >
           <div
-            className="h-52 bg-gray-400 bg-cover bg-center rounded-t-3xl"
+            className={`h-52 bg-[${
+              page.bgType == "color" && page.bgColor
+            }] border-b border-purple-400 bg-cover bg-center rounded-t-3xl`}
             style={{ backgroundImage: `url(${page.bgImage})` }}
           ></div>
           <div className="text-white bg-gray-950 backdrop-blur-md mb-5 space-y-2 flex justify-center flex-col py-3">
             <div className="flex justify-center -mt-16">
-              <Image
-                src={page.avatarImage}
-                alt=""
-                width={140}
-                height={140}
-                className="rounded-full border-4"
-              ></Image>
+              {session?.user?.image || page?.avatarImage ? (
+                <Image
+                  src={session?.user?.image || page?.avatarImage}
+                  alt=""
+                  width={140}
+                  height={140}
+                  className="rounded-full bg-gradient-to-tr from-purple-500 to-pink-400 border-4 border-purple-500"
+                ></Image>
+              ) : (
+                <div className="rounded-full h-36 w-36 bg-gradient-to-tr from-purple-500 to-pink-400 border-4 border-purple-500"></div>
+              )}
             </div>
             <div className="text-2xl text-center px-4">{page.displayName}</div>
             <div className="text-md font-light justify-center flex items-center px-4">
               <MapPin className="mr-2" />
-              {page.location}
+              {page.location} {session?.user?.email}
             </div>
             <div className="text-md font-light text-center px-4">
               {page.bio}
