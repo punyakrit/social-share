@@ -8,10 +8,12 @@ function FooterApp() {
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
             <Link href="/" className="flex items-center">
-              <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
+              <span className="self-center text-2xl font-semibold whitespace-nowrap text-white mb-2">
                 ShareHub
               </span>
             </Link>
+            <p className="text-sm text-gray-300 mt-2 mr-400">
+            ShareHub is a Project where users can <br />create their public viewable profile containing <br />their customizable social links and important links <br />that they want to share with the world. </p>
           </div>
           <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
             <div>
