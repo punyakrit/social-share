@@ -41,9 +41,14 @@ function FooterApp() {
                     Privacy Policy
                   </Link>
                 </li>
-                <li>
+                <li className="mb-4">
                   <Link href="/terms_conditions" target="_blank" className="transition ease duration-150 hover:text-white/65 hover:cursor-pointer">
                     Terms &amp; Conditions
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/licensing" target="_blank" className="transition ease duration-150 hover:text-white/65 hover:cursor-pointer">
+                    Licensing
                   </Link>
                 </li>
               </ul>
