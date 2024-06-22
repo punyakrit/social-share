@@ -3,14 +3,16 @@ import React, { useState } from "react";
 import { HiMenuAlt1 } from "react-icons/hi";
 import Link from "next/link";
 
+
 export const SidebarMobileView = () => {
   const [isOpen, setIsOpen] = useState(false);
+
 
   return (
     <div className="text-white">
       <div className="relative">
-        <div onClick={() => setIsOpen(!isOpen)} className="cursor-pointer">
-          <HiMenuAlt1 className="text-3xl transition-colors duration-300" />
+        <div onClick={() => setIsOpen(!isOpen)} className={`cursor-pointer fa ${isOpen ? 'fa-times' : 'fa-bars'}`}>
+          {/* <HiMenuAlt1 className="text-3xl transition-colors duration-300" /> */}
         </div>
         {isOpen && (
           <div className="fixed w-screen mt-4 space-y-5 left-0 bg-gray-800   text-white rounded-md shadow-lg">
