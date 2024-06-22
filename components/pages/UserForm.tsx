@@ -1,13 +1,14 @@
 "use client";
-
 import { getUsername } from "@/actions/setUsername";
+import { useSearchParams } from "next/navigation";
 import { Label } from "@radix-ui/react-label";
 import React, { useState } from "react";
 import { Input } from "../ui/input";
 import { useRouter } from "next/navigation";
 
 function UserForm({ initialUsername }: any) {
-  const [username, setUsername] = useState(initialUsername);
+  const searchParams = useSearchParams();
+  const [username, setUsername] = useState(searchParams.get("username")||"");
   const [loading, setLoading] = useState(false);
   const [taken, setTaken] = useState(false);
   const router = useRouter();
