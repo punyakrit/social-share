@@ -8,6 +8,7 @@ import {
   GripVertical,
   Instagram,
   Link,
+  Loader2,
   Mail,
   Phone,
   Plus,
@@ -71,6 +72,7 @@ function UserSocialForm({ user, session }: any) {
 
   const [activeButtons, setActiveButtons] = useState<any[]>(buttonInfo);
   const { toast } = useToast();
+  const [isLoading, setIsLoading] = useState(false);
 
   const availableButtons = allButtons.filter(
     (button) =>
@@ -88,12 +90,23 @@ function UserSocialForm({ user, session }: any) {
 
   async function saveDetails(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setIsLoading(true);
     const formData = new FormData(event.currentTarget);
-    const result = await saveSocials(formData);
-    toast({
-      variant: "default",
-      description: "Details saved",
-    });
+    try {
+      const result = await saveSocials(formData);
+      toast({
+        variant: "default",
+        description: "Details saved",
+      });
+    } catch (error) {
+      setIsLoading(false);
+
+      toast({
+        variant: "destructive",
+        description: "An error occured!, Try again later.",
+      });
+    }
+    setIsLoading(false);
   }
 
   function removeButton(item: any) {
@@ -104,24 +117,26 @@ function UserSocialForm({ user, session }: any) {
 
   return (
     <DashboardSectionComponent>
-      <form onSubmit={saveDetails}>
-        <div className="text-2xl font-bold py-4 pl-3">Social Buttons</div>
-        <div className="px-6 py-6">
+      <form onSubmit={saveDetails} className="p-10 font-light ">
+        <div className="text-2xl py-4  text-white font-light">
+          Social Buttons
+        </div>
+        <div className=" py-6">
           <ReactSortable list={activeButtons} setList={setActiveButtons}>
             {activeButtons.map((item) => (
               <div
                 key={item.key}
                 className="flex items-center space-y-3 h-full"
               >
-                <div className="w-80 space-x-2 flex mt-3">
+                <div className="w-80 space-x-2 flex items-stretch justify-stretch mt-3">
                   <GripVertical className="cursor-grabbing" /> {item.icon}{" "}
-                  <span>{item.label}</span>
+                  <span className="font-light">{item.label}</span>
                 </div>
                 <Input
                   id={item.key}
                   name={item.key}
                   type="text"
-                  className="bg-transparent text-sm"
+                  className=" border-none text-lg bg-purple-500/10 p-5 py-8 focus-visible:ring-offset-0"
                   placeholder={item.placeholder}
                   required
                   defaultValue={
@@ -131,29 +146,32 @@ function UserSocialForm({ user, session }: any) {
                   }
                 />
                 <button type="button" onClick={() => removeButton(item)}>
-                  <FaTrash className="bg-red-500 text-3xl ml-5 mr-2 p-1 rounded-md" />
+                  <FaTrash className="text-red-500 text-3xl ml-5 mr-2 p-1 rounded-md" />
                 </button>
               </div>
             ))}
           </ReactSortable>
         </div>
-        <div className="flex flex-wrap py-6 border-t border-white/30 mx-4">
+        <div className="flex flex-wrap py-6 border-t border-white/30 ">
           {availableButtons.map((item) => (
             <button
               key={item.key}
               onClick={() => addToProfile(item)}
               type="button"
-              className="flex items-center mx-2 my-1 bg-gray-800 hover:bg-gray-950 transition duration-300 border rounded-full py-2 px-3 space-x-3"
+              className="flex items-center mr-2 my-1 bg-purple-500/20 hover:bg-gray-950 transition duration-300 rounded-full p-4 py-3 space-x-3"
             >
               {item.icon} <span className="text-sm">{item.label}</span> <Plus />
             </button>
           ))}
         </div>
-        <div className="flex justify-center mb-5">
-          <Button type="submit" className="border">
-            Save Details
-          </Button>
-        </div>
+        <Button
+          type="submit"
+          disabled={isLoading}
+          className="bg-purple-800 hover:bg-purple-950 font-semibold text-white/90"
+        >
+          {isLoading && <Loader2 className="mr-2 inline animate-spin" />} Save
+          Details
+        </Button>
       </form>
     </DashboardSectionComponent>
   );

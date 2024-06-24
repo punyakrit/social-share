@@ -2,6 +2,8 @@ const svgToDataUri = require("mini-svg-data-uri");
 const {
   default: flattenColorPalette,
 } = require("tailwindcss/lib/util/flattenColorPalette");
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 import type { Config } from "tailwindcss";
 
 const config = {
@@ -22,6 +24,9 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        opensans: ['"Open Sans"', ...defaultTheme.fontFamily.sans],
+      },
       colors: {
         dark: "#111827",
         orchid: "#9b4ee4",

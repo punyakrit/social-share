@@ -95,11 +95,11 @@
 
 
   .radio-toggler {
-    @apply  p-1  bg-gray-200 inline-flex rounded-full;
+    @apply  p-2  bg-white/10 inline-flex rounded-full;
   }
 
   .radio-toggler div{
-    @apply  p-2 px-4 shadow text-gray-500  flex items-center gap-2 rounded-full;
+    @apply  p-2 px-4 shadow text-gray-500  flex items-center  rounded-full;
   }
 
   .radio-toggler input {
@@ -107,5 +107,5 @@
   }
 
   .radio-toggler input:checked + div {
-    @apply  bg-white text-blue-600 rounded-full ;
+    @apply  bg-purple-400/10 text-purple-400 rounded-full ;
   }

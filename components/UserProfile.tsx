@@ -8,51 +8,98 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { getServerSession } from "next-auth";
 import UserLogoutButton from "./UserLogoutButton";
 import { authOptions } from "@/lib/authOptions";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 async function UserProfile() {
   const server = await getServerSession(authOptions);
   return (
-    <div>
-      <Dialog>
-        <DialogTrigger asChild>
-          <Avatar className="cursor-pointer">
-            <AvatarImage
-              src={server?.user?.image as string}
-              alt={server?.user?.name as string}
-            />
-            <AvatarFallback>
-              {(server?.user?.name || "").split(" ")[0].charAt(0)}
-            </AvatarFallback>
-          </Avatar>
-        </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
-          <DialogHeader>
-            <DialogTitle>User Details</DialogTitle>
-          </DialogHeader>
-          <div className="grid gap-4 py-4">
-            <div className="grid grid-cols-4 items-center gap-4">
-              <label htmlFor="name" className="text-right">
-                Name :
-              </label>
-              <label>{(server?.user?.name as string).split(" ")[0]}</label>
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <label htmlFor="username" className="text-right">
-                Email :
-              </label>
-              <label>{server?.user?.email as string}</label>
-            </div>
-            <DialogFooter>
-              <UserLogoutButton/>
-            </DialogFooter>
-          </div>
-        </DialogContent>
-      </Dialog>
-    </div>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Avatar className="cursor-pointer">
+          <AvatarImage
+            src={server?.user?.image as string}
+            alt={server?.user?.name as string}
+          />
+          <AvatarFallback>
+            {(server?.user?.name || "").split(" ")[0].charAt(0)}
+          </AvatarFallback>
+        </Avatar>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-56">
+        <DropdownMenuLabel className="text-[#a855f7] font-normal">
+          My Account
+        </DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuItem>
+            <Link
+              href="/dashboard"
+              className="cursor-pointer font-semibold w-full flex flex-row items-center justify-between"
+            >
+              <span>{(server?.user?.name as string).split(" ")[0]}</span>
+              <ArrowRight size={15} className="text-[#a855f7]"/>
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem className="opacity-60">{server?.user?.email as string}</DropdownMenuItem>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem>
+          <UserLogoutButton />
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }
 
 export default UserProfile;
+
+// export function DropdownMenuDemo() {
+//   return (
+//     <DropdownMenu>
+//       <DropdownMenuTrigger asChild>
+//         <Avatar className="cursor-pointer">
+//           <AvatarImage
+//             src={server?.user?.image as string}
+//             alt={server?.user?.name as string}
+//           />
+//           <AvatarFallback>
+//             {(server?.user?.name || "").split(" ")[0].charAt(0)}
+//           </AvatarFallback>
+//         </Avatar>
+//       </DropdownMenuTrigger>
+//       <DropdownMenuContent className="w-56">
+//         <DropdownMenuLabel>My Account</DropdownMenuLabel>
+//         <DropdownMenuSeparator />
+//         <DropdownMenuGroup>
+//           <DropdownMenuItem>
+//             {(server?.user?.name as string).split(" ")[0]}
+//           </DropdownMenuItem>
+//           <DropdownMenuItem>{server?.user?.email as string}</DropdownMenuItem>
+//         </DropdownMenuGroup>
+//         <DropdownMenuSeparator />
+//         <DropdownMenuItem>
+//           <UserLogoutButton />
+//         </DropdownMenuItem>
+//       </DropdownMenuContent>
+//     </DropdownMenu>
+//   );
+// }
