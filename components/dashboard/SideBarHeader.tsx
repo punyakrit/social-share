@@ -35,7 +35,7 @@ function SideBarHeader({ session }: any) {
 
   return (
     <div
-      className={`sidebar z-10 w-screen ${
+      className={`sidebar z-10 ${
         isSidebarOpen ? "sm:w-72  lg:w-1/4" : "w-0"
       } bg-gray-950/70 hidden  relative lg:block duration-300 text-white h-screen`}
     >

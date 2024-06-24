@@ -42,15 +42,13 @@ async function ProfilePreview({ user, session }: any) {
     website: Icons.Link,
   };
   return (
-    <div
-      className="h-full rounded-t-3xl bg-red-400 rounded-3xl"
-      style={{ backgroundColor: page.bgColor }}
-    >
+    <div className="h-full overflow-y-auto rounded-t-3xl bg-gray-950 rounded-3xl">
       <div
-        className={`bg-[${
-          user?.bgType && user?.bgColor
-        }] border-b border-purple-500 bg-cover min-h-[250px]  bg-center rounded-t-3xl`}
-        style={{ backgroundImage: `url(${page.bgImage})` }}
+        className={`bg-[${page?.bgColor}] border-b border-purple-500 bg-cover min-h-[250px]  bg-center rounded-t-3xl`}
+        style={{
+          backgroundImage: `url(${page.bgImage})`,
+          backgroundColor: page?.bgColor,
+        }}
       ></div>
       <div className="text-white bg-gray-950 backdrop-blur-md mb-5 space-y-2 flex justify-center flex-col py-3">
         <div className="flex justify-center -mt-16">
@@ -65,16 +63,16 @@ async function ProfilePreview({ user, session }: any) {
         <p className="bg-gradient-to-tr from-purple-600 via-pink-500 to-yellow-400 px-4 py-3 w-fit mx-auto mt-6 rounded-lg mb-10 text-white font-light font-opensans text-xl">
           @ {page.uri}
         </p>
-        <div className="text-2xl text-center px-4 text-white">
+        {/* <div className="text-2xl text-center px-4 text-white">
           {page.displayName}
-        </div>
+        </div> */}
         {page.location && (
-          <div className="text-md font-light justify-center flex items-center px-4">
+          <div className="text-md font-light opacity-75 justify-center flex items-center px-4">
             <Icons.MapPin className="mr-2" size={30} />
             {page.location}
           </div>
         )}
-        <div className="text-md font-light text-center px-4">{page.bio}</div>
+        <div className="text-md font-light text-center px-4 opacity-60">{page.bio}</div>
       </div>
       <div className="flex justify-center space-y-2 gap-2 flex-col px-5">
         {page.button &&

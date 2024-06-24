@@ -17,7 +17,7 @@ import { UserProfile } from "@/actions/UserProfile";
 import { useToast } from "../ui/use-toast";
 import DashboardSectionComponent from "./DashboardSectionComponent";
 
-function UserSettings({ user, session }: any) {
+function UserSettings({ user, session, onUpdate }: any) {
   const { toast } = useToast();
   const [bgType, setBgType] = useState(user.bgType);
   const [bgColor, setBgColor] = useState(user.bgColor);
@@ -59,6 +59,7 @@ function UserSettings({ user, session }: any) {
       });
     }
     setIsLoading(false);
+    onUpdate();
   }
 
   async function handleAvatarChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -73,6 +74,7 @@ function UserSettings({ user, session }: any) {
         });
         const result = await res.json();
         setAvatarImage(result.link);
+        onUpdate();
       } catch (error) {
         console.error("Error uploading avatar:", error);
       }
@@ -91,6 +93,7 @@ function UserSettings({ user, session }: any) {
         });
         const result = await res.json();
         setBgImage(result.link);
+        onUpdate();
       } catch (error) {
         console.error("Error uploading file:", error);
       }
@@ -223,8 +226,8 @@ function UserSettings({ user, session }: any) {
             disabled={isLoading}
             className="bg-purple-800 hover:bg-purple-950 font-semibold text-white/90"
           >
-            {isLoading && <Loader2 className="mr-2 inline animate-spin" />}{" "}
-            Save Details
+            {isLoading && <Loader2 className="mr-2 inline animate-spin" />} Save
+            Details
           </Button>
         </div>
       </form>
