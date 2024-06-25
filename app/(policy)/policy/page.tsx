@@ -1,9 +1,11 @@
 import FooterApp from '@/components/FooterApp';
 import Link from 'next/link';
-import React from 'react'
+import React from 'react';
+import BackToHomeButton from '@/components/BackToHome';
 
 function Policy() {
   return (
+    <><BackToHomeButton />
     <main>
       <h1 className='text-white text-6xl font-extrabold text-center mt-16'>Privacy Policy</h1> 
       <div className='flex justify-center mt-12 text-white/50 text-xl'>
@@ -167,6 +169,7 @@ function Policy() {
       </div>
       <FooterApp />
     </main>
+    </>
   );
 }
 
