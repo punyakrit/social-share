@@ -1,6 +1,6 @@
 import FooterApp from '@/components/FooterApp';
 import React from 'react';
-import BackToHomeButton from '@/components/BackToHome';
+import BackToHomeButton from '@/components/BackToHome'; //Imported button 
 
 function Licensing() {
   return (

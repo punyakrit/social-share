@@ -1,7 +1,7 @@
 import FooterApp from '@/components/FooterApp';
 import Link from 'next/link';
 import React from 'react'
-import BackToHomeButton from '@/components/BackToHome';
+import BackToHomeButton from '@/components/BackToHome'; //Imported button 
 
 function terms_condition() {
   return (

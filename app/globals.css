@@ -111,6 +111,10 @@
   }
 
   
+  /* 
+  Back to home button styles
+  Included in globals.css for consistent application across the site.
+  */
 
 .back-to-home-button {
   display: inline-flex;
@@ -136,6 +140,7 @@
   background-color: #324456;
 }
 
+/* Back to home SVG/Icon */
 .back-to-home-button svg {
   fill: #ffffff;
   width: 200%;
