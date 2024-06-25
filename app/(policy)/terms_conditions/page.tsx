@@ -1,9 +1,11 @@
 import FooterApp from '@/components/FooterApp';
 import Link from 'next/link';
 import React from 'react'
+import BackToHomeButton from '@/components/BackToHome';
 
 function terms_condition() {
   return (
+    <><BackToHomeButton />
     <main>
       <h1 className='text-white text-6xl font-extrabold text-center mt-16'>Terms & Conditions</h1> 
       <div className='flex justify-center mt-12 text-white/50 text-xl'>
@@ -116,6 +118,7 @@ function terms_condition() {
       </div>
       <FooterApp />
     </main>
+    </>
   )
 }
 
