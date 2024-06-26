@@ -109,3 +109,21 @@
   .radio-toggler input:checked + div {
     @apply  bg-white text-blue-600 rounded-full ;
   }
+
+
+  .hover-scale {
+    transition: transform 0.3s ease;
+  }
+  
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+  
+  .transform-scale {
+    transition: transform 0.3s ease;
+  }
+
+  .transform-scale:hover {
+    transform: scale(1.2);
+  }
+  
