@@ -1,11 +1,13 @@
 import FooterApp from '@/components/FooterApp';
 import Link from 'next/link';
 import React from 'react'
+import BackToHomeButton from '@/components/BackToHome'; //Imported button 
 
 function terms_condition() {
   return (
+    <><BackToHomeButton />
     <main>
-      <h1 className='text-white text-6xl font-extrabold text-center mt-16'>Terms & Conditions</h1> 
+      <h1 className='text-white text-6xl font-extrabold text-center mt-2'>Terms & Conditions</h1> 
       <div className='flex justify-center mt-12 text-white/50 text-xl'>
         <div className='w-[75%] flex flex-col gap-8 max-md:text-justify mb-12'>
           
@@ -116,6 +118,7 @@ function terms_condition() {
       </div>
       <FooterApp />
     </main>
+    </>
   )
 }
 

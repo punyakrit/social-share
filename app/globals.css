@@ -111,6 +111,10 @@
   }
 
 
+  
+  
+
+
   .hover-scale {
     transition: transform 0.3s ease;
   }
@@ -127,3 +131,76 @@
     transform: scale(1.2);
   }
   
+
+
+
+/* 
+
+  Back to home button styles
+
+  Included in globals.css for consistent application across the site.
+
+  */
+
+
+
+.back-to-home-button {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 50px;
+
+  height: 50px;
+
+  margin-top: 30px;
+
+  margin-left: 40px;
+
+  padding: 10px;
+
+  font-size: 16px;
+
+  color: #fff;
+
+  background-color: #172d44;
+
+  border: none;
+
+  border-radius: 25%;
+
+  text-align: center;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition: background-color 0.3s ease;
+
+}
+
+
+
+.back-to-home-button:hover {
+
+  background-color: #324456;
+
+}
+
+
+
+/* Back to home SVG/Icon */
+
+.back-to-home-button svg {
+
+  fill: #ffffff;
+
+  width: 200%;
+
+  height: 100%;
+
+
+}
