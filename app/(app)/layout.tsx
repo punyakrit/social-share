@@ -8,7 +8,6 @@ import connectMongoDb from "@/lib/dbConnect";
 import { UserPage } from "@/models/Onboarding";
 import { Toaster } from "@/components/ui/toaster";
 import AppBar from "@/components/dashboard/AppBar";
-import BackToHomeButton from "@/components/BackToHome";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -36,7 +35,6 @@ export default async function RootLayout({
     <html lang="en">
       <body className={`${inter.className} bg-gray-900 flex`}>
         <Toaster />
-        <BackToHomeButton />
         <div><SideBar session={session} /></div>
         <div className=" w-full">{children}</div>
       </body>
