@@ -1,24 +1,27 @@
 import Link from "next/link";
 import { Github, Linkedin } from "lucide-react";
 import XIcon from "./ui/XIcon";
-
+import Image from 'next/image';
 function FooterApp() {
   return (
     <footer className="bg-gray-900 border-t backdrop-blur-sm text-white">
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">
-          <div className="mb-6 md:mb-0">
-            <Link href="/" className="flex items-center">
-              <span className="self-center text-2xl font-semibold whitespace-nowrap text-white mb-2">
-                ShareHub
-              </span>
-            </Link>
-            <p className="text-sm text-gray-300 mt-2 mr-400">
-              ShareHub is a Project where users can <br />create their public
-              viewable profile containing <br />their customizable social links
-              and important links <br />that they want to share with the world.{" "}
-            </p>
-          </div>
+        <div className="mb-6 md:mb-0">
+  <Link href="/" className="flex items-center">
+    <Image src="/logo.png" alt="ShareHub Logo" width={130} height={130} /> {/* Added logo */}
+    <div className="ml-3"> {/* Added margin-left for spacing */}
+      <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
+        ShareHub
+      </span>
+      <p className="text-sm text-gray-300 mt-2">
+        ShareHub is a Project where users can <br />create their public
+        viewable profile containing <br />their customizable social links
+        and important links <br />that they want to share with the world.
+      </p>
+    </div>
+  </Link>
+</div>
           <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
             <div>
               <h2 className="mb-6 text-sm font-semibold text-gray-300 uppercase dark:text-white">
