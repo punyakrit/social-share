@@ -132,8 +132,20 @@
   }
   
 
-
-
+.dark{
+  filter: invert(1);
+  background-color: black;
+}
+.dark .original,.dark img{filter: invert(1);}
+.dark .container{
+   background-color: black;
+}
+.dark .footer{
+  background-color: #121212;
+}
+.dark .main{
+  background-color: #080808;
+}
 /* 
 
   Back to home button styles
