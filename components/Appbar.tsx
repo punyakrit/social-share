@@ -6,12 +6,12 @@ import { User } from "lucide-react";
 import { authOptions } from "@/lib/authOptions";
 import Link from "next/link";
 import { SidebarMobileView } from "./sidebarmobileview";
-import GitHubAppbar from "./GitHubAppbar";
-
-async function Appbar() {
+import GitHubAppbar from "./GitHubAppbar"; 
+import Mode from "./mode";
+async function Appbar() { 
   const session = await getServerSession(authOptions);
   return (  
-    <div className="z-20 mr-20 h-20 w-full mt-0 rounded-b-xl bg-black/10 backdrop-blur-3xl fixed">
+    <div className="z-20 mr-20 h-20 w-full mt-0 rounded-b-xl bg-black/10 backdrop-blur-3xl fixed dark:bg-black">
       <div className=" text-white flex h-full md:px-6  px-5 p-1 gap-10 justify-between items-center ">
         <Link href={"/"}>
           <div className=" cursor-pointer font-bold  text-3xl">ShareHub</div>
@@ -34,9 +34,10 @@ async function Appbar() {
               <GitHubAppbar />
             </Link>
           </div>
-
+             
           {!session && <GoogleLoginButton />}
           {session && <UserProfile />}
+        <Mode />
         </div>
         <div className="md:hidden">
           <SidebarMobileView />

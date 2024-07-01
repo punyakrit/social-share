@@ -9,7 +9,7 @@ const AboutPage = () => {
     <div className="main">
       <div className="h-screen flex flex-col md:flex-row pt-24">
         {/* Animation Section */}
-        <div className="md:w-1/2 h-1/2 md:h-screen bg-gray-900 relative">
+        <div className="md:w-1/2 h-1/2 md:h-screen bg-gray-900 relative original dark:bg-transparent">
           <Lottie
             animationData={animationData}
             loop
@@ -19,7 +19,7 @@ const AboutPage = () => {
         </div>
 
         {/* Text Section */}
-        <div className="w-full md:w-1/2 h-1/2 md:h-screen bg-gray-900 p-4 md:p-12 flex flex-col justify-center items-center">
+        <div className="w-full md:w-1/2 h-1/2 md:h-screen bg-gray-900 p-4 md:p-12 flex flex-col justify-center items-center dark:bg-transparent">
           <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold focus-in-expand mb-8 md:mb-12 text-purple-400">
             ABOUT US
           </h1>

@@ -9,26 +9,26 @@ export default function TypewriterEffectSmoothDemo() {
     [
       { text: "Create", className: "text-white text-3xl md:text-6xl font-sans font-extrabold" },
       { text: " Your", className: "text-white text-3xl md:text-6xl font-sans font-extrabold" },
-      { text: " Personalized", className: "text-purple-500 text-3xl md:text-6xl font-sans font-extrabold" },
+      { text: " Personalized", className: "text-purple-500 text-3xl md:text-6xl font-sans font-extrabold  original" },
       { text: " Page", className: "text-white text-3xl md:text-6xl font-sans font-extrabold" },
     ],
     [
       { text: "Discover", className: "text-white text-3xl md:text-6xl font-sans font-extrabold" },
       { text: " An", className: "text-white text-3xl md:text-6xl font-sans font-extrabold" },
       { text: " Amazing", className: "text-white text-3xl md:text-6xl font-sans font-extrabold" },
-      { text: " Community", className: "text-purple-500 text-3xl md:text-6xl font-sans font-extrabold" },
+      { text: " Community", className: "text-purple-500 text-3xl md:text-6xl font-sans font-extrabold  original" },
     ],
     [
       { text: "Explore", className: "text-white text-3xl md:text-6xl font-sans font-extrabold" },
       { text: " New", className: "text-white text-3xl md:text-6xl font-sans font-extrabold" },
-      { text: " Horizons", className: "text-purple-500 text-3xl md:text-6xl font-sans font-extrabold" },
+      { text: " Horizons", className: "text-purple-500 text-3xl md:text-6xl font-sans font-extrabold  original" },
       { text: " With", className: "text-white text-3xl md:text-6xl font-sans font-extrabold" },
       { text: " Us", className: "text-white text-3xl md:text-6xl font-sans font-extrabold" },
     ],
     [
       { text: "Build", className: "text-white text-3xl md:text-6xl font-sans font-extrabold" },
       { text: " Your", className: "text-white text-3xl md:text-6xl font-sans font-extrabold" },
-      { text: " Dream", className: "text-purple-500 text-3xl md:text-6xl font-sans font-extrabold" },
+      { text: " Dream", className: "text-purple-500 text-3xl md:text-6xl font-sans font-extrabold  original" },
       { text: " Profile", className: "text-white text-3xl md:text-6xl font-sans font-extrabold" },
     ],
   ];

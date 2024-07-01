@@ -38,7 +38,7 @@ function UserNameForm({ user }: any) {
                 : ""
             } flex  `}
           >
-            <span className="bg-white rounded-l-2xl py-4 md:pl-4 pl-5">
+            <span className="bg-white rounded-l-2xl py-4 md:pl-4 pl-5 text-black">
               sharehub.xyz/
             </span>
 
@@ -48,7 +48,7 @@ function UserNameForm({ user }: any) {
               setUsername(e.target.value);
             }}
             type="text"
-            className="py-4 md:pl-1 pl-1 pr-[5rem] outline-none rounded-r-2xl text-left"
+            className="py-4 md:pl-1 pl-1 pr-[5rem] outline-none rounded-r-2xl text-left text-black"
             placeholder="username"
           />
         </div>
