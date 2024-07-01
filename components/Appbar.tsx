@@ -7,15 +7,20 @@ import { authOptions } from "@/lib/authOptions";
 import Link from "next/link";
 import { SidebarMobileView } from "./sidebarmobileview";
 import GitHubAppbar from "./GitHubAppbar";
+import Image from 'next/image';
+
 
 async function Appbar() {
   const session = await getServerSession(authOptions);
   return (  
     <div className="z-20 mr-20 h-20 w-full mt-0 rounded-b-xl bg-black/10 backdrop-blur-3xl fixed">
       <div className=" text-white flex h-full md:px-6  px-5 p-1 gap-10 justify-between items-center ">
-        <Link href={"/"}>
-          <div className=" cursor-pointer font-bold  text-3xl">ShareHub</div>
-        </Link>
+      <Link href="/">
+        <div className="flex items-center cursor-pointer">
+          <Image src="/logo.png" alt="ShareHub Logo" width={70} height={70} /> {/* Added logo */}
+          <div className="font-bold text-3xl ml-3">ShareHub</div> {/* Added margin-left for spacing */}
+        </div>
+      </Link>
         <div className="items-center space-x-10 md:flex md:flex-row hidden">
           <div className="transition duration-500 text-white/50 hover:cursor-pointer hover:text-white ">
             <Link href="/">Home</Link>
