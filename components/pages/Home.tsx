@@ -4,6 +4,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/authOptions";
 import TypewriterEffectSmoothDemo from "../HeroText";
 import GoToDashboardButton from "../ui/GoToDashboardButton";
+import { Toaster } from "sonner";
 
 
 async function Home() {
@@ -31,6 +32,7 @@ async function Home() {
           {!sesssion && <UserNameForm user={sesssion?.user}/>}
           {sesssion && (<GoToDashboardButton/>)}
         </div>
+        <Toaster duration={6000} richColors/>
       </div>
       </HeroHighlight>
     </div>
