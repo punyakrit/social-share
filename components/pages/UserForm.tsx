@@ -2,17 +2,22 @@
 import { getUsername } from "@/actions/setUsername";
 import { useSearchParams } from "next/navigation";
 import { Label } from "@radix-ui/react-label";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Input } from "../ui/input";
 import { useRouter } from "next/navigation";
+import { toast, Toaster } from 'sonner';
 
 function UserForm({ initialUsername }: any) {
   const searchParams = useSearchParams();
-  const [username, setUsername] = useState(searchParams.get("username")||"");
+  const [username, setUsername] = useState(searchParams.get("username") || "");
   const [loading, setLoading] = useState(false);
   const [taken, setTaken] = useState(false);
   const router = useRouter();
 
+  useEffect(() => {
+    toast.success('Logged in successfully.');
+  }, []);
+  
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault(); // Prevent the default form submission
     setLoading(true);
@@ -24,12 +29,18 @@ function UserForm({ initialUsername }: any) {
     setTaken(!isAvailable);
 
     if (isAvailable) {
-      router.push(`/dashboard`);
+      toast.success('Username set up successfully!');
+      setTimeout(() => {
+        router.push(`/dashboard`);
+      }, 3000); 
+    } else {
+      toast.error('Error setting up username. It might already be taken.');
     }
   }
 
   return (
     <div>
+      <Toaster richColors  expand visibleToasts={1} />
       <form onSubmit={handleSubmit}>
         <Label htmlFor="username">Username</Label>
         <Input
