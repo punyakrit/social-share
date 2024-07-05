@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { Button } from "../ui/button";
 
-const Custom404: React.FC = () => {
+export const Custom404: React.FC = () => {
   return (
     <div className="h-screen w-full bg-gradient-to-r from-purple-600 to-blue-500 flex flex-col items-center justify-center text-white antialiased">
       <div className="py-8 px-4 mx-auto max-w-screen-lg lg:py-16 lg:px-6 text-center">
@@ -21,4 +21,3 @@ const Custom404: React.FC = () => {
   );
 };
 
-export default Custom404;
