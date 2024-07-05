@@ -60,7 +60,7 @@ function UserNameForm({ user }: any) {
         </Button> */}
         
           
-            <div className="text-center pt-[15px] md:pt-0  ">
+            <div className="pt-[15px] md:pt-0">
             <MagicButton
             title='Join For Free'
             />
