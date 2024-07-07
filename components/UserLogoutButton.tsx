@@ -2,14 +2,18 @@
 import React from "react";
 import { Button } from "./ui/button";
 import { signOut } from "next-auth/react";
+import { toast} from "sonner";
 
 function UserLogoutButton() {
   return (
     <div>
       <Button
         onClick={() => {
-          signOut();
-        }}
+          setTimeout(()=>{
+            signOut();
+          },500)
+          toast.success('Logged out successfully.')
+          }}
       >
         LogOut
       </Button>
