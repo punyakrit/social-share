@@ -12,15 +12,17 @@
 - [Connecting to MongoDB](#connecting-to-mongodb)
 - [Creating Google Credentials](#creating-google-credentials)
 - [Running the Development Server](#running-the-development-server)
+- [Learn More](#learn-more)
+- [License](#license)
 - [Open Source Programs](#open-source-programs)
 - [Acknowledgements](#acknowledgements)
 - [Contributors](#contributors)
-- [License](#license)
-- [Learn More](#learn-more)
+
+
 
 
 ## Code of Conduct
-Please read our [CODE OF CONDUCT](code_of_conduct.md) for detailed guidelines.
+Please read our [CODE OF CONDUCT](CODE_OF_CONDUCT.md) for detailed guidelines.
 
 ## Contributing
 If you would like to contribute to the project, please follow our [CONTRIBUTING](contributing.md) guidelines.
@@ -111,6 +113,12 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 ```
+
+## License
+This project is licensed under 
+
+## Learn More
+To learn more about the project, check out our Learn More page.
 
 <!-- Open Source Programs -->
 <div>
