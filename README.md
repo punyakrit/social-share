@@ -115,7 +115,7 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 ```
 
 ## License
-This project is licensed under 
+This project is licensed under [License](LICENSE)
 
 ## Learn More
 To learn more about the project, check out our Learn More page.
