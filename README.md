@@ -1,7 +1,7 @@
 <div align="center">
   <h1 style="font-size: 36px; font-weight: bold;">ShareHub</h1>
 
-![ShareHub](Share_hub.png)
+<img src="Share_hub.png" alt="ShareHub" width="800" height="500" />
 
 </div>
 
@@ -68,18 +68,20 @@ https://console.cloud.google.com/
 
 ### Create a new project and name it
 
-![Dashboard](<Screenshot 2024-06-07 at 11.14.04 AM.png>)
-
-![Alt text](image.png)
+<img src="Screenshot 2024-06-07 at 11.14.04 AM.png" alt="Dashboard" style="width: 50%; height: auto;" />
+<img src="image.png" alt="Alt text" style="width: 50%; height: auto;" />
 
 ### Select the project
-![Alt text](image-4.png)
+
+<img src="image-4.png" alt="Alt text" style="width: 50%; height: auto;" />
 
 ### By click external, Add email and project name click on next
-![Alt text](image-5.png)
+
+<img src="image-5.png" alt="Alt text" style="width: 50%; height: auto;" />
 
 ### Add data as same as in the given image
-![Alt text](image-3.png)
+
+<img src="image-3.png" alt="Alt text" style="width: 50%; height: auto;" />
 
 Save and Copy the GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET
 
