@@ -5,6 +5,26 @@
 
 </div>
 
+## Table of Contents
+- [Code of Conduct](#code-of-conduct)
+- [Contributing](#contributing)
+- [Setting Up Locally](#setting-up-locally)
+- [Connecting to MongoDB](#connecting-to-mongodb)
+- [Creating Google Credentials](#creating-google-credentials)
+- [Running the Development Server](#running-the-development-server)
+- [Open Source Programs](#open-source-programs)
+- [Acknowledgements](#acknowledgements)
+- [Contributors](#contributors)
+- [License](#license)
+- [Learn More](#learn-more)
+
+
+## Code of Conduct
+Please read our [CODE OF CONDUCT](code_of_conduct.md) for detailed guidelines.
+
+## Contributing
+If you would like to contribute to the project, please follow our [CONTRIBUTING](CONTRIBUTING.md) guidelines.
+
 ## FOLLOW THESE STEPS TO SET LOCALLY
 
 1. Fork the repository (Click the Fork button in the top right on Github)
