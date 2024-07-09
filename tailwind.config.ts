@@ -22,6 +22,9 @@ const config = {
       },
     },
     extend: {
+      screens: {
+        tablet: { max: "768px" }, // Adding the custom breakpoint for tablet
+      },
       colors: {
         dark: "#111827",
         orchid: "#9b4ee4",
@@ -111,6 +114,7 @@ const config = {
     },
   ],
 } satisfies Config;
+
 function addVariablesForColors({ addBase, theme }: any) {
   let allColors = flattenColorPalette(theme("colors"));
   let newVars = Object.fromEntries(
