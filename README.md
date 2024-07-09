@@ -1,9 +1,31 @@
 <div align="center">
   <h1 style="font-size: 36px; font-weight: bold;">ShareHub</h1>
 
-![ShareHub](Share_hub.png)
+<img src="Share_hub.png" alt="ShareHub" width="800" height="500" />
 
 </div>
+
+## Table of Contents
+- [Code of Conduct](#code-of-conduct)
+- [Contributing](#contributing)
+- [Setting Up Locally](#setting-up-locally)
+- [Connecting to MongoDB](#connecting-to-mongodb)
+- [Creating Google Credentials](#creating-google-credentials)
+- [Running the Development Server](#running-the-development-server)
+- [Learn More](#learn-more)
+- [License](#license)
+- [Open Source Programs](#open-source-programs)
+- [Acknowledgements](#acknowledgements)
+- [Contributors](#contributors)
+
+
+
+
+## Code of Conduct
+Please read our [CODE OF CONDUCT](CODE_OF_CONDUCT.md) for detailed guidelines.
+
+## Contributing
+If you would like to contribute to the project, please follow our [CONTRIBUTING](contributing.md) guidelines.
 
 ## FOLLOW THESE STEPS TO SET LOCALLY
 
@@ -46,18 +68,20 @@ https://console.cloud.google.com/
 
 ### Create a new project and name it
 
-![Dashboard](<Screenshot 2024-06-07 at 11.14.04 AM.png>)
-
-![Alt text](image.png)
+<img src="Screenshot 2024-06-07 at 11.14.04 AM.png" alt="Dashboard" style="width: 50%; height: auto;" />
+<img src="image.png" alt="Alt text" style="width: 50%; height: auto;" />
 
 ### Select the project
-![Alt text](image-4.png)
+
+<img src="image-4.png" alt="Alt text" style="width: 50%; height: auto;" />
 
 ### By click external, Add email and project name click on next
-![Alt text](image-5.png)
+
+<img src="image-5.png" alt="Alt text" style="width: 50%; height: auto;" />
 
 ### Add data as same as in the given image
-![Alt text](image-3.png)
+
+<img src="image-3.png" alt="Alt text" style="width: 50%; height: auto;" />
 
 Save and Copy the GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET
 
@@ -91,6 +115,12 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 ```
+
+## License
+This project is licensed under [License](LICENSE)
+
+## Learn More
+To learn more about the project, check out our [Learn More](Learn.md) page.
 
 <!-- Open Source Programs -->
 <div>
