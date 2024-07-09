@@ -23,7 +23,7 @@
 Please read our [CODE OF CONDUCT](code_of_conduct.md) for detailed guidelines.
 
 ## Contributing
-If you would like to contribute to the project, please follow our [CONTRIBUTING](CONTRIBUTING.md) guidelines.
+If you would like to contribute to the project, please follow our [CONTRIBUTING](contributing.md) guidelines.
 
 ## FOLLOW THESE STEPS TO SET LOCALLY
 
