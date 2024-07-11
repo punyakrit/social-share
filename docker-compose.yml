@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  nextjs-app:
+    image: share
+    container_name: "nextjs-app"
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXTAUTH_URL=http://localhost:3000 
+      - NEXTAUTH_SECRET=your_nextauth_secret
+      - MONGODB_URI:mongodb=//mongo:27017/mydatabase
+      # - GOOGLE_CLIENT_ID=
+      # - GOOGLE_CLIENT_SECRET=
+    depends_on:
+      - "mongo"
+    command: sh -c "npm install && npm run dev"
+
+  mongo:
+    image: mongo:latest
+    container_name: mongodbs
+    volumes:
+      - mongodb-data:/data/db
+    ports:
+      - "27017:27017"
+  
+volumes:
+    mongodb-data:
+      
+      
