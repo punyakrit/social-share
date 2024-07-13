@@ -29,22 +29,21 @@ export default async function page({ searchParams }: any) {
   return (
     <div>
       <Appbar />
-      <div className="flex flex-col custom:flex-row px-4 custom:px-20 h-screen items-center text-white pt-24 custom:pt-28">
-        <div className="w-full custom:w-1/2 order-2 custom:order-1">
+      <div className="flex flex-col lg:flex-row px-4 lg:px-20 h-screen items-center text-white pt-24 lg:pt-28">
+        <div className="w-full lg:w-1/2 order-2 lg:order-1 flex flex-col items-start">
           <div>
-            <div className="text-4xl custom:text-6xl font-bold">Set Your Username</div>
-            <div className="py-2 custom:py-4 text-white/50">
+            <div className="text-4xl lg:text-6xl font-bold">Set Your Username</div>
+            <div className="py-2 lg:py-4 text-white/50">
               Choose a unique username to personalize your ShareHub page.
             </div>
             <div className="grid w-full max-w-sm items-center py-3 gap-1.5">
               <UserForm username={username} />
             </div>
-            {/* {message && <div className="text-red-500 mt-4">{message}</div>} */}
           </div>
         </div>
-        <div className="w-full custom:w-1/2 order-1 custom:order-2 mb-4 custom:mb-0">
-          <div className="min-w-[450px] min-h-[250px]  custom:min-w-0 custom:min-h-0 custom:mx-auto"> {/* Adjust the min-width as needed */}
-            <Image src={onb} className="rounded-3xl" alt="image" />
+        <div className="w-full lg:w-1/2 order-1 lg:order-2 mb-4 lg:mb-0 flex justify-around lg:justify-end">
+          <div className="w-100 sm:w-100 md:w-full lg:max-w-2xl">
+            <Image src={onb} className="rounded-3xl w-full h-auto" alt="image" />
           </div>
         </div>
       </div>
