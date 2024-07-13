@@ -23,7 +23,8 @@ const config = {
     },
     extend: {
       screens: {
-        tablet: { max: "768px" }, // Adding the custom breakpoint for tablet
+        tablet: { max: "768px" }, 
+        'custom' : '995px'// Adding the custom breakpoint for tablet
       },
       colors: {
         dark: "#111827",
