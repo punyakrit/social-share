@@ -23,6 +23,76 @@
 
 ## Code of Conduct
 Please read our [CODE OF CONDUCT](CODE_OF_CONDUCT.md) for detailed guidelines.
+## How to Contribute?
+We welcome contributions from anyone who is interested in improving this project. If you'd like to contribute, here are some ways you can get started:
+
+Submit a bug report if you find any issues with the application.
+Suggest new features or improvements.
+Submit a pull request to fix a bug or add a feature.
+To submit a pull request, please follow these steps:
+
+1. Fork this repository.
+
+2. Clone the forked repository.
+
+```bash
+git clone https://github.com/punyakrit/social-share.git
+```
+
+3. Navigate to the project directory.
+
+```bash
+cd Games-and-Go
+```
+
+4. Add a refernce(remote) to the original repository.
+
+```bash
+git remote add upstream https://github.com/ssitvit/Games-and-Go.git
+```
+
+5. Check remotes for this repository.
+
+```bash
+git remote -v
+```
+
+6. Always take a pull from the main upstream repository.
+
+```bash
+git pull upstream main
+```
+
+7. Create a new branch.
+
+```bash
+git checkout -b <your_branch_name>
+```
+
+8. Make changes to the code base.
+
+9. Stage your changes.
+
+```bash
+git add -A
+```
+
+10. Commit your changes.
+
+```bash
+git commit -m "relevant message"
+```
+
+11. Push your local commits to the remote repo.
+
+```bash
+git push -u origin <your_branch_name>
+```
+
+12. Create a pull request from your branch to the original repository.
+
+Congratulations! 🎉 you've made your contribution.
+
 
 ## Contributing
 If you would like to contribute to the project, please follow our [CONTRIBUTING](contributing.md) guidelines.
