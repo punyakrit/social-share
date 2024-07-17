@@ -43,7 +43,7 @@ git clone https://github.com/punyakrit/social-share.git
 3. Navigate to the project directory.
 
 ```bash
-cd Games-and-Go
+cd social-share
 ```
 
 4. Add a refernce(remote) to the original repository.
