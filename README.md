@@ -23,6 +23,7 @@
 
 ## Code of Conduct
 Please read our [CODE OF CONDUCT](CODE_OF_CONDUCT.md) for detailed guidelines.
+
 ## How to Contribute?
 We welcome contributions from anyone who is interested in improving this project. If you'd like to contribute, here are some ways you can get started:
 
@@ -48,7 +49,7 @@ cd Games-and-Go
 4. Add a refernce(remote) to the original repository.
 
 ```bash
-git remote add upstream https://github.com/ssitvit/Games-and-Go.git
+git remote add upstream https://github.com/punyakrit/social-share.git
 ```
 
 5. Check remotes for this repository.
