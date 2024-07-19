@@ -14,7 +14,7 @@ async function Contributors() {
 
   return (
     <div className="h-full ">
-      <div className="py-20">
+      <div className="py-20 dark:bg-black">
         <h2 className="text-2xl font-bold pt-10 text-white text-center">Contributors</h2>
         <div className="flex flex-wrap   sm:px-20 mt-20 justify-center  ">
           {contributors.map((contributor: { url: string; id: Key | null | undefined; login: string | number | bigint | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined; avatar_url: string | StaticImport; contributions: string | number | bigint | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined; }) => {
