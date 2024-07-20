@@ -36,7 +36,7 @@ function UserNameForm({ user }: any) {
               inputActive
                 ? " ring-[3px] ring-[#638fff] duration-300 rounded-2xl "
                 : ""
-            } flex  `}
+            } flex ml-[3rem] `}
           >
             <span className="bg-white rounded-l-2xl py-4 md:pl-4 pl-5">
               sharehub.xyz/
@@ -60,7 +60,7 @@ function UserNameForm({ user }: any) {
         </Button> */}
         
           
-            <div className="pt-[15px] md:pt-0">
+            <div className="pt-[15px] md:pt-0 ml-[-2rem]">
             <MagicButton
             title='Join For Free'
             />
