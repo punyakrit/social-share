@@ -16,7 +16,7 @@ import { FaDiscord, FaTrash, FaWhatsapp } from "react-icons/fa";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { saveSocials } from "@/actions/UserProfile";
-import { useToast } from "../ui/use-toast";
+import { toast } from "sonner";
 
 const allButtons = [
   {
@@ -70,7 +70,6 @@ function UserSocialForm({ user, session }: any) {
     .filter(Boolean); // Ensure no undefined values are included
 
   const [activeButtons, setActiveButtons] = useState<any[]>(buttonInfo);
-  const { toast } = useToast();
 
   const availableButtons = allButtons.filter(
     (button) =>
@@ -90,10 +89,9 @@ function UserSocialForm({ user, session }: any) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const result = await saveSocials(formData);
-    toast({
-      variant: "default",
-      description: "Details saved",
-    });
+    
+    if(result.success) toast.success(result.message);
+    else toast.error(result.message);
   }
 
   function removeButton(item: any) {
