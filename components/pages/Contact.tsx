@@ -21,7 +21,7 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (
       formData.fullName === "" ||
       formData.street === "" ||
@@ -31,26 +31,43 @@ const Contact = () => {
       formData.email === "" ||
       formData.message === ""
     ) {
-      // Show toast message for empty fields
       toast.error('Please fill out all fields before submitting.', {
         duration: 4000,
       });
     } else {
-      // Simulate form submission
       try {
-        // Simulate success
-        toast.success('Message sent successfully!', {
-          duration: 4000,
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
         });
-        // Optionally, handle form reset or other actions here
+  
+        if (response.ok) {
+          toast.success('Message sent successfully!', {
+            duration: 4000,
+          });
+          setFormData({
+            fullName: "",
+            street: "",
+            city: "",
+            postcode: "",
+            phoneNo: "",
+            email: "",
+            message: ""
+          }); // Reset form data
+        } else {
+          throw new Error('Failed to send message.');
+        }
       } catch (error) {
-        // Simulate error
         toast.error('Failed to send message. Please try again later.', {
           duration: 4000,
         });
       }
     }
   };
+  
 
   return (
     <div className="main">
