@@ -1,28 +1,61 @@
-"use client";
-import React from "react";
+'use client'
+import React, { useState, ChangeEvent } from "react";
 import { toast, Toaster } from 'sonner';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    street: "",
+    city: "",
+    postcode: "",
+    phoneNo: "",
+    email: "",
+    message: ""
+  });
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
+
   const handleSubmit = () => {
-    // Simulate form submission
-    try {
-      // Simulate success
-      toast.success('Message sent successfully!', {
-        duration: 4000, // Duration in milliseconds (4 seconds)
+    if (
+      formData.fullName === "" ||
+      formData.street === "" ||
+      formData.city === "" ||
+      formData.postcode === "" ||
+      formData.phoneNo === "" ||
+      formData.email === "" ||
+      formData.message === ""
+    ) {
+      // Show toast message for empty fields
+      toast.error('Please fill out all fields before submitting.', {
+        duration: 4000,
       });
-      // Optionally, handle form reset or other actions here
-    } catch (error) {
-      // Simulate error
-      toast.error('Failed to send message. Please try again later.', {
-        duration: 4000, // Duration in milliseconds (4 seconds)
-      });
+    } else {
+      // Simulate form submission
+      try {
+        // Simulate success
+        toast.success('Message sent successfully!', {
+          duration: 4000,
+        });
+        // Optionally, handle form reset or other actions here
+      } catch (error) {
+        // Simulate error
+        toast.error('Failed to send message. Please try again later.', {
+          duration: 4000,
+        });
+      }
     }
   };
 
   return (
     <div className="main">
       <Toaster richColors position="bottom-right" />
-      <h2 className="text-gray-900 mt-46 mb-36 text-center text-2xl">..</h2>
+      <h2 className="text-gray-900 mt-46 mb-36 text-center text-2xl">Contact Us</h2>
       <div className="grid md:grid-cols-1 mb-56 gap-16 mt-0 items-center relative overflow-hidden p-10 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-3xl max-w-6xl mx-auto bg-gray-800 text-[#333] my-6 font-[sans-serif] before:absolute before:right-0 before:w-[0px] before:bg-gray-900 before:h-full max-md:before:hidden">
         <div>
           <h2 className="text-3xl font-extrabold text-purple-400">
@@ -36,40 +69,61 @@ const Contact = () => {
             <div className="space-y-4 mt-8">
               <input
                 type="text"
+                name="fullName"
+                value={formData.fullName}
+                onChange={handleChange}
                 placeholder="Full Name"
                 className="px-2 py-3 text-white bg-gray-900 w-full text-sm focus:border-[#333] outline-none"
               />
               <input
                 type="text"
+                name="street"
+                value={formData.street}
+                onChange={handleChange}
                 placeholder="Street"
                 className="px-2 py-3 text-white bg-gray-900 w-full text-sm  focus:border-[#333] outline-none"
               />
               <div className="grid grid-cols-2 gap-6">
                 <input
                   type="text"
+                  name="city"
+                  value={formData.city}
+                  onChange={handleChange}
                   placeholder="City"
                   className="px-2 py-3 bg-gray-900 w-full text-sm text-white focus:border-[#333] outline-none"
                 />
 
                 <input
                   type="text"
+                  name="postcode"
+                  value={formData.postcode}
+                  onChange={handleChange}
                   placeholder="Postcode"
                   className="px-2 py-3 bg-gray-900 w-full text-sm text-white focus:border-[#333] outline-none"
                 />
               </div>
               <input
                 type="number"
+                name="phoneNo"
+                value={formData.phoneNo}
+                onChange={handleChange}
                 placeholder="Phone No."
                 className="px-2 py-3 bg-gray-900 text-white w-full text-sm focus:border-[#333] outline-none"
               />
 
               <input
                 type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
                 placeholder="Email"
                 className="px-2 py-3 bg-gray-900 text-white w-full text-sm focus:border-[#333] outline-none"
               />
 
               <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
                 placeholder="Write Message"
                 className="px-2 pt-3 bg-gray-900 text-white w-full text-sm focus:border-[#333] outline-none"
               ></textarea>
