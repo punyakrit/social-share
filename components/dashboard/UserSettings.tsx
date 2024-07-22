@@ -12,6 +12,11 @@ import { toast } from "sonner";
 import DashboardSectionComponent from "./DashboardSectionComponent";
 import UserSocialForm from "./UserSocialForm";
 
+const toastOptions = {
+  id: 0,
+  duration: 1500,
+};
+
 function UserSettings({ user, session }: any) {
   const [bgType, setBgType] = useState(user.bgType);
   const [bgColor, setBgColor] = useState(user.bgColor);
@@ -43,7 +48,10 @@ function UserSettings({ user, session }: any) {
     );
 
     // no changes
-    if (!hasChanged) return;
+    if (!hasChanged) {
+      toast.info("Nothing to save", toastOptions);
+      return;
+    }
 
     try {
       const result = await UserProfile(formData);

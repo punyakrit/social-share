@@ -8,6 +8,11 @@ import { ReactSortable } from "react-sortablejs";
 import { savePageLinks } from "@/actions/UserProfile";
 import { toast } from "sonner";
 
+const toastOptions = {
+  id: 0,
+  duration: 1500,
+};
+
 function UserLinks({ user, session }: any) {
   const [links, setLinks] = useState(user.links || []);
   const [prevState, setPrevState] = useState(user.links || []); // save state to check for changes
@@ -49,7 +54,10 @@ function UserLinks({ user, session }: any) {
     const hasChanged = JSON.stringify(links) !== JSON.stringify(prevState);
 
     // no changes
-    if (!hasChanged) return;
+    if (!hasChanged) {
+      toast.info("Nothing to save", toastOptions);
+      return;
+    }
 
     const response = await savePageLinks(links);
     if (response.success) {

@@ -63,6 +63,11 @@ const allButtons = [
   },
 ];
 
+const toastOptions = {
+  id: 0,
+  duration: 1500,
+};
+
 function UserSocialForm({ user, session }: any) {
   const pageSavedButton = user.button ? Object.keys(user.button) : [];
   const buttonInfo = pageSavedButton
@@ -96,7 +101,10 @@ function UserSocialForm({ user, session }: any) {
     const hasChanged = // stringify works because order is also important
       JSON.stringify(currentState) !== JSON.stringify(prevState);
 
-    if (!hasChanged) return;
+    if (!hasChanged) {
+      toast.info("Nothing to save", toastOptions);
+      return;
+    }
 
     const result = await saveSocials(formData);
 
