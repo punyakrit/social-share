@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import DashboardSectionComponent from "./DashboardSectionComponent";
 import { GripVertical, Link, Plus, Trash, UploadCloud } from "lucide-react";
@@ -10,6 +10,7 @@ import { toast } from "sonner";
 
 function UserLinks({ user, session }: any) {
   const [links, setLinks] = useState(user.links || []);
+  const [prevState, setPrevState] = useState(user.links || []); // save state to check for changes
 
   async function handleImageChange(
     e: React.ChangeEvent<HTMLInputElement>,
@@ -45,9 +46,16 @@ function UserLinks({ user, session }: any) {
   async function save(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
+    const hasChanged = JSON.stringify(links) !== JSON.stringify(prevState);
+
+    // no changes
+    if (!hasChanged) return;
+
     const response = await savePageLinks(links);
-    if(response.success) toast.success(response.message);
-    else toast.error(response.message);
+    if (response.success) {
+      toast.success(response.message);
+      setPrevState(links);
+    } else toast.error(response.message);
   }
 
   function addNewLink(e: React.MouseEvent<HTMLButtonElement>) {

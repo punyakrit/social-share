@@ -70,6 +70,9 @@ function UserSocialForm({ user, session }: any) {
     .filter(Boolean); // Ensure no undefined values are included
 
   const [activeButtons, setActiveButtons] = useState<any[]>(buttonInfo);
+  const [prevState, setPrevState] = useState<any[]>(
+    user?.button ? [...Object.entries(user.button)] : []
+  ); // save state to check for changes
 
   const availableButtons = allButtons.filter(
     (button) =>
@@ -88,10 +91,19 @@ function UserSocialForm({ user, session }: any) {
   async function saveDetails(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
+    const currentState = [...formData.entries()];
+
+    const hasChanged = // stringify works because order is also important
+      JSON.stringify(currentState) !== JSON.stringify(prevState);
+
+    if (!hasChanged) return;
+
     const result = await saveSocials(formData);
-    
-    if(result.success) toast.success(result.message);
-    else toast.error(result.message);
+
+    if (result.success) {
+      toast.success(result.message);
+      setPrevState(currentState);
+    } else toast.error(result.message);
   }
 
   function removeButton(item: any) {
