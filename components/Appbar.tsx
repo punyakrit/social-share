@@ -30,6 +30,9 @@ async function Appbar() {
             <Link href="/contributors">Contributors</Link>
           </div>
           <div className="transition duration-500 text-white/50 hover:cursor-pointer hover:text-white ">
+            <Link href="/faq">FAQs</Link>
+          </div>
+          <div className="transition duration-500 text-white/50 hover:cursor-pointer hover:text-white ">
             <Link href="https://github.com/punyakrit/social-share" target="_blank">
               <GitHubAppbar />
             </Link>
