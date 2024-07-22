@@ -8,12 +8,11 @@ import { Label } from "../ui/label";
 import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
 import { UserProfile } from "@/actions/UserProfile";
-import { useToast } from "../ui/use-toast";
+import { toast } from "sonner";
 import DashboardSectionComponent from "./DashboardSectionComponent";
 import UserSocialForm from "./UserSocialForm";
 
 function UserSettings({ user, session }: any) {
-  const { toast } = useToast();
   const [bgType, setBgType] = useState(user.bgType);
   const [bgColor, setBgColor] = useState(user.bgColor);
   const [bgImage, setBgImage] = useState(user.bgImage);
@@ -38,16 +37,12 @@ function UserSettings({ user, session }: any) {
     try {
       const result = await UserProfile(formData);
       console.log(result);
-      toast({
-        variant: "default",
-        description: "Details saved",
-      });
-    } catch (error) {
+
+      if(result.success) toast.success(result.message);
+      else toast.error(result.message);
+    } catch (error: any) {
       console.error("Error saving user profile:", error);
-      toast({
-        variant: "destructive",
-        description: "Failed to save details",
-      });
+      toast.error(error?.message);
     }
   }
 
@@ -62,6 +57,12 @@ function UserSettings({ user, session }: any) {
           body: data,
         });
         const result = await res.json();
+        
+        // success
+        if (result.link) toast.success("Image uploaded successfully");
+        //error
+        else toast.error("Failed to upload image");
+
         setAvatarImage(result.link);
       } catch (error) {
         console.error("Error uploading avatar:", error);
@@ -80,6 +81,12 @@ function UserSettings({ user, session }: any) {
           body: data,
         });
         const result = await res.json();
+
+        // success
+        if (result.link) toast.success("Image uploaded successfully");
+        //error
+        else toast.error("Failed to upload image");
+
         setBgImage(result.link);
       } catch (error) {
         console.error("Error uploading file:", error);
