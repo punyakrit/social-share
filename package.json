@@ -30,7 +30,7 @@
     "lottie-react": "^2.4.0",
     "lucide-react": "^0.378.0",
     "mini-svg-data-uri": "^1.4.4",
-    "mongodb": "^6.7.0",
+    "mongodb": "^6.8.0",
     "mongoose": "^8.4.1",
     "next": "^14.2.3",
     "next-auth": "^4.24.7",
