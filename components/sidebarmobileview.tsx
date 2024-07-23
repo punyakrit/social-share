@@ -16,7 +16,7 @@ export const SidebarMobileView = () => {
           {/* <HiMenuAlt1 className="text-3xl transition-colors duration-300" /> */}
         </div>
         {isOpen && (
-          <div className="fixed inset-0 bg-gray-800 text-white shadow-lg pb-[18.5rem] px-4 pt-2">
+          <div className="fixed inset-0 bg-gray-800 text-white shadow-lg pb-[23.5rem] px-4 pt-2">
             <div
               className="p-4 hover:text-gray-400 mx-auto border-2 border-slate-500 rounded-md cursor-pointer transition-colors duration-300 text-center"
               onClick={() => setIsOpen(!isOpen)}
@@ -40,6 +40,12 @@ export const SidebarMobileView = () => {
               onClick={() => setIsOpen(!isOpen)}
             >
               <Link href="/contributors">Contributors</Link>
+            </div>
+            <div
+              className="p-4 hover:text-gray-400 mt-4 border-2 border-slate-500 rounded-md cursor-pointer transition-colors duration-300 text-center"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              <Link href="/faq">FAQs</Link>
             </div>
           </div>
         )}
