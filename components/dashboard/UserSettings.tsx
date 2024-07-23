@@ -12,6 +12,11 @@ import { toast } from "sonner";
 import DashboardSectionComponent from "./DashboardSectionComponent";
 import UserSocialForm from "./UserSocialForm";
 
+const toastOptions = {
+  id: 0,
+  duration: 1500,
+};
+
 function UserSettings({ user, session }: any) {
   const [bgType, setBgType] = useState(user.bgType);
   const [bgColor, setBgColor] = useState(user.bgColor);
@@ -19,6 +24,7 @@ function UserSettings({ user, session }: any) {
   const [avatarImage, setAvatarImage] = useState(
     user.avatarImage || session?.user?.image
   );
+  const [prevState, setPrevState] = useState(user); // save state to check for changes
 
   useEffect(() => {
     setBgType(user.bgType);
@@ -34,12 +40,27 @@ function UserSettings({ user, session }: any) {
     formData.set("bgImage", bgImage); // Set the bgImage in formData
     formData.set("avatarImage", avatarImage);
 
+    const currentState = [...formData.entries()];
+
+    // compare form values with previous state
+    const hasChanged = currentState.some(
+      ([key, value]) => prevState[key] !== value
+    );
+
+    // no changes
+    if (!hasChanged) {
+      toast.info("Nothing to save", toastOptions);
+      return;
+    }
+
     try {
       const result = await UserProfile(formData);
       console.log(result);
 
-      if(result.success) toast.success(result.message);
-      else toast.error(result.message);
+      if (result.success) {
+        toast.success(result.message);
+        setPrevState(Object.fromEntries(currentState));
+      } else toast.error(result.message);
     } catch (error: any) {
       console.error("Error saving user profile:", error);
       toast.error(error?.message);
@@ -57,9 +78,9 @@ function UserSettings({ user, session }: any) {
           body: data,
         });
         const result = await res.json();
-        
+
         // success
-        if (result.link) toast.success("Image uploaded successfully");
+        if (result.link) toast.success("Image uploaded. Please save details");
         //error
         else toast.error("Failed to upload image");
 
@@ -83,7 +104,7 @@ function UserSettings({ user, session }: any) {
         const result = await res.json();
 
         // success
-        if (result.link) toast.success("Image uploaded successfully");
+        if (result.link) toast.success("Image uploaded. Please save details");
         //error
         else toast.error("Failed to upload image");
 
@@ -101,7 +122,7 @@ function UserSettings({ user, session }: any) {
 
   return (
     <DashboardSectionComponent>
-      <form onSubmit={handleSubmit} >
+      <form onSubmit={handleSubmit}>
         <div
           className="rounded-t-3xl -mt-1 min-h-[250px] py-5 flex justify-center items-center bg-cover bg-center"
           style={style}
