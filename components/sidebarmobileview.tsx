@@ -24,7 +24,7 @@ export const SidebarMobileView = () => {
             className="absolute top-5 right-5 cursor-pointer text-xl text-white  fa fa-times"
             onClick={() => setIsOpen(false)}
           ></div>
-          <div className="mt-12">
+          <div className="mt-12 font-bold">
             <div
               className="p-4 hover:text-gray-400 mx-auto border-2 border-slate-500 rounded-md cursor-pointer transition-colors duration-300 text-center"
               onClick={() => setIsOpen(!isOpen)}
