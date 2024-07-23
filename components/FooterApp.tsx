@@ -3,6 +3,8 @@ import { Github, Linkedin } from "lucide-react";
 import XIcon from "./ui/XIcon";
 
 function FooterApp() {
+  const today = new Date();
+  const year = today.getFullYear();
   return (
     <footer className="bg-gray-900 border-t backdrop-blur-sm text-white">
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
@@ -84,7 +86,7 @@ function FooterApp() {
         <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
         <div className="sm:flex sm:items-center sm:justify-between">
           <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-            © 2024{" "}
+            &copy; {year} {" "}
             <Link href="#" className="hover:underline">
               ShareHub
             </Link>
