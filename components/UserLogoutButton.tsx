@@ -1,23 +1,24 @@
 "use client";
 import React from "react";
-import { Button } from "./ui/button";
 import { signOut } from "next-auth/react";
-import { toast} from "sonner";
+import { toast } from "sonner";
+import { LogOut } from "lucide-react";
 
-function UserLogoutButton() {
+function UserLogoutButton({ onClick }: { onClick: () => void }) {
   return (
-    <div>
-      <Button
-        onClick={() => {
-          setTimeout(()=>{
-            signOut();
-          },500)
-          toast.success('Logged out successfully.')
-          }}
-      >
-        LogOut
-      </Button>
-    </div>
+    <button
+      onClick={() => {
+        setTimeout(() => {
+          signOut();
+        }, 500);
+        toast.success("Logged out successfully.");
+        onClick(); // to close popover card
+      }}
+      className="flex items-center px-5 py-2 gap-1.5 text-sm text-rose-800 hover:text-red-600 hover:bg-red-900 hover:bg-opacity-20 duration-300"
+    >
+      <LogOut className="h-5" />
+      Logout
+    </button>
   );
 }
 
