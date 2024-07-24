@@ -1,71 +1,87 @@
-
+'use client';
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import axios from "axios";
-import { CardBody, CardContainer, CardItem } from "../ui/3d-card";
 import Link from "next/link";
-import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import { Key, ReactElement, JSXElementConstructor, ReactNode, ReactPortal, AwaitedReactNode } from "react";
 
-async function Contributors() {
+const ITEMS_PER_PAGE = 10;
 
-  const res = await axios.get('https://api.github.com/repos/punyakrit/social-share/contributors')
-  const contributors = res.data
-  
+async function getContributors() {
+  const res = await axios.get('https://api.github.com/repos/punyakrit/social-share/contributors');
+  return res.data;
+}
+
+export default function Contributors() {
+  const [contributors, setContributors] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  // Load data initially
+  useEffect(() => {
+    getContributors().then(data => setContributors(data));
+  }, []);
+
+  // Pagination logic
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const endIndex = startIndex + ITEMS_PER_PAGE;
+  const paginatedContributors = contributors.slice(startIndex, endIndex);
+
+  const totalPages = Math.ceil(contributors.length / ITEMS_PER_PAGE);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
 
   return (
-    <div className="h-full ">
-      <div className="py-20">
-        <h2 className="text-2xl font-bold pt-10 text-white text-center">Contributors</h2>
-        <div className="flex flex-wrap   sm:px-20 mt-20 justify-center  ">
-          {contributors.map((contributor: { url: string; id: Key | null | undefined; login: string | number | bigint | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined; avatar_url: string | StaticImport; contributions: string | number | bigint | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined; }) => {
+    <div className="bg-gray-900 min-h-screen py-10 px-4 sm:px-8 lg:px-16 text-white ">
+      <div className="max-w-screen-lg mx-auto">
+        <h2 className="text-4xl font-extrabold text-center mb-12 mt-24">Our Contributors</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {paginatedContributors.map((contributor: { url: string; id: Key | null | undefined; login: string; avatar_url: string; contributions: number }) => {
             const username = contributor.url.split("/").pop();
             const profileUrl = `https://github.com/${username}`;
             return (
-              <div key={contributor.id} className="-mt-32 p-5">
-                <CardContainer className="inter-var">
-                  <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
-                    <CardItem
-                      translateZ="50"
-                      className="text-xl font-bold text-neutral-600 dark:text-white"
-                    >
-                      {contributor.login}
-                    </CardItem>
-
-                    <CardItem translateZ="100" className="w-full mt-4">
-                      <Image
-                        src={contributor.avatar_url}
-                        height="300"
-                        width="300"
-                        className="h-60 w-full  object-contain rounded-xl group-hover/card:shadow-xl"
-                        alt="thumbnail"
-                      />
-                    </CardItem>
-                    <div className="flex justify-between items-center mt-20">
-                      <CardItem
-                        translateZ={20}
-                        className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
-                      >
-                        Contributions : {contributor.contributions}
-                      </CardItem>
-                      <CardItem
-                        translateZ={20}
-                        as={Link}
-                        target={"_blank"}
-                        href={profileUrl}
-                        className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
-                      >
-                        Github Profile
-                      </CardItem>
-                    </div>
-                  </CardBody>
-                </CardContainer>
+              <div key={contributor.id} className="bg-gray-800 p-6 rounded-lg shadow-lg transform transition-transform hover:scale-105">
+                <div className="flex items-center mb-4">
+                  <Image
+                    src={contributor.avatar_url}
+                    height="100"
+                    width="100"
+                    className="rounded-full border-4 border-gray-600"
+                    alt={contributor.login}
+                  />
+                  <div className="ml-4">
+                    <h3 className="text-2xl font-semibold w-fit">{contributor.login}</h3>
+                    <p className="text-sm text-gray-400">Contributions: {contributor.contributions}</p>
+                  </div>``
+                </div>
+                  <a href={profileUrl}className="inline-block px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition-colors">
+                    GitHub Profile
+                  </a>
               </div>
             );
           })}
+        </div>
+        <div className="flex justify-center mt-10 space-x-4">
+          <button
+            onClick={() => handlePageChange(Math.max(currentPage - 1, 1))}
+            disabled={currentPage === 1}
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-700 transition-colors disabled:opacity-50"
+          >
+            Previous
+          </button>
+          <span className="flex items-center px-4 py-2 text-lg">
+            Page {currentPage} of {totalPages}
+          </span>
+          <button
+            onClick={() => handlePageChange(Math.min(currentPage + 1, totalPages))}
+            disabled={currentPage === totalPages}
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-700 transition-colors disabled:opacity-50"
+          >
+            Next
+          </button>
         </div>
       </div>
     </div>
   );
 }
-
-export default Contributors;
