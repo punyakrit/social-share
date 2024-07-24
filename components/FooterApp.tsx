@@ -3,6 +3,8 @@ import { Github, Linkedin } from "lucide-react";
 import XIcon from "./ui/XIcon";
 
 function FooterApp() {
+  const today = new Date();
+  const year = today.getFullYear();
   return (
     <footer className="bg-gray-900 border-t backdrop-blur-sm text-white">
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
@@ -25,11 +27,11 @@ function FooterApp() {
                 Follow us
               </h2>
               <ul className="text-gray-500 dark:text-gray-400 font-medium">
-                <li className="mb-4 hover-scale" >
+                <li className="mb-4 hover-scale">
                   <Link
                     href="https://github.com/punyakrit/social-share"
                     target="_blank"
-                    className="transition ease duration-150 hover:text-white hover:cursor-pointer "
+                    className="transition ease duration-150 hover:text-white hover:cursor-pointer"
                   >
                     Github
                   </Link>
@@ -38,7 +40,7 @@ function FooterApp() {
                   <Link
                     href="https://www.linkedin.com/in/punyakrit-singh-makhni/"
                     target="_blank"
-                    className="transition ease duration-150 hover:text-white hover:cursor-pointer hover-scale"
+                    className="transition ease duration-150 hover:text-white hover:cursor-pointer"
                   >
                     Linkedin
                   </Link>
@@ -54,7 +56,7 @@ function FooterApp() {
                   <Link
                     href="/policy"
                     target="_blank"
-                    className="transition ease duration-150 hover:text-white hover:cursor-pointer hover-scale"
+                    className="transition ease duration-150 hover:text-white hover:cursor-pointer"
                   >
                     Privacy Policy
                   </Link>
@@ -63,7 +65,7 @@ function FooterApp() {
                   <Link
                     href="/terms_conditions"
                     target="_blank"
-                    className="transition ease duration-150 hover:text-white hover:cursor-pointer hover-scale"
+                    className="transition ease duration-150 hover:text-white hover:cursor-pointer"
                   >
                     Terms &amp; Conditions
                   </Link>
@@ -72,19 +74,37 @@ function FooterApp() {
                   <Link
                     href="/licensing"
                     target="_blank"
-                    className="transition ease duration-150 hover:text-white hover:cursor-pointer hover-scale"
+                    className="transition ease duration-150 hover:text-white hover:cursor-pointer"
                   >
                     Licensing
                   </Link>
                 </li>
               </ul>
             </div>
+            <div>
+              <h2 className="mb-6 text-sm font-semibold text-gray-300 uppercase dark:text-white">
+                Newsletter
+              </h2>
+              <form className="flex flex-col space-y-4">
+                <input
+                  type="email"
+                  placeholder="Your email address"
+                  className="px-4 py-2 rounded bg-gray-800 text-gray-200 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-600"
+                />
+                <button
+                  type="submit"
+                  className="px-4 py-2 rounded bg-blue-600 hover:bg-blue-700 text-white font-semibold"
+                >
+                  Subscribe
+                </button>
+              </form>
+            </div>
           </div>
         </div>
         <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
         <div className="sm:flex sm:items-center sm:justify-between">
           <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-            © 2024{" "}
+            &copy; {year} {" "}
             <Link href="#" className="hover:underline">
               ShareHub
             </Link>

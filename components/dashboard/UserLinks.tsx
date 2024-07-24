@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import DashboardSectionComponent from "./DashboardSectionComponent";
 import { GripVertical, Link, Plus, Trash, UploadCloud } from "lucide-react";
@@ -6,11 +6,16 @@ import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { ReactSortable } from "react-sortablejs";
 import { savePageLinks } from "@/actions/UserProfile";
-import { useToast } from "../ui/use-toast";
+import { toast } from "sonner";
+
+const toastOptions = {
+  id: 0,
+  duration: 1500,
+};
 
 function UserLinks({ user, session }: any) {
   const [links, setLinks] = useState(user.links || []);
-  const { toast } = useToast();
+  const [prevState, setPrevState] = useState(user.links || []); // save state to check for changes
 
   async function handleImageChange(
     e: React.ChangeEvent<HTMLInputElement>,
@@ -26,6 +31,12 @@ function UserLinks({ user, session }: any) {
           body: data,
         });
         const result = await res.json();
+
+        // success
+        if (result.link) toast.success("Image uploaded successfully");
+        //error
+        else toast.error("Failed to upload image");
+
         setLinks((prev: any) =>
           prev.map((link: any, i: number) =>
             i === index ? { ...link, icon: result.link } : link
@@ -40,13 +51,19 @@ function UserLinks({ user, session }: any) {
   async function save(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    const success = await savePageLinks(links);
-    if (success) {
-      toast({
-        variant: "default",
-        description: "Details saved",
-      });
+    const hasChanged = JSON.stringify(links) !== JSON.stringify(prevState);
+
+    // no changes
+    if (!hasChanged) {
+      toast.info("Nothing to save", toastOptions);
+      return;
     }
+
+    const response = await savePageLinks(links);
+    if (response.success) {
+      toast.success(response.message);
+      setPrevState(links);
+    } else toast.error(response.message);
   }
 
   function addNewLink(e: React.MouseEvent<HTMLButtonElement>) {

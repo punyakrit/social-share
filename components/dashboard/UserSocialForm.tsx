@@ -16,7 +16,7 @@ import { FaDiscord, FaTrash, FaWhatsapp } from "react-icons/fa";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { saveSocials } from "@/actions/UserProfile";
-import { useToast } from "../ui/use-toast";
+import { toast } from "sonner";
 
 const allButtons = [
   {
@@ -63,6 +63,11 @@ const allButtons = [
   },
 ];
 
+const toastOptions = {
+  id: 0,
+  duration: 1500,
+};
+
 function UserSocialForm({ user, session }: any) {
   const pageSavedButton = user.button ? Object.keys(user.button) : [];
   const buttonInfo = pageSavedButton
@@ -70,7 +75,9 @@ function UserSocialForm({ user, session }: any) {
     .filter(Boolean); // Ensure no undefined values are included
 
   const [activeButtons, setActiveButtons] = useState<any[]>(buttonInfo);
-  const { toast } = useToast();
+  const [prevState, setPrevState] = useState<any[]>(
+    user?.button ? [...Object.entries(user.button)] : []
+  ); // save state to check for changes
 
   const availableButtons = allButtons.filter(
     (button) =>
@@ -89,11 +96,22 @@ function UserSocialForm({ user, session }: any) {
   async function saveDetails(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
+    const currentState = [...formData.entries()];
+
+    const hasChanged = // stringify works because order is also important
+      JSON.stringify(currentState) !== JSON.stringify(prevState);
+
+    if (!hasChanged) {
+      toast.info("Nothing to save", toastOptions);
+      return;
+    }
+
     const result = await saveSocials(formData);
-    toast({
-      variant: "default",
-      description: "Details saved",
-    });
+
+    if (result.success) {
+      toast.success(result.message);
+      setPrevState(currentState);
+    } else toast.error(result.message);
   }
 
   function removeButton(item: any) {

@@ -27,7 +27,7 @@ function UserNameForm({ user }: any) {
     <div className="">
       <form
         onSubmit={handleSubmit}
-        className={`md:inline-flex md:flex-row flex-col items-center shadow-lg gap-5 `}
+        className={`md:inline-flex md:flex-row flex-col justify-center items-center shadow-lg gap-5 `}
         >
           <div
             onFocus={() => setInputActive(true)}
