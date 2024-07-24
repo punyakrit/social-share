@@ -1,30 +1,28 @@
 version: '3.8'
 
 services:
-  nextjs-app:
-    image: share
-    container_name: "nextjs-app"
+  web:
+    build: .
     ports:
       - "3000:3000"
     environment:
-      - NEXTAUTH_URL=http://localhost:3000 
+      - NEXTAUTH_URL=http://localhost:3000
       - NEXTAUTH_SECRET=your_nextauth_secret
-      - MONGODB_URI:mongodb=//mongo:27017/mydatabase
-      # - GOOGLE_CLIENT_ID=
-      # - GOOGLE_CLIENT_SECRET=
+      - MONGODB_URI=mongodb://mongo:27017/mydatabase
+      - GOOGLE_CLIENT_ID=your_google_client_id
+      - GOOGLE_CLIENT_SECRET=your_google_client_secret
+      - BUCKET=your_bucket_name
+      - S3_ACCESS_KEY=your_s3_access_key
+      - S3_SECRET_ACCESS_KEY=your_s3_secret_access_key
     depends_on:
-      - "mongo"
-    command: sh -c "npm install && npm run dev"
+      - mongo
 
   mongo:
     image: mongo:latest
-    container_name: mongodbs
-    volumes:
-      - mongodb-data:/data/db
     ports:
       - "27017:27017"
-  
+    volumes:
+      - mongo-data:/data/db
+
 volumes:
-    mongodb-data:
-      
-      
+  mongo-data:

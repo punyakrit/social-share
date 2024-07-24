@@ -27,11 +27,11 @@ function FooterApp() {
                 Follow us
               </h2>
               <ul className="text-gray-500 dark:text-gray-400 font-medium">
-                <li className="mb-4 hover-scale" >
+                <li className="mb-4 hover-scale">
                   <Link
                     href="https://github.com/punyakrit/social-share"
                     target="_blank"
-                    className="transition ease duration-150 hover:text-white hover:cursor-pointer "
+                    className="transition ease duration-150 hover:text-white hover:cursor-pointer"
                   >
                     Github
                   </Link>
@@ -40,7 +40,7 @@ function FooterApp() {
                   <Link
                     href="https://www.linkedin.com/in/punyakrit-singh-makhni/"
                     target="_blank"
-                    className="transition ease duration-150 hover:text-white hover:cursor-pointer hover-scale"
+                    className="transition ease duration-150 hover:text-white hover:cursor-pointer"
                   >
                     Linkedin
                   </Link>
@@ -56,7 +56,7 @@ function FooterApp() {
                   <Link
                     href="/policy"
                     target="_blank"
-                    className="transition ease duration-150 hover:text-white hover:cursor-pointer hover-scale"
+                    className="transition ease duration-150 hover:text-white hover:cursor-pointer"
                   >
                     Privacy Policy
                   </Link>
@@ -65,7 +65,7 @@ function FooterApp() {
                   <Link
                     href="/terms_conditions"
                     target="_blank"
-                    className="transition ease duration-150 hover:text-white hover:cursor-pointer hover-scale"
+                    className="transition ease duration-150 hover:text-white hover:cursor-pointer"
                   >
                     Terms &amp; Conditions
                   </Link>
@@ -74,12 +74,30 @@ function FooterApp() {
                   <Link
                     href="/licensing"
                     target="_blank"
-                    className="transition ease duration-150 hover:text-white hover:cursor-pointer hover-scale"
+                    className="transition ease duration-150 hover:text-white hover:cursor-pointer"
                   >
                     Licensing
                   </Link>
                 </li>
               </ul>
+            </div>
+            <div>
+              <h2 className="mb-6 text-sm font-semibold text-gray-300 uppercase dark:text-white">
+                Newsletter
+              </h2>
+              <form className="flex flex-col space-y-4">
+                <input
+                  type="email"
+                  placeholder="Your email address"
+                  className="px-4 py-2 rounded bg-gray-800 text-gray-200 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-600"
+                />
+                <button
+                  type="submit"
+                  className="px-4 py-2 rounded bg-blue-600 hover:bg-blue-700 text-white font-semibold"
+                >
+                  Subscribe
+                </button>
+              </form>
             </div>
           </div>
         </div>
