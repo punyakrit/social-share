@@ -40,7 +40,7 @@ const allButtons = [
     label: "Instagram",
     icon: <Instagram />,
     placeholder: "https://www.instagram.com/sharehub.xyz/",
-    regex: /^https?:\/\/(www\.)?instagram\.com\/(?!\.|[0-9]+)(?:[a-zA-Z0-9_.]{1,30})$/    
+    regex: /^https?:\/\/(www\.)?instagram\.com\/(?:(?=.*[a-zA-Z]))([A-Za-z0-9_](?:(?:[A-Za-z0-9_]|(?:\.(?!\.))){0,28}(?:[A-Za-z0-9_]))?)$/
   },
   {
     key: "facebook",
