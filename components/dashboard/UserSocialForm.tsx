@@ -17,6 +17,7 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { saveSocials } from "@/actions/UserProfile";
 import { toast } from "sonner";
+import clsx from "clsx";
 
 const allButtons = [
   {
@@ -24,18 +25,22 @@ const allButtons = [
     label: "E-Mail",
     icon: <Mail />,
     placeholder: "JohnDoe@sharehub.xyz",
+    regex:
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
   },
   {
     key: "mobile",
     label: "Mobile",
     icon: <Phone />,
-    placeholder: "+91 - 9900990099",
+    placeholder: "+91 9900990099",
+    regex: /((\+*)((0[ -]*)*|((91 )*))((\d{12})+|(\d{10})+))|\d{5}([- ]*)\d{6}/,
   },
   {
     key: "instagram",
     label: "Instagram",
     icon: <Instagram />,
     placeholder: "https://www.instagram.com/sharehub.xyz/",
+    regex: /^https?:\/\/(www\.)?instagram\.com\/(?:(?=.*[a-zA-Z]))([A-Za-z0-9_](?:(?:[A-Za-z0-9_]|(?:\.(?!\.))){0,28}(?:[A-Za-z0-9_]))?)$/
   },
   {
     key: "facebook",
@@ -47,13 +52,15 @@ const allButtons = [
     key: "whatsapp",
     label: "Whatsapp",
     icon: <FaWhatsapp className="text-2xl" />,
-    placeholder: "+91 - 9900990099",
+    placeholder: "+91 9900990099",
+    regex: /((\+*)((0[ -]*)*|((91 )*))((\d{12})+|(\d{10})+))|\d{5}([- ]*)\d{6}/,
   },
   {
     key: "github",
     label: "Github",
     icon: <Github />,
     placeholder: "https://github.com/sharehub",
+    regex: /^http(s)?:\/\/(www.)?github.com\/([a-z0-9](-?[a-z0-9]){0,38})$/i,
   },
   {
     key: "website",
@@ -78,6 +85,13 @@ function UserSocialForm({ user, session }: any) {
   const [prevState, setPrevState] = useState<any[]>(
     user?.button ? [...Object.entries(user.button)] : []
   ); // save state to check for changes
+
+  // to save id of invalid input element
+  const [error, setError] = useState("");
+
+  const clearErrors = () => {
+    if (error) setError("");
+  };
 
   const availableButtons = allButtons.filter(
     (button) =>
@@ -106,6 +120,22 @@ function UserSocialForm({ user, session }: any) {
       return;
     }
 
+    // validate inputs before saving
+    if (process.env.NODE_ENV === "production") {
+      for (const [key, val] of currentState) {
+        let button = allButtons.find((b) => b.key === key);
+        if (
+          button?.regex &&
+          !button.regex.test(val.toString().trim()) // match regex
+        ) {
+          toast.error(`Invalid value for ${button.label}`, { id: key });
+          document.getElementById(button.key)?.focus();
+          setError(key);
+          return;
+        }
+      }
+    }
+
     const result = await saveSocials(formData);
 
     if (result.success) {
@@ -122,7 +152,7 @@ function UserSocialForm({ user, session }: any) {
 
   return (
     <DashboardSectionComponent>
-      <form onSubmit={saveDetails}>
+      <form onSubmit={saveDetails} onChange={clearErrors}>
         <div className="text-2xl font-bold py-4 pl-3">Social Buttons</div>
         <div className="px-6 py-6">
           <ReactSortable list={activeButtons} setList={setActiveButtons}>
@@ -139,7 +169,11 @@ function UserSocialForm({ user, session }: any) {
                   id={item.key}
                   name={item.key}
                   type="text"
-                  className="bg-transparent text-sm"
+                  className={clsx(
+                    "bg-transparent text-sm duration-200",
+                    error === item.key &&
+                      "focus-visible:outline-none focus-visible:border-red-400 focus-visible:ring-offset-red-400"
+                  )}
                   placeholder={item.placeholder}
                   required
                   defaultValue={
