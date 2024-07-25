@@ -1,10 +1,58 @@
-import Link from "next/link";
-import { Github, Linkedin } from "lucide-react";
-import XIcon from "./ui/XIcon";
+'use client'; // Add this directive at the top
+
+import Link from 'next/link';
+import { Github, Linkedin } from 'lucide-react';
+import XIcon from './ui/XIcon';
+import { useState } from 'react';
+import emailjs from 'emailjs-com';
 
 function FooterApp() {
+  const [email, setEmail] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
+
+  const handleSubscribe = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); // Prevent the default form submission
+
+    if (!email) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+
+    console.log("Email sent to", email);
+
+    const emailData = {
+      service_id:"your_service_id",
+      template_id: "your_template_id",
+      user_id: "your_user_id",
+      template_params: { user_email: email }
+    };
+
+    setLoading(true);
+    setError('');
+    setSuccess('');
+
+    try {
+      const response = await emailjs.send(
+        emailData.service_id,
+      emailData.template_id,
+      emailData.template_params,
+      emailData.user_id
+      );
+      console.log('Email sent successfully:', response);
+      setSuccess('Subscription email sent');
+    } catch (error) {
+      console.error('Error:', error);
+      setError('Failed to send subscription email');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const today = new Date();
   const year = today.getFullYear();
+
   return (
     <footer className="bg-gray-900 border-t backdrop-blur-sm text-white">
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
@@ -18,7 +66,7 @@ function FooterApp() {
             <p className="text-sm text-gray-300 mt-2 mr-400">
               ShareHub is a Project where users can <br />create their public
               viewable profile containing <br />their customizable social links
-              and important links <br />that they want to share with the world.{" "}
+              and important links <br />that they want to share with the world.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
@@ -85,18 +133,23 @@ function FooterApp() {
               <h2 className="mb-6 text-sm font-semibold text-gray-300 uppercase dark:text-white">
                 Newsletter
               </h2>
-              <form className="flex flex-col space-y-4">
+              <form className="flex flex-col space-y-4" onSubmit={handleSubscribe}>
                 <input
                   type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="Your email address"
                   className="px-4 py-2 rounded bg-gray-800 text-gray-200 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-600"
                 />
                 <button
                   type="submit"
                   className="px-4 py-2 rounded bg-blue-600 hover:bg-blue-700 text-white font-semibold"
+                  disabled={loading}
                 >
-                  Subscribe
+                  {loading ? 'Sending...' : 'Subscribe'}
                 </button>
+                {error && <p className="text-red-500">{error}</p>}
+                {success && <p className="text-green-500">{success}</p>}
               </form>
             </div>
           </div>
@@ -104,7 +157,7 @@ function FooterApp() {
         <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
         <div className="sm:flex sm:items-center sm:justify-between">
           <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-            &copy; {year} {" "}
+            &copy; {year}{' '}
             <Link href="#" className="hover:underline">
               ShareHub
             </Link>
