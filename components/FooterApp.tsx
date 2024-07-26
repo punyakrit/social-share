@@ -1,16 +1,15 @@
-'use client'; // Add this directive at the top
+'use client';
 
 import Link from 'next/link';
 import { Github, Linkedin } from 'lucide-react';
 import XIcon from './ui/XIcon';
 import { useState } from 'react';
-import emailjs from 'emailjs-com';
 
 function FooterApp() {
-  const [email, setEmail] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  const [email, setEmail] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>('');
+  const [success, setSuccess] = useState<string>('');
 
   const handleSubscribe = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // Prevent the default form submission
@@ -20,31 +19,29 @@ function FooterApp() {
       return;
     }
 
-    console.log("Email sent to", email);
-
-    const emailData = {
-      service_id:"your_service_id",
-      template_id: "your_template_id",
-      user_id: "your_user_id",
-      template_params: { user_email: email }
-    };
-
     setLoading(true);
     setError('');
     setSuccess('');
 
     try {
-      const response = await emailjs.send(
-        emailData.service_id,
-      emailData.template_id,
-      emailData.template_params,
-      emailData.user_id
-      );
-      console.log('Email sent successfully:', response);
-      setSuccess('Subscription email sent');
+      // Store email in MongoDB
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (!res.ok) {
+        throw new Error('Failed to store email');
+      }
+
+      const result = await res.json();
+      setSuccess(result.message);
     } catch (error) {
       console.error('Error:', error);
-      setError('Failed to send subscription email');
+      setError('Failed to store email');
     } finally {
       setLoading(false);
     }
@@ -183,7 +180,7 @@ function FooterApp() {
               className="text-gray-500 hover:text-white dark:hover:text-white ms-5 transform-scale"
             >
               <Github className="w-6 h-6" />
-              <span className="sr-only">GitHub account</span>
+              <span className="sr-only">GitHub repository</span>
             </Link>
           </div>
         </div>
