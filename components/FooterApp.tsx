@@ -13,16 +13,16 @@ function FooterApp() {
 
   const handleSubscribe = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // Prevent the default form submission
-
+  
     if (!email) {
       alert('Please enter a valid email address.');
       return;
     }
-
+  
     setLoading(true);
     setError('');
     setSuccess('');
-
+  
     try {
       // Store email in MongoDB
       const res = await fetch('/api/subscribe', {
@@ -32,13 +32,14 @@ function FooterApp() {
         },
         body: JSON.stringify({ email }),
       });
-
-      if (!res.ok) {
-        throw new Error('Failed to store email');
-      }
-
+  
       const result = await res.json();
-      setSuccess(result.message);
+  
+      if (res.ok) {
+        setSuccess(result.message);
+      } else {
+        setError(result.message);
+      }
     } catch (error) {
       console.error('Error:', error);
       setError('Failed to store email');
@@ -46,6 +47,7 @@ function FooterApp() {
       setLoading(false);
     }
   };
+  
 
   const today = new Date();
   const year = today.getFullYear();

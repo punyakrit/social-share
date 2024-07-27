@@ -22,6 +22,10 @@ export async function POST(req: Request) {
     const collection = db.collection('subscribers'); // Replace with your collection name
 
     // Insert data into the collection
+    const existingSubscriber=await collection.findOne({email:data.email})
+    if(existingSubscriber){
+      return NextResponse.json({message:'Email already exists.Choose  another...'},{status:400})
+    }
     await collection.insertOne({ email: data.email });
 
     return NextResponse.json({ message: 'Email stored successfully' }, { status: 200 });
