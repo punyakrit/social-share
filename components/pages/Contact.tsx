@@ -99,22 +99,31 @@ const Contact = () => {
                 type="text"
                 placeholder="Full Name"
                 className="px-2 py-3 text-white bg-gray-900 w-full text-sm focus:border-[#333] outline-none"
+                onChange={handleChange}
+                value={formData.fullName}
               />
               <input
                 type="text"
                 placeholder="Street"
                 className="px-2 py-3 text-white bg-gray-900 w-full text-sm  focus:border-[#333] outline-none"
+                onChange={handleChange}
+                value={formData.street}
               />
               <div className="grid grid-cols-2 gap-6">
                 <input
                   type="text"
                   placeholder="City"
+                  value={formData.city}
                   className="px-2 py-3 bg-gray-900 w-full text-sm text-white focus:border-[#333] outline-none"
+                  onChange={handleChange}
                 />
+
 
                 <input
                   type="text"
                   placeholder="Postcode"
+                  value={formData.postcode}
+                  onChange={handleChange}
                   className="px-2 py-3 bg-gray-900 w-full text-sm text-white focus:border-[#333] outline-none"
                 />
               </div>
@@ -129,11 +138,15 @@ const Contact = () => {
               <input
                 type="email"
                 placeholder="Email"
+                onChange={handleChange}
+                value={formData.email}
                 className="px-2 py-3 bg-gray-900 text-white w-full text-sm focus:border-[#333] outline-none"
               />
 
               <textarea
                 placeholder="Write Message"
+                value={formData.message}
+                onChange={handleChange}
                 className="px-2 pt-3 bg-gray-900 text-white w-full text-sm focus:border-[#333] outline-none"
               ></textarea>
             </div>
