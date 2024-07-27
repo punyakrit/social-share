@@ -31,7 +31,9 @@ export default function Contributors() {
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
-
+  const truncateUsername = (username: string) => {
+    return username.length > 13 ? username.slice(0, 11) + '...' : username;
+  };
   return (
     <div className="bg-gray-900 min-h-screen py-10 px-4 sm:px-8 lg:px-16 text-white ">
       <div className="max-w-screen-lg mx-auto">
@@ -51,7 +53,7 @@ export default function Contributors() {
                     alt={contributor.login}
                   />
                   <div className="ml-4">
-                    <h3 className="text-2xl font-semibold w-fit">{contributor.login}</h3>
+                    <h3 className="text-2xl font-semibold w-fit">{truncateUsername(contributor.login)}</h3>
                     <p className="text-sm text-gray-400">Contributions: {contributor.contributions}</p>
                   </div>``
                 </div>
