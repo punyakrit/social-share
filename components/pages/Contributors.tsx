@@ -55,7 +55,7 @@ export default function Contributors() {
                   <div className="ml-4">
                     <h3 className="text-2xl font-semibold w-fit">{truncateUsername(contributor.login)}</h3>
                     <p className="text-sm text-gray-400">Contributions: {contributor.contributions}</p>
-                  </div>``
+                  </div>
                 </div>
                   <a href={profileUrl}className="inline-block px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition-colors">
                     GitHub Profile
