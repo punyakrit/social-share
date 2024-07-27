@@ -1,9 +1,26 @@
 "use client";
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { toast, Toaster } from 'sonner';
 
 const Contact = () => {
   const [phone, setPhone] = useState("");
+  const [formData, setFormData] = useState({
+    fullName: "",
+    street: "",
+    city: "",
+    postcode: "",
+    phoneNo: "",
+    email: "",
+    message: ""
+  });
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  }
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -16,19 +33,50 @@ const Contact = () => {
     }
   };
 
-  const handleSubmit = () => {
-    // Simulate form submission
-    try {
-      // Simulate success
-      toast.success('Message sent successfully!', {
-        duration: 4000, // Duration in milliseconds (4 seconds)
+  const handleSubmit = async () => {
+    if (
+      formData.fullName === "" ||
+      formData.street === "" ||
+      formData.city === "" ||
+      formData.postcode === "" ||
+      formData.phoneNo === "" ||
+      formData.email === "" ||
+      formData.message === ""
+    ) {
+      toast.error('Please fill out all fields before submitting.', {
+        duration: 4000,
       });
-      // Optionally, handle form reset or other actions here
-    } catch (error) {
-      // Simulate error
-      toast.error('Failed to send message. Please try again later.', {
-        duration: 4000, // Duration in milliseconds (4 seconds)
-      });
+    } else {
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+
+        if (response.ok) {
+          toast.success('Message sent successfully!', {
+            duration: 4000,
+          });
+          setFormData({
+            fullName: "",
+            street: "",
+            city: "",
+            postcode: "",
+            phoneNo: "",
+            email: "",
+            message: ""
+          }); // Reset form data
+        } else {
+          throw new Error('Failed to send message.');
+        }
+      } catch (error) {
+        toast.error('Failed to send message. Please try again later.', {
+          duration: 4000,
+        });
+      }
     }
   };
 
