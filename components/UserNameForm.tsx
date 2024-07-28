@@ -27,20 +27,20 @@ function UserNameForm({ user }: any) {
     <div className="">
       <form
         onSubmit={handleSubmit}
-        className={`md:inline-flex md:flex-row flex-col justify-center items-center shadow-lg gap-5 `}
+        className={`md:inline-flex md:flex-row flex-col justify-center max-w-screen items-center shadow-lg gap-5 `}
+      >
+        <div
+          onFocus={() => setInputActive(true)}
+          onBlur={() => setInputActive(false)}
+          className={`${
+            inputActive
+              ? " ring-[3px] ring-[#638fff] duration-300 rounded-2xl "
+              : ""
+          } flex ml-1 md:ml-[3rem] `}
         >
-          <div
-            onFocus={() => setInputActive(true)}
-            onBlur={() => setInputActive(false)}
-            className={`${
-              inputActive
-                ? " ring-[3px] ring-[#638fff] duration-300 rounded-2xl "
-                : ""
-            } flex ml-[3rem] `}
-          >
-            <span className="bg-white rounded-l-2xl py-4 md:pl-4 pl-5">
-              sharehub.xyz/
-            </span>
+          <span className="bg-white rounded-l-2xl py-4 md:pl-4 pl-5">
+            sharehub.xyz/
+          </span>
 
           <input
             value={username}
@@ -48,7 +48,7 @@ function UserNameForm({ user }: any) {
               setUsername(e.target.value);
             }}
             type="text"
-            className="py-4 md:pl-1 pl-1 pr-[5rem] outline-none rounded-r-2xl text-left"
+            className="py-4 md:pl-1 pl-1 pr-1 md:pr-[5rem] outline-none rounded-r-2xl text-left"
             placeholder="username"
           />
         </div>
@@ -58,15 +58,10 @@ function UserNameForm({ user }: any) {
         >
           Join for Free
         </Button> */}
-        
-          
-            <div className="pt-[15px] md:pt-0 ml-[-2rem]">
-            <MagicButton
-            title='Join For Free'
-            />
-            </div>
-               
-        
+
+        <div className="pt-[15px] md:pt-0 ml-[-2rem] ">
+          <MagicButton title="Join For Free" />
+        </div>
       </form>
     </div>
   );
