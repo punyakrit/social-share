@@ -1,9 +1,9 @@
 'use client';
 
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { Github, Linkedin } from 'lucide-react';
 import XIcon from './ui/XIcon';
-import { useState } from 'react';
 
 function FooterApp() {
   const [email, setEmail] = useState<string>('');
@@ -13,16 +13,16 @@ function FooterApp() {
 
   const handleSubscribe = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // Prevent the default form submission
-  
+
     if (!email) {
       alert('Please enter a valid email address.');
       return;
     }
-  
+
     setLoading(true);
     setError('');
     setSuccess('');
-  
+
     try {
       // Store email in MongoDB
       const res = await fetch('/api/subscribe', {
@@ -32,9 +32,9 @@ function FooterApp() {
         },
         body: JSON.stringify({ email }),
       });
-  
+
       const result = await res.json();
-  
+
       if (res.ok) {
         setSuccess(result.message);
       } else {
@@ -47,7 +47,6 @@ function FooterApp() {
       setLoading(false);
     }
   };
-  
 
   const today = new Date();
   const year = today.getFullYear();
@@ -114,7 +113,7 @@ function FooterApp() {
                     target="_blank"
                     className="transition ease duration-150 hover:text-white hover:cursor-pointer"
                   >
-                    Terms &amp; Conditions
+                    Terms & Conditions
                   </Link>
                 </li>
                 <li className="mb-4 hover-scale">
@@ -132,14 +131,23 @@ function FooterApp() {
               <h2 className="mb-6 text-sm font-semibold text-gray-300 uppercase dark:text-white">
                 Newsletter
               </h2>
-              <form className="flex flex-col space-y-4" onSubmit={handleSubscribe}>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Your email address"
-                  className="px-4 py-2 rounded bg-gray-800 text-gray-200 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-600"
-                />
+              <form className="flex flex-col space-y-3" onSubmit={handleSubscribe}>
+                <div className='relative'>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className={`px-4 py-2 rounded bg-gray-800 text-white text-opacity-90 border border-gray-700 
+                    focus:outline-none focus:ring-2 focus:ring-white transition duration-200
+                    ${email ? 'has-value' : ''}`}
+                  />
+                  <label
+                    className={`text-md text-white text-opacity-80 absolute left-3 top-2 transition duration-200
+                    ${email ? 'input-text-filled' : 'input-text'}`}
+                  >
+                    Enter your Email
+                  </label>
+                </div>
                 <button
                   type="submit"
                   className="px-4 py-2 rounded bg-blue-600 hover:bg-blue-700 text-white font-semibold"

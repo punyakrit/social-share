@@ -1,206 +1,166 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 @import 'font-awesome/css/font-awesome.min.css';
 
-::-webkit-scrollbar
-{
+::-webkit-scrollbar {
   width: 8px;
 }
 
-::-webkit-scrollbar-track
-{
+::-webkit-scrollbar-track {
   display: none;
 }
 
-::-webkit-scrollbar-thumb
-{
+::-webkit-scrollbar-thumb {
   background-color: #FFFFFF;
   border-radius: 20px;
   height: 5px;
 }
 
-  @layer base {
-    :root {
-      --background: 0 0% 100%;
-      --foreground: 222.2 84% 4.9%;
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
 
-      --card: 0 0% 100%;
-      --card-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
 
-      --popover: 0 0% 100%;
-      --popover-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
 
-      --primary: 222.2 47.4% 11.2%;
-      --primary-foreground: 210 40% 98%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
 
-      --secondary: 210 40% 96.1%;
-      --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
 
-      --muted: 210 40% 96.1%;
-      --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
 
-      --accent: 210 40% 96.1%;
-      --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
 
-      --destructive: 0 84.2% 60.2%;
-      --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
 
-      --border: 214.3 31.8% 91.4%;
-      --input: 214.3 31.8% 91.4%;
-      --ring: 222.2 84% 4.9%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
 
-      --radius: 0.5rem;
-    }
-
-    .dark {
-      --background: 222.2 84% 4.9%;
-      --foreground: 210 40% 98%;
-
-      --card: 222.2 84% 4.9%;
-      --card-foreground: 210 40% 98%;
-
-      --popover: 222.2 84% 4.9%;
-      --popover-foreground: 210 40% 98%;
-
-      --primary: 210 40% 98%;
-      --primary-foreground: 222.2 47.4% 11.2%;
-
-      --secondary: 217.2 32.6% 17.5%;
-      --secondary-foreground: 210 40% 98%;
-
-      --muted: 217.2 32.6% 17.5%;
-      --muted-foreground: 215 20.2% 65.1%;
-
-      --accent: 217.2 32.6% 17.5%;
-      --accent-foreground: 210 40% 98%;
-
-      --destructive: 0 62.8% 30.6%;
-      --destructive-foreground: 210 40% 98%;
-
-      --border: 217.2 32.6% 17.5%;
-      --input: 217.2 32.6% 17.5%;
-      --ring: 212.7 26.8% 83.9%;
-    }
+    --radius: 0.5rem;
   }
 
-  @layer base {
-    * {
-      @apply border-border;
-    }
-    body {
-      @apply bg-background text-foreground;
-    }
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
   }
+}
 
-
-  .radio-toggler {
-    @apply  p-1  bg-gray-200 inline-flex rounded-full;
+@layer base {
+  * {
+    @apply border-border;
   }
-
-  .radio-toggler div{
-    @apply  p-2 px-4 shadow text-gray-500  flex items-center gap-2 rounded-full;
+  body {
+    @apply bg-background text-foreground;
   }
+}
 
-  .radio-toggler input {
-    @apply  hidden;
-  }
+.radio-toggler {
+  @apply p-1 bg-gray-200 inline-flex rounded-full;
+}
 
-  .radio-toggler input:checked + div {
-    @apply  bg-white text-blue-600 rounded-full ;
-  }
+.radio-toggler div {
+  @apply p-2 px-4 shadow text-gray-500 flex items-center gap-2 rounded-full;
+}
 
+.radio-toggler input {
+  @apply hidden;
+}
 
-  
-  
+.radio-toggler input:checked + div {
+  @apply bg-white text-blue-600 rounded-full;
+}
 
+.hover-scale {
+  transition: transform 0.3s ease;
+}
 
-  .hover-scale {
-    transition: transform 0.3s ease;
-  }
-  
-  .hover-scale:hover {
-    transform: scale(1.05);
-  }
-  
-  .transform-scale {
-    transition: transform 0.3s ease;
-  }
+.hover-scale:hover {
+  transform: scale(1.05);
+}
 
-  .transform-scale:hover {
-    transform: scale(1.2);
-  }
-  
+.transform-scale {
+  transition: transform 0.3s ease;
+}
 
-
-
-/* 
-
-  Back to home button styles
-
-  Included in globals.css for consistent application across the site.
-
-  */
-
-
+.transform-scale:hover {
+  transform: scale(1.2);
+}
 
 .back-to-home-button {
-
   display: inline-flex;
-
   align-items: center;
-
   justify-content: center;
-
   width: 50px;
-
   height: 50px;
-
   margin-top: 30px;
-
   margin-left: 40px;
-
   padding: 10px;
-
   font-size: 16px;
-
   color: #fff;
-
   background-color: #172d44;
-
   border: none;
-
   border-radius: 25%;
-
   text-align: center;
-
   text-decoration: none;
-
   cursor: pointer;
-
   transition: background-color 0.3s ease;
-
 }
-
-
 
 .back-to-home-button:hover {
-
   background-color: #324456;
-
 }
-
-
-
-/* Back to home SVG/Icon */
 
 .back-to-home-button svg {
-
   fill: #ffffff;
-
   width: 200%;
-
   height: 100%;
-
-
 }
+
+
+
+
+label {
+  @apply text-base absolute left-3 top-2 rounded transition duration-200;
+}
+
+input[type="email"]:focus + label, input[type="email"].has-value + label {
+  @apply text-white bg-gray-800 top-1 left-0 px-1 transform -translate-y-4 -translate-x-1 scale-75;
+}
+
+
