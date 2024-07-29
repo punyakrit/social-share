@@ -18,7 +18,7 @@ async function UserProfileView({ params }: any) {
   });
 
   if (!page) {
-    return <Custom404/>;
+    return <Custom404 />;
   }
 
   function buttonLink(key: string, value: string) {
@@ -47,11 +47,11 @@ async function UserProfileView({ params }: any) {
     <div className="bg-gray-900">
       <div className="flex justify-center h-screen sm:py-3">
         <div
-          className="sm:w-[43%] md:w-1/2 lg:w-1/3 rounded-t-3xl overflow-y-scroll no-scrollbar rounded-3xl"
+          className="w-full sm:min-w-[400px] sm:w-[43%] md:w-1/2 lg:w-1/3 sm:rounded-t-3xl overflow-y-scroll no-scrollbar sm:rounded-3xl duration-300"
           style={{ backgroundColor: page.bgColor }}
         >
           <div
-            className="h-52 bg-gray-400 bg-cover bg-center rounded-t-3xl"
+            className="h-52 bg-gray-400 bg-cover bg-center sm:rounded-t-3xl"
             style={{ backgroundImage: `url(${page.bgImage})` }}
           ></div>
           <div className="text-white bg-gray-950 backdrop-blur-md mb-5 space-y-2 flex justify-center flex-col py-3">
@@ -83,13 +83,15 @@ async function UserProfileView({ params }: any) {
                     key={buttonKey}
                     target="_blank"
                     href={buttonLink(buttonKey, page.button[buttonKey])}
-                    className="rounded-2xl w-full bg-gray-950/90 flex items-center justify-between text-white p-3"
+                    className="rounded-2xl w-full bg-gray-950/90 flex items-center text-white p-3 px-5 gap-2 overflow-hidden"
                   >
-                    <div className="flex items-center">
-                      <IconComponent className="ml-4" />
-                      <span className="ml-4">{page.button[buttonKey]}</span>
+                    <div className="w-8">
+                      <IconComponent />
                     </div>
-                    <div className="flex justify-end mr-4">
+                    <div className="px-1 w-full overflow-hidden text-ellipsis text-nowrap">
+                      {page.button[buttonKey]}
+                    </div>
+                    <div className="w-8">
                       <Icons.Send />
                     </div>
                   </Link>
@@ -106,30 +108,27 @@ async function UserProfileView({ params }: any) {
                 ping={`${process.env.URL}api/click?url=${btoa(l.url)}&page=${
                   page.uri
                 }`}
-                className="bg-gray-950/90 rounded-3xl p-2 flex items-center"
+                className="bg-gray-950/90 rounded-3xl p-3 px-5 flex items-center gap-2"
                 href={l.url}
               >
-                <div className="relative overflow-hidden w-16">
-                  <div className="w-16 h-16 relative flex items-center justify-center aspect-square">
-                    {l.icon ? (
-                      <Image
-                        className="w-full h-full object-cover bg-gray-950 rounded-full border"
-                        src={l.icon}
-                        alt="icon"
-                        width={64}
-                        height={64}
-                      />
-                    ) : (
-                      <Icons.Link2 className="w-8 h-8" />
-                    )}
+                {l.icon ? (
+                  <Image
+                    className="w-12 h-12 object-cover bg-gray-950 rounded-full"
+                    src={l.icon}
+                    alt="icon"
+                    width={64}
+                    height={64}
+                  />
+                ) : (
+                  <div className="flex items-center w-12 h-12">
+                    <Icons.Link2 />
                   </div>
+                )}
+
+                <div className="overflow-hidden text-ellipsis text-nowrap">
+                  {l.title}
                 </div>
-                <div className="flex flex-grow items-center ml-4">
-                  <div>
-                    <h3>{l.title}</h3>
-                  </div>
-                </div>
-                <div className="flex-shrink-0 ml-auto mr-6">
+                <div className="w-16">
                   <Icons.Send />
                 </div>
               </Link>
