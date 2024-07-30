@@ -1,6 +1,6 @@
 "use client";
 import React, { ChangeEvent, useState } from "react";
-import { toast, Toaster } from 'sonner';
+import { toast, Toaster } from "sonner";
 
 const Contact = () => {
   const [phone, setPhone] = useState("");
@@ -11,16 +11,18 @@ const Contact = () => {
     postcode: "",
     phoneNo: "",
     email: "",
-    message: ""
+    message: "",
   });
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
-  }
+  };
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -43,21 +45,21 @@ const Contact = () => {
       formData.email === "" ||
       formData.message === ""
     ) {
-      toast.error('Please fill out all fields before submitting.', {
+      toast.error("Please fill out all fields before submitting.", {
         duration: 4000,
       });
     } else {
       try {
-        const response = await fetch('/api/contact', {
-          method: 'POST',
+        const response = await fetch("/api/contact", {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify(formData),
         });
 
         if (response.ok) {
-          toast.success('Message sent successfully!', {
+          toast.success("Message sent successfully!", {
             duration: 4000,
           });
           setFormData({
@@ -67,13 +69,13 @@ const Contact = () => {
             postcode: "",
             phoneNo: "",
             email: "",
-            message: ""
+            message: "",
           }); // Reset form data
         } else {
-          throw new Error('Failed to send message.');
+          throw new Error("Failed to send message.");
         }
       } catch (error) {
-        toast.error('Failed to send message. Please try again later.', {
+        toast.error("Failed to send message. Please try again later.", {
           duration: 4000,
         });
       }
@@ -81,11 +83,11 @@ const Contact = () => {
   };
 
   return (
-    <div className="main">
+    <div className="main mx-7 mb-10">
       <Toaster richColors position="bottom-right" />
       <h2 className="text-gray-900 mt-46 mb-36 text-center text-2xl">..</h2>
-      <div className="grid md:grid-cols-1 mb-56 gap-16 mt-0 items-center relative overflow-hidden p-10 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-3xl max-w-6xl mx-auto bg-gray-800 text-[#333] my-6 font-[sans-serif] before:absolute before:right-0 before:w-[0px] before:bg-gray-900 before:h-full max-md:before:hidden">
-        <div>
+      <div className="flex flex-col md:flex-row md:items-center mb-[5rem] relative overflow-hidden p-9 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-3xl max-w-6xl mx-auto bg-gray-800 text-[#333] my-6 font-[sans-serif] before:absolute before:right-0 before:w-[0px] before:bg-gray-900 before:h-full max-md:before:hidden">
+        <div className="w-full">
           <h2 className="text-3xl font-extrabold text-purple-400">
             Get In Touch
           </h2>
@@ -98,33 +100,35 @@ const Contact = () => {
               <input
                 type="text"
                 placeholder="Full Name"
-                className="px-2 py-3 text-white bg-gray-900 w-full text-sm focus:border-[#333] outline-none"
+                name="fullName"
+                className="px-2 py-3 text-white bg-gray-900 w-full text-md focus:border-[#333] rounded outline-none"
                 onChange={handleChange}
                 value={formData.fullName}
               />
               <input
                 type="text"
                 placeholder="Street"
-                className="px-2 py-3 text-white bg-gray-900 w-full text-sm  focus:border-[#333] outline-none"
+                name="street"
+                className="px-2 py-3 text-white bg-gray-900 w-full text-md focus:border-[#333] rounded outline-none"
                 onChange={handleChange}
                 value={formData.street}
               />
-              <div className="grid grid-cols-2 gap-6">
+              <div className="flex flex-col md:flex-row md:gap-6">
                 <input
                   type="text"
                   placeholder="City"
+                  name="city"
                   value={formData.city}
-                  className="px-2 py-3 bg-gray-900 w-full text-sm text-white focus:border-[#333] outline-none"
+                  className="px-2 py-3 bg-gray-900 w-full text-md text-white focus:border-[#333] outline-none rounded"
                   onChange={handleChange}
                 />
-
-
                 <input
                   type="text"
                   placeholder="Postcode"
+                  name="postcode"
                   value={formData.postcode}
                   onChange={handleChange}
-                  className="px-2 py-3 bg-gray-900 w-full text-sm text-white focus:border-[#333] outline-none"
+                  className="px-2 py-3 bg-gray-900 w-full text-md text-white focus:border-[#333] rounded outline-none mt-4 md:mt-0"
                 />
               </div>
               <input
@@ -132,22 +136,22 @@ const Contact = () => {
                 placeholder="Phone No."
                 value={phone}
                 onChange={handlePhoneChange}
-                className="px-2 py-3 bg-gray-900 text-white w-full text-sm focus:border-[#333] outline-none"
+                className="px-2 py-3 bg-gray-900 text-white w-full text-md focus:border-[#333] outline-none rounded"
               />
-
               <input
                 type="email"
                 placeholder="Email"
+                name="email"
                 onChange={handleChange}
                 value={formData.email}
-                className="px-2 py-3 bg-gray-900 text-white w-full text-sm focus:border-[#333] outline-none"
+                className="px-2 py-3 bg-gray-900 text-white w-full text-md focus:border-[#333] outline-none rounded"
               />
-
               <textarea
                 placeholder="Write Message"
+                name="message"
                 value={formData.message}
                 onChange={handleChange}
-                className="px-2 pt-3 bg-gray-900 text-white w-full text-sm focus:border-[#333] outline-none"
+                className="px-2 pt-3 bg-gray-900 text-white w-full text-md focus:border-[#333] outline-none rounded"
               ></textarea>
             </div>
             <button
@@ -173,7 +177,7 @@ const Contact = () => {
               Send Message
             </button>
           </form>
-          <ul className="mt-4 text-slate-200 flex justify-center lg:space-x-6 max-lg:flex-col max-lg:items-center max-lg:space-y-2 ">
+          <ul className="mt-6 text-slate-200 flex flex-col justify-center md:flex-row md:space-x-6 items-center md:items-start space-y-2 md:space-y-0">
             <li className="flex items-center hover:text-purple-500">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -194,8 +198,8 @@ const Contact = () => {
                 <strong>socialshare@gmail.com</strong>
               </a>
             </li>
-            <li className="flex items-center text-current hover:text-purple-500">
-              <svg
+            <li className="flex items-center hover:text-purple-500">
+            <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16px"
                 height="16px"
@@ -211,8 +215,8 @@ const Contact = () => {
                 <strong>India</strong>
               </span>
             </li>
-            <li className="flex items-center text-current hover:text-purple-500">
-              <svg
+            <li className="flex items-center hover:text-purple-500">
+            <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16px"
                 height="16px"
