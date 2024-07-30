@@ -142,6 +142,7 @@ function FooterApp() {
                     ${email ? 'has-value' : ''}`}
                   />
                   <label
+                    id="label_newsletter"
                     className={`text-md text-white text-opacity-80 absolute left-3 top-2 transition duration-200
                     ${email ? 'input-text-filled' : 'input-text'}`}
                   >

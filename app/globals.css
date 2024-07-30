@@ -155,11 +155,11 @@
 
 
 
-label {
+#label_newsletter {
   @apply text-base absolute left-3 top-2 rounded transition duration-200;
 }
 
-input[type="email"]:focus + label, input[type="email"].has-value + label {
+input[type="email"]:focus + #label_newsletter, input[type="email"].has-value + #label_newsletter {
   @apply text-white bg-gray-800 top-1 left-0 px-1 transform -translate-y-4 -translate-x-1 scale-75;
 }
 
